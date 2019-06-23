@@ -1,15 +1,17 @@
 'use strict';
 
 class GameContainer {
-  constructor() {
+  constructor(doc) {
+    this._doc = doc;
     this.game = null;
 
     this._canvas = document.createElement("CANVAS");
   }
 
   set_size(width, height) {
-    this._canvas.width = width;
-    this._canvas.height = height;
+    let gameDiv = this._doc.getElementById("game");
+    gameDiv.width = width;
+    gameDiv.height = height;
   }
 
   get_size() {
@@ -19,8 +21,9 @@ class GameContainer {
           };
   }
 
-  add_to_page(doc) {
-    doc.body.appendChild(this._canvas);
+  add_to_page() {
+    let gameDiv = this._doc.getElementById("game");
+    gameDiv.appendChild(this._canvas);
   }
 
   start_game(config) {
