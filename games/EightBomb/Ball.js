@@ -22,6 +22,8 @@ class Ball extends Phaser.GameObjects.Sprite {
     this.body.setDrag(.99, .99);
     this.body.setBounce(1);
     this.body.setMaxSpeed(1000);
+
+    this.setScale(.5);
   }
 
   setShotSpeed(newSpeed) {
@@ -80,28 +82,28 @@ class Ball extends Phaser.GameObjects.Sprite {
   /* Pure animation */
   dropFromAbove() {
     this.body.enable = false;
-    this.scaleX = 2;
-    this.scaleY = 2;
+    this.scaleX = 1;
+    this.scaleY = 1;
     this.alpha = 0;
     anime({
       targets: this,
-      scaleX: 1,
-      scaleY: 1,
+      scaleX: .5,
+      scaleY: .5,
       alpha: 1,
       easing: "easeInCubic",
       duration: 200,
       complete: () => {
         anime({
           targets: this,
-          scaleX: 1.30,
-          scaleY: 1.30,
+          scaleX: .70,
+          scaleY: .70,
           easing: "easeOutCubic",
           duration: 160,
           complete: () => {
             anime({
               targets: this,
-              scaleX: 1,
-              scaleY: 1,
+              scaleX: .5,
+              scaleY: .5,
               easing: "easeInCubic",
               duration: 160,
               complete: () => {this.body.enable = true;} // Re-enable physics after animation

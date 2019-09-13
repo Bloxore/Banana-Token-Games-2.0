@@ -1,6 +1,8 @@
 
 import { Ship } from './ship.js';
-import { Enemy } from './enemy.js';
+import { EnemyWaveSpawner } from './EnemyWaveSpawner.js';
+
+const GAMEURL = "games/shape_shooter";
 
 class GameState extends Phaser.Scene {
 
@@ -10,6 +12,7 @@ class GameState extends Phaser.Scene {
     this.ship;
     this.bullets;
     this.enemies;
+    this.waveSpawner;
   }
 
   preload() {
@@ -24,7 +27,13 @@ class GameState extends Phaser.Scene {
 
     this.bullets = this.add.group();
 
-    this.enemies.add(new Enemy(this, 320, 100));
+    this.waveSpawner = new EnemyWaveSpawner(this, this.enemies);
+
+    // Load enemy waves
+    this.waveSpawner.loadWaveData(GAMEURL + "/enemyWaves/wave0.txt");
+    this.waveSpawner.onDoneLoading(() => {
+      this.waveSpawner.startWave(0);
+    })
 
     //Inputs
     this.up = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
@@ -32,8 +41,6 @@ class GameState extends Phaser.Scene {
     this.left = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
     this.right = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
     this.action = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
-
-    this.action.on("down", this._createShootListener(this.ship), this)
 
     //Physics
 
@@ -54,17 +61,19 @@ class GameState extends Phaser.Scene {
     } else if (this.right.isDown && !this.left.isDown) {
       this.ship.moveRight();
     }
+    if (this.action.isDown) {
+      if (this.ship.isReadyToFire()) {
+        this.ship.resetCoolDown();
+        this._shoot(this.ship);
+      }
+    }
   }
 
-  _createShootListener(ship) {
-    function shoot() {
-      let ball = this.physics.add.image(ship.x, ship.y, 'assets', 'ball1');
-      ball.body.velocity.y = -500;
+  _shoot(ship) {
+    let ball = this.physics.add.image(ship.x, ship.y, 'assets', 'ball1');
+    ball.body.velocity.y = -500;
 
-      this.bullets.add(ball);
-    }
-
-    return shoot;
+    this.bullets.add(ball);
   }
 
   /*
@@ -75,7 +84,7 @@ class GameState extends Phaser.Scene {
 
     for (let i = 0; i < rows; i++) {
       let columns = this._randomIntRange(columnMax, columnMin);
-      let column_spacing = this.
+      let column_spacing = this
     }
   }
 
@@ -88,6 +97,12 @@ let config = {
     type: Phaser.WEBGL,
     width: 640,
     height: 480,
+    scale: {
+      parent: "game",
+      mode: Phaser.Scale.FIT,
+      width: 640,
+      height: 480
+    },
     scene: [ GameState ],
     physics: {
         default: 'arcade'

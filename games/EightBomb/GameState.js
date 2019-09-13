@@ -74,7 +74,7 @@ class GameState extends Phaser.Scene {
     this._playerCues[3].setPosition(this.cameras.main.centerX + 200, this.cameras.main.centerY + 100);
 
     //Add balls
-    let textBalls = this.cache.text.get('ballLayout').split("\n");
+    /*let textBalls = this.cache.text.get('ballLayout').split("\n");
     for (let i = 0; i < textBalls.length; i++) {
       if (textBalls[i] == "") {
         textBalls.splice(i, 1);
@@ -85,7 +85,7 @@ class GameState extends Phaser.Scene {
       textBalls[i][0] = parseInt(textBalls[i][0]);
       textBalls[i][1] = parseInt(textBalls[i][1]);
     }
-    this.addBallsFromArray(textBalls);
+    this.addBallsFromArray(textBalls);*/
 
     /* Set collision for cues */
     this.physics.add.collider(this._ballGroup, this._poolTable, () => {
@@ -142,6 +142,22 @@ class GameState extends Phaser.Scene {
         ball.fallAndDestroy(hole.x, hole.y);
       }
     });
+
+    /* Server connection test */
+    this.client = new Colyseus.Client("ws://localhost:3000");
+
+    this.room = this.client.join("GameRoom");
+    this.room.onJoin.add(() => {
+      console.log(this.client.id, "joined", this.room.name);
+    });
+    this.room.onMessage.add((msg) => {
+      let firstColon = msg.search(":");
+      let name = msg.slice(0, firstColon);
+      let data = JSON.parse(msg.slice(firstColon + 1));
+      if (name == "BALL") {
+        console.log(data);
+      }
+    })
   }
 
   update() {
