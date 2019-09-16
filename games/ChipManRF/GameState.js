@@ -1,4 +1,5 @@
-import { generatePlayer, Player } from './player.js';
+import { Player } from './player.js';
+import { Chip }  from './Chip.js';
 
 class GameState extends Phaser.Scene {
   constructor() {
@@ -8,8 +9,9 @@ class GameState extends Phaser.Scene {
   preload() {
     /* Level Art */
     this.load.image("levelTiles", "assets/games/ChipManRF/levelArt/levelTilemap.png");
+    this.load.spritesheet("levelEntities", "assets/games/ChipManRF/levelArt/levelEntities.png", { frameWidth: 32, frameHeight: 32 });
     /* Load Level Data */
-    this.load.tilemapTiledJSON("level1", "assets/games/ChipManRF/levelData/level1.json");
+    this.load.tilemapTiledJSON("level1", "assets/games/ChipManRF/levelData/level2.json");
 
     /* ChipMan Spine Load */
     this.load.setPath("assets/games/ChipManRF/chipman-spine");
@@ -27,6 +29,9 @@ class GameState extends Phaser.Scene {
 
     /* Setup camera */
     this.cameras.main.setBounds(0, 0, WORLD_WIDTH, WORLD_HEIGHT);
+
+    /* Chips */
+    this.chipGroup = this.physics.add.group();
 
     /* Setup Player */
     this.player = new Player(this, 200, 200);
@@ -48,12 +53,13 @@ class GameState extends Phaser.Scene {
 
     /* Map Parameters */
     let playerSpawnPos;
-    let chipPos = [];
 
     for (let i = 0; i < this.objectLayer.objects.length; i++) {
       let object = this.objectLayer.objects[i];
       if (object.name == "Player Spawn") {
         playerSpawnPos = object;
+      } else if (object.name == "Chip") {
+        this.chipGroup.add(new Chip(this, object.x, object.y), true);
       }
     }
 
@@ -63,14 +69,27 @@ class GameState extends Phaser.Scene {
     /* Collision setup */
     this.physics.add.collider(this.player, this.layer);
 
+    /* Chip Collection */
+    this.physics.add.overlap(this.player, this.chipGroup, (player, chip) => {
+      // Completely clean up the chip (want to make sure no more update calls are passed to it)
+      this.chipGroup.remove(chip, true, true);
+    })
+
     /* World Bounds */
     this.physics.world.setBounds(0, 0, WORLD_WIDTH, WORLD_HEIGHT);
 
-    //this.helpText = this.add.text(this.player.x, this.player.y, "Y: ", {color: "#000000"});
+    /* Full screen testing FOR LATER INVESTIGATION */
+    /*this.input.keyboard.addKey("k").on("down", () => {
+      if (this.scale.isFullscreen) {
+        this.scale.stopFullscreen();
+      } else {
+        this.scale.startFullscreen();
+      }
+    })*/
   }
 
   update() {
-    
+
   }
 }
 
