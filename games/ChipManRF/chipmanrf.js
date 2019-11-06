@@ -1,4 +1,3 @@
-import * as SpinePlugin from '../../js/SpinePlugin.js';
 import { GameState } from "./GameState.js";
 
 let config = {
@@ -10,7 +9,8 @@ let config = {
       parent: "game",
       mode: Phaser.Scale.FIT,
       width: 640,
-      height: 480
+      height: 480,
+      zoom: Phaser.Scale.Zoom.MAX_ZOOM,
     },
     plugins: {
       scene: [

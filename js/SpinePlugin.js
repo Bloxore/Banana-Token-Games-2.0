@@ -353,7 +353,7 @@ var MATH_CONST = {
 
     /**
      * The value of PI * 2.
-     * 
+     *
      * @name Phaser.Math.PI2
      * @type {number}
      * @since 3.0.0
@@ -362,7 +362,7 @@ var MATH_CONST = {
 
     /**
      * The value of PI * 0.5.
-     * 
+     *
      * @name Phaser.Math.TAU
      * @type {number}
      * @since 3.0.0
@@ -371,7 +371,7 @@ var MATH_CONST = {
 
     /**
      * An epsilon value (1.0e-6)
-     * 
+     *
      * @name Phaser.Math.EPSILON
      * @type {number}
      * @since 3.0.0
@@ -380,7 +380,7 @@ var MATH_CONST = {
 
     /**
      * For converting degrees to radians (PI / 180)
-     * 
+     *
      * @name Phaser.Math.DEG_TO_RAD
      * @type {number}
      * @since 3.0.0
@@ -389,7 +389,7 @@ var MATH_CONST = {
 
     /**
      * For converting radians to degrees (180 / PI)
-     * 
+     *
      * @name Phaser.Math.RAD_TO_DEG
      * @type {number}
      * @since 3.0.0
@@ -399,7 +399,7 @@ var MATH_CONST = {
     /**
      * An instance of the Random Number Generator.
      * This is not set until the Game boots.
-     * 
+     *
      * @name Phaser.Math.RND
      * @type {Phaser.Math.RandomDataGenerator}
      * @since 3.0.0
@@ -558,13 +558,13 @@ var CONST = __webpack_require__(1);
  * Takes an angle in Phasers default clockwise format and converts it so that
  * 0 is North, 90 is West, 180 is South and 270 is East,
  * therefore running counter-clockwise instead of clockwise.
- * 
+ *
  * You can pass in the angle from a Game Object using:
- * 
+ *
  * ```javascript
  * var converted = CounterClockwise(gameobject.rotation);
  * ```
- * 
+ *
  * All values for this function are in radians.
  *
  * @function Phaser.Math.Angle.CounterClockwise
@@ -1183,7 +1183,7 @@ var Vector2 = new Class({
 
 /**
  * A static zero Vector2 for use by reference.
- * 
+ *
  * This constant is meant for comparison operations and should not be modified directly.
  *
  * @constant
@@ -1195,7 +1195,7 @@ Vector2.ZERO = new Vector2();
 
 /**
  * A static right Vector2 for use by reference.
- * 
+ *
  * This constant is meant for comparison operations and should not be modified directly.
  *
  * @constant
@@ -1207,7 +1207,7 @@ Vector2.RIGHT = new Vector2(1, 0);
 
 /**
  * A static left Vector2 for use by reference.
- * 
+ *
  * This constant is meant for comparison operations and should not be modified directly.
  *
  * @constant
@@ -1219,7 +1219,7 @@ Vector2.LEFT = new Vector2(-1, 0);
 
 /**
  * A static up Vector2 for use by reference.
- * 
+ *
  * This constant is meant for comparison operations and should not be modified directly.
  *
  * @constant
@@ -1231,7 +1231,7 @@ Vector2.UP = new Vector2(0, -1);
 
 /**
  * A static down Vector2 for use by reference.
- * 
+ *
  * This constant is meant for comparison operations and should not be modified directly.
  *
  * @constant
@@ -1243,7 +1243,7 @@ Vector2.DOWN = new Vector2(0, 1);
 
 /**
  * A static one Vector2 for use by reference.
- * 
+ *
  * This constant is meant for comparison operations and should not be modified directly.
  *
  * @constant
@@ -1270,7 +1270,7 @@ var FILE_CONST = {
 
     /**
      * The Loader is idle.
-     * 
+     *
      * @name Phaser.Loader.LOADER_IDLE
      * @type {integer}
      * @since 3.0.0
@@ -1279,7 +1279,7 @@ var FILE_CONST = {
 
     /**
      * The Loader is actively loading.
-     * 
+     *
      * @name Phaser.Loader.LOADER_LOADING
      * @type {integer}
      * @since 3.0.0
@@ -1288,7 +1288,7 @@ var FILE_CONST = {
 
     /**
      * The Loader is processing files is has loaded.
-     * 
+     *
      * @name Phaser.Loader.LOADER_PROCESSING
      * @type {integer}
      * @since 3.0.0
@@ -1297,7 +1297,7 @@ var FILE_CONST = {
 
     /**
      * The Loader has completed loading and processing.
-     * 
+     *
      * @name Phaser.Loader.LOADER_COMPLETE
      * @type {integer}
      * @since 3.0.0
@@ -1306,7 +1306,7 @@ var FILE_CONST = {
 
     /**
      * The Loader is shutting down.
-     * 
+     *
      * @name Phaser.Loader.LOADER_SHUTDOWN
      * @type {integer}
      * @since 3.0.0
@@ -1315,7 +1315,7 @@ var FILE_CONST = {
 
     /**
      * The Loader has been destroyed.
-     * 
+     *
      * @name Phaser.Loader.LOADER_DESTROYED
      * @type {integer}
      * @since 3.0.0
@@ -1324,7 +1324,7 @@ var FILE_CONST = {
 
     /**
      * File is in the load queue but not yet started
-     * 
+     *
      * @name Phaser.Loader.FILE_PENDING
      * @type {integer}
      * @since 3.0.0
@@ -1333,7 +1333,7 @@ var FILE_CONST = {
 
     /**
      * File has been started to load by the loader (onLoad called)
-     * 
+     *
      * @name Phaser.Loader.FILE_LOADING
      * @type {integer}
      * @since 3.0.0
@@ -1341,8 +1341,8 @@ var FILE_CONST = {
     FILE_LOADING: 11,
 
     /**
-     * File has loaded successfully, awaiting processing    
-     * 
+     * File has loaded successfully, awaiting processing
+     *
      * @name Phaser.Loader.FILE_LOADED
      * @type {integer}
      * @since 3.0.0
@@ -1351,7 +1351,7 @@ var FILE_CONST = {
 
     /**
      * File failed to load
-     * 
+     *
      * @name Phaser.Loader.FILE_FAILED
      * @type {integer}
      * @since 3.0.0
@@ -1360,7 +1360,7 @@ var FILE_CONST = {
 
     /**
      * File is being processed (onProcess callback)
-     * 
+     *
      * @name Phaser.Loader.FILE_PROCESSING
      * @type {integer}
      * @since 3.0.0
@@ -1369,7 +1369,7 @@ var FILE_CONST = {
 
     /**
      * The File has errored somehow during processing.
-     * 
+     *
      * @name Phaser.Loader.FILE_ERRORED
      * @type {integer}
      * @since 3.0.0
@@ -1378,7 +1378,7 @@ var FILE_CONST = {
 
     /**
      * File has finished processing.
-     * 
+     *
      * @name Phaser.Loader.FILE_COMPLETE
      * @type {integer}
      * @since 3.0.0
@@ -1387,7 +1387,7 @@ var FILE_CONST = {
 
     /**
      * File has been destroyed
-     * 
+     *
      * @name Phaser.Loader.FILE_DESTROYED
      * @type {integer}
      * @since 3.0.0
@@ -1396,7 +1396,7 @@ var FILE_CONST = {
 
     /**
      * File was populated from local data and doesn't need an HTTP request
-     * 
+     *
      * @name Phaser.Loader.FILE_POPULATED
      * @type {integer}
      * @since 3.0.0
@@ -2151,7 +2151,7 @@ var Vector3 = new Class({
 
 /**
  * A static zero Vector3 for use by reference.
- * 
+ *
  * This constant is meant for comparison operations and should not be modified directly.
  *
  * @constant
@@ -2163,7 +2163,7 @@ Vector3.ZERO = new Vector3();
 
 /**
  * A static right Vector3 for use by reference.
- * 
+ *
  * This constant is meant for comparison operations and should not be modified directly.
  *
  * @constant
@@ -2175,7 +2175,7 @@ Vector3.RIGHT = new Vector3(1, 0, 0);
 
 /**
  * A static left Vector3 for use by reference.
- * 
+ *
  * This constant is meant for comparison operations and should not be modified directly.
  *
  * @constant
@@ -2187,7 +2187,7 @@ Vector3.LEFT = new Vector3(-1, 0, 0);
 
 /**
  * A static up Vector3 for use by reference.
- * 
+ *
  * This constant is meant for comparison operations and should not be modified directly.
  *
  * @constant
@@ -2199,7 +2199,7 @@ Vector3.UP = new Vector3(0, -1, 0);
 
 /**
  * A static down Vector3 for use by reference.
- * 
+ *
  * This constant is meant for comparison operations and should not be modified directly.
  *
  * @constant
@@ -2211,7 +2211,7 @@ Vector3.DOWN = new Vector3(0, 1, 0);
 
 /**
  * A static forward Vector3 for use by reference.
- * 
+ *
  * This constant is meant for comparison operations and should not be modified directly.
  *
  * @constant
@@ -2223,7 +2223,7 @@ Vector3.FORWARD = new Vector3(0, 0, 1);
 
 /**
  * A static back Vector3 for use by reference.
- * 
+ *
  * This constant is meant for comparison operations and should not be modified directly.
  *
  * @constant
@@ -2235,7 +2235,7 @@ Vector3.BACK = new Vector3(0, 0, -1);
 
 /**
  * A static one Vector3 for use by reference.
- * 
+ *
  * This constant is meant for comparison operations and should not be modified directly.
  *
  * @constant
@@ -2607,7 +2607,7 @@ var File = new Class({
             {
                 //  The creation of this XHRLoader starts the load process going.
                 //  It will automatically call the following, based on the load outcome:
-                //  
+                //
                 // xhr.onload = this.onLoad
                 // xhr.onerror = this.onError
                 // xhr.onprogress = this.onProgress
@@ -2812,7 +2812,7 @@ var File = new Class({
  * @method Phaser.Loader.File.createObjectURL
  * @static
  * @since 3.7.0
- * 
+ *
  * @param {HTMLImageElement} image - Image object which 'src' attribute should be set to object URL.
  * @param {Blob} blob - A Blob object to create an object URL for.
  * @param {string} defaultType - Default mime type used if blob type is not available.
@@ -2846,7 +2846,7 @@ File.createObjectURL = function (image, blob, defaultType)
  * @method Phaser.Loader.File.revokeObjectURL
  * @static
  * @since 3.7.0
- * 
+ *
  * @param {HTMLImageElement} image - Image object which 'src' attribute should be revoked.
  */
 File.revokeObjectURL = function (image)
@@ -2880,13 +2880,13 @@ var FileTypesManager = {
 
     /**
      * Static method called when a LoaderPlugin is created.
-     * 
+     *
      * Loops through the local types object and injects all of them as
      * properties into the LoaderPlugin instance.
      *
      * @method Phaser.Loader.FileTypesManager.install
      * @since 3.0.0
-     * 
+     *
      * @param {Phaser.Loader.LoaderPlugin} loader - The LoaderPlugin to install the types into.
      */
     install: function (loader)
@@ -2899,12 +2899,12 @@ var FileTypesManager = {
 
     /**
      * Static method called directly by the File Types.
-     * 
+     *
      * The key is a reference to the function used to load the files via the Loader, i.e. `image`.
      *
      * @method Phaser.Loader.FileTypesManager.register
      * @since 3.0.0
-     * 
+     *
      * @param {string} key - The key that will be used as the method name in the LoaderPlugin.
      * @param {function} factoryFunction - The function that will be called when LoaderPlugin.key is invoked.
      */
@@ -6402,22 +6402,22 @@ var SpineGameObject = __webpack_require__(186);
 /**
  * @classdesc
  * The Spine Plugin is a Scene based plugin that handles the creation and rendering of Spine Game objects.
- * 
+ *
  * All rendering and object creation is handled via the official Spine Runtimes. This version of the plugin
  * uses the Spine 3.7 runtimes. Files created in a more recent version of Spine may not work as a result.
- * 
+ *
  * You can find more details about Spine at http://esotericsoftware.com/.
- * 
+ *
  * Please note that you require a Spine license in order to use Spine Runtimes in your games.
- * 
+ *
  * You can install this plugin into your Phaser game by either importing it, if you're using ES6:
- * 
+ *
  * ```javascript
  * import * as SpinePlugin from './SpinePlugin.js';
  * ```
- * 
+ *
  * and then adding it to your Phaser Game configuration:
- * 
+ *
  * ```javascript
  * plugins: {
  *     scene: [
@@ -6425,10 +6425,10 @@ var SpineGameObject = __webpack_require__(186);
  *     ]
  * }
  * ```
- * 
+ *
  * If you're using ES5 then you can load the Spine Plugin in a Scene files payload, _within_ your
  * Game Configuration object, like this:
- * 
+ *
  * ```javascript
  * scene: {
  *     preload: preload,
@@ -6440,42 +6440,42 @@ var SpineGameObject = __webpack_require__(186);
  *     }
  * }
  * ```
- * 
+ *
  * Loading it like this allows you to then use commands such as `this.load.spine` from within the
  * same Scene. Alternatively, you can use the method `this.load.plugin` to load the plugin via the normal
  * Phaser Loader. However, doing so will not add it to the current Scene. It will be available from any
  * subsequent Scenes.
- * 
+ *
  * Assuming a default environment you access it from within a Scene by using the `this.spine` reference.
- * 
+ *
  * When this plugin is installed into a Scene it will add a Loader File Type, allowing you to load
  * Spine files directly, i.e.:
- * 
+ *
  * ```javascript
  * this.load.spine('stretchyman', 'stretchyman-pro.json', [ 'stretchyman-pma.atlas' ], true);
  * ```
- * 
+ *
  * It also installs a Game Object Factory method, allowin you to create Spine Game Objects:
- * 
+ *
  * ```javascript
  * this.add.spine(512, 650, 'stretchyman')
  * ```
- * 
+ *
  * The first argument is the key which you used when importing the Spine data. There are lots of
  * things you can specify, such as the animation name, skeleton, slot attachments and more. Please
  * see the respective documentation and examples for further details.
- * 
+ *
  * Phaser expects the Spine data to be exported from the Spine application in a JSON format, not binary.
  * The associated atlas files are scanned for any texture files present in them, which are then loaded.
  * If you have exported your Spine data with preMultipiedAlpha set, then you should enable this in the
  * load arguments, or you may see black outlines around skeleton textures.
- * 
+ *
  * The Spine plugin is local to the Scene in which it is installed. This means a change to something,
  * such as the Skeleton Debug Renderer, in this Scene, will not impact the renderer in any other Scene.
  * The only exception to this is with the caches this plugin creates. Spine atlas and texture data are
  * stored in their own caches, which are global, meaning they're accessible from any Scene in your
  * game, regardless if the Scene loaded the Spine data or not.
- * 
+ *
  * For details about the Spine Runtime API see http://esotericsoftware.com/spine-api-reference
  *
  * @class SpinePlugin
@@ -6511,7 +6511,7 @@ var SpinePlugin = new Class({
 
         /**
          * A custom cache that stores the Spine atlas data.
-         * 
+         *
          * This cache is global across your game, allowing you to access Spine data loaded from other Scenes,
          * no matter which Scene you are in.
          *
@@ -6523,7 +6523,7 @@ var SpinePlugin = new Class({
 
         /**
          * A custom cache that stores the Spine Textures.
-         * 
+         *
          * This cache is global across your game, allowing you to access Spine data loaded from other Scenes,
          * no matter which Scene you are in.
          *
@@ -6563,7 +6563,7 @@ var SpinePlugin = new Class({
 
         /**
          * The underlying WebGL context of the Phaser renderer.
-         * 
+         *
          * Only set if running in WebGL mode.
          *
          * @name SpinePlugin#gl
@@ -6583,7 +6583,7 @@ var SpinePlugin = new Class({
 
         /**
          * An instance of the Spine WebGL Scene Renderer.
-         * 
+         *
          * Only set if running in WebGL mode.
          *
          * @name SpinePlugin#sceneRenderer
@@ -6603,7 +6603,7 @@ var SpinePlugin = new Class({
 
         /**
          * An instance of the Spine Skeleton Debug Renderer.
-         * 
+         *
          * Only set if running in WebGL mode.
          *
          * @name SpinePlugin#skeletonDebugRenderer
@@ -6749,9 +6749,9 @@ var SpinePlugin = new Class({
      *
      * @method SpinePlugin#getAtlasCanvas
      * @since 3.19.0
-     * 
+     *
      * @param {string} key - The key of the Spine Atlas to create.
-     * 
+     *
      * @return {spine.TextureAtlas} The Spine Texture Atlas, or undefined if the given key wasn't found.
      */
     getAtlasCanvas: function (key)
@@ -6797,9 +6797,9 @@ var SpinePlugin = new Class({
      *
      * @method SpinePlugin#getAtlasWebGL
      * @since 3.19.0
-     * 
+     *
      * @param {string} key - The key of the Spine Atlas to create.
-     * 
+     *
      * @return {spine.TextureAtlas} The Spine Texture Atlas, or undefined if the given key wasn't found.
      */
     getAtlasWebGL: function (key)
@@ -6847,7 +6847,7 @@ var SpinePlugin = new Class({
      * Adds a Spine Skeleton and Atlas file, or array of files, to the current load queue.
      *
      * You can call this method from within your Scene's `preload`, along with any other files you wish to load:
-     * 
+     *
      * ```javascript
      * function preload ()
      * {
@@ -6862,21 +6862,21 @@ var SpinePlugin = new Class({
      * The typical flow for a Phaser Scene is that you load assets in the Scene's `preload` method and then when the
      * Scene's `create` method is called you are guaranteed that all of those assets are ready for use and have been
      * loaded.
-     * 
+     *
      * If you call this from outside of `preload` then you are responsible for starting the Loader afterwards and monitoring
      * its events to know when it's safe to use the asset. Please see the Phaser.Loader.LoaderPlugin class for more details.
-     * 
+     *
      * Phaser expects the Spine data to be exported from the Spine application in a JSON format, not binary. The associated
      * atlas files are scanned for any texture files present in them, which are then loaded. If you have exported
      * your Spine data with preMultipiedAlpha set, then you should enable this in the arguments, or you may see black
      * outlines around skeleton textures.
-     * 
+     *
      * The key must be a unique String. It is used to add the file to the global Spine cache upon a successful load.
      * The key should be unique both in terms of files being loaded and files already present in the Spine cache.
      * Loading a file using a key that is already taken will result in a warning.
      *
      * Instead of passing arguments you can pass a configuration object, such as:
-     * 
+     *
      * ```javascript
      * this.load.spine({
      *     key: 'mainmenu',
@@ -6885,9 +6885,9 @@ var SpinePlugin = new Class({
      *     preMultipliedAlpha: true
      * });
      * ```
-     * 
+     *
      * If you need to load multiple Spine atlas files, provide them as an array:
-     * 
+     *
      * ```javascript
      * function preload ()
      * {
@@ -6925,13 +6925,13 @@ var SpinePlugin = new Class({
     spineFileCallback: function (key, jsonURL, atlasURL, preMultipliedAlpha, jsonXhrSettings, atlasXhrSettings)
     {
         var multifile;
-   
+
         if (Array.isArray(key))
         {
             for (var i = 0; i < key.length; i++)
             {
                 multifile = new SpineFile(this, key[i]);
-    
+
                 this.addFile(multifile.files);
             }
         }
@@ -6941,36 +6941,36 @@ var SpinePlugin = new Class({
 
             this.addFile(multifile.files);
         }
-        
+
         return this;
     },
 
     /**
      * Creates a new Spine Game Object and adds it to the Scene.
-     * 
+     *
      * The x and y coordinate given is used to set the placement of the root Spine bone, which can vary from
      * skeleton to skeleton. All rotation and scaling happens from the root bone placement. Spine Game Objects
      * do not have a Phaser origin.
-     * 
+     *
      * If the Spine JSON file exported multiple Skeletons within it, then you can specify them by using a period
      * character in the key. For example, if you loaded a Spine JSON using the key `monsters` and it contains
      * multiple Skeletons, including one called `goblin` then you would use the key `monsters.goblin` to reference
      * that.
-     * 
+     *
      * ```javascript
      * let jelly = this.add.spine(512, 550, 'jelly', 'jelly-think', true);
      * ```
-     * 
+     *
      * The key is optional. If not passed here, you need to call `SpineGameObject.setSkeleton()` to use it.
-     * 
+     *
      * The animation name is also optional and can be set later via `SpineGameObject.setAnimation`.
-     * 
+     *
      * Should you wish for more control over the object creation, such as setting a slot attachment or skin
      * name, then use `SpinePlugin.make` instead.
      *
      * @method SpinePlugin#add
      * @since 3.19.0
-     * 
+     *
      * @param {number} x - The horizontal position of this Game Object in the world.
      * @param {number} y - The vertical position of this Game Object in the world.
      * @param {string} [key] - The key of the Spine Skeleton this Game Object will use, as stored in the Spine Plugin.
@@ -6985,22 +6985,22 @@ var SpinePlugin = new Class({
 
         this.scene.sys.displayList.add(spineGO);
         this.scene.sys.updateList.add(spineGO);
-    
+
         return spineGO;
     },
 
     /**
      * Creates a new Spine Game Object from the given configuration file and optionally adds it to the Scene.
-     * 
+     *
      * The x and y coordinate given is used to set the placement of the root Spine bone, which can vary from
      * skeleton to skeleton. All rotation and scaling happens from the root bone placement. Spine Game Objects
      * do not have a Phaser origin.
-     * 
+     *
      * If the Spine JSON file exported multiple Skeletons within it, then you can specify them by using a period
      * character in the key. For example, if you loaded a Spine JSON using the key `monsters` and it contains
      * multiple Skeletons, including one called `goblin` then you would use the key `monsters.goblin` to reference
      * that.
-     * 
+     *
      * ```javascript
      * let jelly = this.make.spine({
      *     x: 500, y: 500, key: 'jelly',
@@ -7057,17 +7057,17 @@ var SpinePlugin = new Class({
 
     /**
      * Converts the given x and y screen coordinates into the world space of the given Skeleton.
-     * 
+     *
      * Only works in WebGL.
      *
      * @method SpinePlugin#worldToLocal
      * @since 3.19.0
-     * 
+     *
      * @param {number} x - The screen space x coordinate to convert.
      * @param {number} y - The screen space y coordinate to convert.
      * @param {spine.Skeleton} skeleton - The Spine Skeleton to convert into.
      * @param {spine.Bone} [bone] - Optional bone of the Skeleton to convert into.
-     * 
+     *
      * @return {spine.Vector2} A Vector2 containing the translated point.
      */
     worldToLocal: function (x, y, skeleton, bone)
@@ -7104,10 +7104,10 @@ var SpinePlugin = new Class({
      *
      * @method SpinePlugin#getVector2
      * @since 3.19.0
-     * 
+     *
      * @param {number} x - The Vector x value.
      * @param {number} y - The Vector y value.
-     * 
+     *
      * @return {spine.Vector2} A Spine Vector2 based on the given values.
      */
     getVector2: function (x, y)
@@ -7117,16 +7117,16 @@ var SpinePlugin = new Class({
 
     /**
      * Returns a Spine Vector2 based on the given x, y and z values.
-     * 
+     *
      * Only works in WebGL.
      *
      * @method SpinePlugin#getVector3
      * @since 3.19.0
-     * 
+     *
      * @param {number} x - The Vector x value.
      * @param {number} y - The Vector y value.
      * @param {number} z - The Vector z value.
-     * 
+     *
      * @return {spine.Vector2} A Spine Vector2 based on the given values.
      */
     getVector3: function (x, y, z)
@@ -7136,14 +7136,14 @@ var SpinePlugin = new Class({
 
     /**
      * Sets `drawBones` in the Spine Skeleton Debug Renderer.
-     * 
+     *
      * Only works in WebGL.
      *
      * @method SpinePlugin#setDebugBones
      * @since 3.19.0
-     * 
+     *
      * @param {boolean} [value=true] - The value to set in the debug property.
-     * 
+     *
      * @return {this} This Spine Plugin.
      */
     setDebugBones: function (value)
@@ -7157,14 +7157,14 @@ var SpinePlugin = new Class({
 
     /**
      * Sets `drawRegionAttachments` in the Spine Skeleton Debug Renderer.
-     * 
+     *
      * Only works in WebGL.
      *
      * @method SpinePlugin#setDebugRegionAttachments
      * @since 3.19.0
-     * 
+     *
      * @param {boolean} [value=true] - The value to set in the debug property.
-     * 
+     *
      * @return {this} This Spine Plugin.
      */
     setDebugRegionAttachments: function (value)
@@ -7178,14 +7178,14 @@ var SpinePlugin = new Class({
 
     /**
      * Sets `drawBoundingBoxes` in the Spine Skeleton Debug Renderer.
-     * 
+     *
      * Only works in WebGL.
      *
      * @method SpinePlugin#setDebugBoundingBoxes
      * @since 3.19.0
-     * 
+     *
      * @param {boolean} [value=true] - The value to set in the debug property.
-     * 
+     *
      * @return {this} This Spine Plugin.
      */
     setDebugBoundingBoxes: function (value)
@@ -7199,14 +7199,14 @@ var SpinePlugin = new Class({
 
     /**
      * Sets `drawMeshHull` in the Spine Skeleton Debug Renderer.
-     * 
+     *
      * Only works in WebGL.
      *
      * @method SpinePlugin#setDebugMeshHull
      * @since 3.19.0
-     * 
+     *
      * @param {boolean} [value=true] - The value to set in the debug property.
-     * 
+     *
      * @return {this} This Spine Plugin.
      */
     setDebugMeshHull: function (value)
@@ -7220,14 +7220,14 @@ var SpinePlugin = new Class({
 
     /**
      * Sets `drawMeshTriangles` in the Spine Skeleton Debug Renderer.
-     * 
+     *
      * Only works in WebGL.
      *
      * @method SpinePlugin#setDebugMeshTriangles
      * @since 3.19.0
-     * 
+     *
      * @param {boolean} [value=true] - The value to set in the debug property.
-     * 
+     *
      * @return {this} This Spine Plugin.
      */
     setDebugMeshTriangles: function (value)
@@ -7241,14 +7241,14 @@ var SpinePlugin = new Class({
 
     /**
      * Sets `drawPaths` in the Spine Skeleton Debug Renderer.
-     * 
+     *
      * Only works in WebGL.
      *
      * @method SpinePlugin#setDebugPaths
      * @since 3.19.0
-     * 
+     *
      * @param {boolean} [value=true] - The value to set in the debug property.
-     * 
+     *
      * @return {this} This Spine Plugin.
      */
     setDebugPaths: function (value)
@@ -7262,14 +7262,14 @@ var SpinePlugin = new Class({
 
     /**
      * Sets `drawSkeletonXY` in the Spine Skeleton Debug Renderer.
-     * 
+     *
      * Only works in WebGL.
      *
      * @method SpinePlugin#setDebugSkeletonXY
      * @since 3.19.0
-     * 
+     *
      * @param {boolean} [value=true] - The value to set in the debug property.
-     * 
+     *
      * @return {this} This Spine Plugin.
      */
     setDebugSkeletonXY: function (value)
@@ -7283,14 +7283,14 @@ var SpinePlugin = new Class({
 
     /**
      * Sets `drawClipping` in the Spine Skeleton Debug Renderer.
-     * 
+     *
      * Only works in WebGL.
      *
      * @method SpinePlugin#setDebugClipping
      * @since 3.19.0
-     * 
+     *
      * @param {boolean} [value=true] - The value to set in the debug property.
-     * 
+     *
      * @return {this} This Spine Plugin.
      */
     setDebugClipping: function (value)
@@ -7304,14 +7304,14 @@ var SpinePlugin = new Class({
 
     /**
      * Sets the given vertex effect on the Spine Skeleton Renderer.
-     * 
+     *
      * Only works in WebGL.
      *
      * @method SpinePlugin#setEffect
      * @since 3.19.0
-     * 
+     *
      * @param {spine.VertexEffect} [effect] - The vertex effect to set on the Skeleton Renderer.
-     * 
+     *
      * @return {this} This Spine Plugin.
      */
     setEffect: function (effect)
@@ -7323,15 +7323,15 @@ var SpinePlugin = new Class({
 
     /**
      * Creates a Spine Skeleton based on the given key and optional Skeleton JSON data.
-     * 
+     *
      * The Skeleton data should have already been loaded before calling this method.
      *
      * @method SpinePlugin#createSkeleton
      * @since 3.19.0
-     * 
+     *
      * @param {string} key - The key of the Spine skeleton data, as loaded by the plugin. If the Spine JSON contains multiple skeletons, reference them with a period, i.e. `set.spineBoy`.
      * @param {object} [skeletonJSON] - Optional Skeleton JSON data to use, instead of getting it from the cache.
-     * 
+     *
      * @return {(any|null)} This Spine Skeleton data object, or `null` if the key was invalid.
      */
     createSkeleton: function (key, skeletonJSON)
@@ -7359,7 +7359,7 @@ var SpinePlugin = new Class({
         var preMultipliedAlpha = atlasData.preMultipliedAlpha;
 
         var atlasLoader = new Spine.AtlasAttachmentLoader(atlas);
-        
+
         var skeletonJson = new Spine.SkeletonJson(atlasLoader);
 
         var data;
@@ -7380,7 +7380,7 @@ var SpinePlugin = new Class({
             var skeletonData = skeletonJson.readSkeletonData(data);
 
             var skeleton = new Spine.Skeleton(skeletonData);
-        
+
             return { skeletonData: skeletonData, skeleton: skeleton, preMultipliedAlpha: preMultipliedAlpha };
         }
         else
@@ -7391,14 +7391,14 @@ var SpinePlugin = new Class({
 
     /**
      * Creates a new Animation State and Animation State Data for the given skeleton.
-     * 
+     *
      * The returned object contains two properties: `state` and `stateData` respectively.
      *
      * @method SpinePlugin#createAnimationState
      * @since 3.19.0
-     * 
+     *
      * @param {spine.Skeleton} skeleton - The Skeleton to create the Animation State for.
-     * 
+     *
      * @return {any} An object containing the Animation State and Animation State Data instances.
      */
     createAnimationState: function (skeleton)
@@ -7412,17 +7412,17 @@ var SpinePlugin = new Class({
 
     /**
      * Returns the axis aligned bounding box (AABB) of the region and mesh attachments for the current pose.
-     * 
+     *
      * The returned object contains two properties: `offset` and `size`:
-     * 
+     *
      * `offset` - The distance from the skeleton origin to the bottom left corner of the AABB.
      * `size` - The width and height of the AABB.
      *
      * @method SpinePlugin#getBounds
      * @since 3.19.0
-     * 
+     *
      * @param {spine.Skeleton} skeleton - The Skeleton to get the bounds from.
-     * 
+     *
      * @return {any} The bounds object.
      */
     getBounds: function (skeleton)
@@ -7437,7 +7437,7 @@ var SpinePlugin = new Class({
 
     /**
      * Internal handler for when the renderer resizes.
-     * 
+     *
      * Only called if running in WebGL.
      *
      * @method SpinePlugin#onResize
@@ -7453,14 +7453,14 @@ var SpinePlugin = new Class({
 
         sceneRenderer.camera.position.x = viewportWidth / 2;
         sceneRenderer.camera.position.y = viewportHeight / 2;
-    
+
         sceneRenderer.camera.viewportWidth = viewportWidth;
         sceneRenderer.camera.viewportHeight = viewportHeight;
     },
 
     /**
      * The Scene that owns this plugin is shutting down.
-     * 
+     *
      * We need to kill and reset all internal properties as well as stop listening to Scene events.
      *
      * @method SpinePlugin#shutdown
@@ -7478,7 +7478,7 @@ var SpinePlugin = new Class({
 
     /**
      * The Scene that owns this plugin is being destroyed.
-     * 
+     *
      * We need to shutdown and then kill off all external references.
      *
      * @method SpinePlugin#destroy
@@ -7655,7 +7655,7 @@ module.exports = BuildGameObject;
 
 /**
  * Phaser Blend Modes.
- * 
+ *
  * @namespace Phaser.BlendModes
  * @since 3.0.0
  */
@@ -7664,7 +7664,7 @@ module.exports = {
 
     /**
      * Skips the Blend Mode check in the renderer.
-     * 
+     *
      * @name Phaser.BlendModes.SKIP_CHECK
      * @type {integer}
      * @const
@@ -7675,7 +7675,7 @@ module.exports = {
     /**
      * Normal blend mode. For Canvas and WebGL.
      * This is the default setting and draws new shapes on top of the existing canvas content.
-     * 
+     *
      * @name Phaser.BlendModes.NORMAL
      * @type {integer}
      * @const
@@ -7686,7 +7686,7 @@ module.exports = {
     /**
      * Add blend mode. For Canvas and WebGL.
      * Where both shapes overlap the color is determined by adding color values.
-     * 
+     *
      * @name Phaser.BlendModes.ADD
      * @type {integer}
      * @const
@@ -7697,7 +7697,7 @@ module.exports = {
     /**
      * Multiply blend mode. For Canvas and WebGL.
      * The pixels are of the top layer are multiplied with the corresponding pixel of the bottom layer. A darker picture is the result.
-     * 
+     *
      * @name Phaser.BlendModes.MULTIPLY
      * @type {integer}
      * @const
@@ -7708,7 +7708,7 @@ module.exports = {
     /**
      * Screen blend mode. For Canvas and WebGL.
      * The pixels are inverted, multiplied, and inverted again. A lighter picture is the result (opposite of multiply)
-     * 
+     *
      * @name Phaser.BlendModes.SCREEN
      * @type {integer}
      * @const
@@ -7719,7 +7719,7 @@ module.exports = {
     /**
      * Overlay blend mode. For Canvas only.
      * A combination of multiply and screen. Dark parts on the base layer become darker, and light parts become lighter.
-     * 
+     *
      * @name Phaser.BlendModes.OVERLAY
      * @type {integer}
      * @const
@@ -7730,7 +7730,7 @@ module.exports = {
     /**
      * Darken blend mode. For Canvas only.
      * Retains the darkest pixels of both layers.
-     * 
+     *
      * @name Phaser.BlendModes.DARKEN
      * @type {integer}
      * @const
@@ -7741,7 +7741,7 @@ module.exports = {
     /**
      * Lighten blend mode. For Canvas only.
      * Retains the lightest pixels of both layers.
-     * 
+     *
      * @name Phaser.BlendModes.LIGHTEN
      * @type {integer}
      * @const
@@ -7752,7 +7752,7 @@ module.exports = {
     /**
      * Color Dodge blend mode. For Canvas only.
      * Divides the bottom layer by the inverted top layer.
-     * 
+     *
      * @name Phaser.BlendModes.COLOR_DODGE
      * @type {integer}
      * @const
@@ -7763,7 +7763,7 @@ module.exports = {
     /**
      * Color Burn blend mode. For Canvas only.
      * Divides the inverted bottom layer by the top layer, and then inverts the result.
-     * 
+     *
      * @name Phaser.BlendModes.COLOR_BURN
      * @type {integer}
      * @const
@@ -7774,7 +7774,7 @@ module.exports = {
     /**
      * Hard Light blend mode. For Canvas only.
      * A combination of multiply and screen like overlay, but with top and bottom layer swapped.
-     * 
+     *
      * @name Phaser.BlendModes.HARD_LIGHT
      * @type {integer}
      * @const
@@ -7785,7 +7785,7 @@ module.exports = {
     /**
      * Soft Light blend mode. For Canvas only.
      * A softer version of hard-light. Pure black or white does not result in pure black or white.
-     * 
+     *
      * @name Phaser.BlendModes.SOFT_LIGHT
      * @type {integer}
      * @const
@@ -7796,7 +7796,7 @@ module.exports = {
     /**
      * Difference blend mode. For Canvas only.
      * Subtracts the bottom layer from the top layer or the other way round to always get a positive value.
-     * 
+     *
      * @name Phaser.BlendModes.DIFFERENCE
      * @type {integer}
      * @const
@@ -7807,7 +7807,7 @@ module.exports = {
     /**
      * Exclusion blend mode. For Canvas only.
      * Like difference, but with lower contrast.
-     * 
+     *
      * @name Phaser.BlendModes.EXCLUSION
      * @type {integer}
      * @const
@@ -7818,7 +7818,7 @@ module.exports = {
     /**
      * Hue blend mode. For Canvas only.
      * Preserves the luma and chroma of the bottom layer, while adopting the hue of the top layer.
-     * 
+     *
      * @name Phaser.BlendModes.HUE
      * @type {integer}
      * @const
@@ -7829,7 +7829,7 @@ module.exports = {
     /**
      * Saturation blend mode. For Canvas only.
      * Preserves the luma and hue of the bottom layer, while adopting the chroma of the top layer.
-     * 
+     *
      * @name Phaser.BlendModes.SATURATION
      * @type {integer}
      * @const
@@ -7840,7 +7840,7 @@ module.exports = {
     /**
      * Color blend mode. For Canvas only.
      * Preserves the luma of the bottom layer, while adopting the hue and chroma of the top layer.
-     * 
+     *
      * @name Phaser.BlendModes.COLOR
      * @type {integer}
      * @const
@@ -7851,7 +7851,7 @@ module.exports = {
     /**
      * Luminosity blend mode. For Canvas only.
      * Preserves the hue and chroma of the bottom layer, while adopting the luma of the top layer.
-     * 
+     *
      * @name Phaser.BlendModes.LUMINOSITY
      * @type {integer}
      * @const
@@ -7861,7 +7861,7 @@ module.exports = {
 
     /**
      * Alpha erase blend mode. For Canvas and WebGL.
-     * 
+     *
      * @name Phaser.BlendModes.ERASE
      * @type {integer}
      * @const
@@ -7872,7 +7872,7 @@ module.exports = {
     /**
      * Source-in blend mode. For Canvas only.
      * The new shape is drawn only where both the new shape and the destination canvas overlap. Everything else is made transparent.
-     * 
+     *
      * @name Phaser.BlendModes.SOURCE_IN
      * @type {integer}
      * @const
@@ -7883,7 +7883,7 @@ module.exports = {
     /**
      * Source-out blend mode. For Canvas only.
      * The new shape is drawn where it doesn't overlap the existing canvas content.
-     * 
+     *
      * @name Phaser.BlendModes.SOURCE_OUT
      * @type {integer}
      * @const
@@ -7894,7 +7894,7 @@ module.exports = {
     /**
      * Source-out blend mode. For Canvas only.
      * The new shape is only drawn where it overlaps the existing canvas content.
-     * 
+     *
      * @name Phaser.BlendModes.SOURCE_ATOP
      * @type {integer}
      * @const
@@ -7905,7 +7905,7 @@ module.exports = {
     /**
      * Destination-over blend mode. For Canvas only.
      * New shapes are drawn behind the existing canvas content.
-     * 
+     *
      * @name Phaser.BlendModes.DESTINATION_OVER
      * @type {integer}
      * @const
@@ -7916,7 +7916,7 @@ module.exports = {
     /**
      * Destination-in blend mode. For Canvas only.
      * The existing canvas content is kept where both the new shape and existing canvas content overlap. Everything else is made transparent.
-     * 
+     *
      * @name Phaser.BlendModes.DESTINATION_IN
      * @type {integer}
      * @const
@@ -7927,7 +7927,7 @@ module.exports = {
     /**
      * Destination-out blend mode. For Canvas only.
      * The existing content is kept where it doesn't overlap the new shape.
-     * 
+     *
      * @name Phaser.BlendModes.DESTINATION_OUT
      * @type {integer}
      * @const
@@ -7938,7 +7938,7 @@ module.exports = {
     /**
      * Destination-out blend mode. For Canvas only.
      * The existing canvas is only kept where it overlaps the new shape. The new shape is drawn behind the canvas content.
-     * 
+     *
      * @name Phaser.BlendModes.DESTINATION_ATOP
      * @type {integer}
      * @const
@@ -7949,7 +7949,7 @@ module.exports = {
     /**
      * Lighten blend mode. For Canvas only.
      * Where both shapes overlap the color is determined by adding color values.
-     * 
+     *
      * @name Phaser.BlendModes.LIGHTER
      * @type {integer}
      * @const
@@ -7960,7 +7960,7 @@ module.exports = {
     /**
      * Copy blend mode. For Canvas only.
      * Only the new shape is shown.
-     * 
+     *
      * @name Phaser.BlendModes.COPY
      * @type {integer}
      * @const
@@ -7971,7 +7971,7 @@ module.exports = {
     /**
      * Xor blend mode. For Canvas only.
      * Shapes are made transparent where both overlap and drawn normal everywhere else.
-     * 
+     *
      * @name Phaser.BlendModes.XOR
      * @type {integer}
      * @const
@@ -7999,7 +7999,7 @@ var GetValue = __webpack_require__(11);
  * Retrieves a value from an object. Allows for more advanced selection options, including:
  *
  * Allowed types:
- * 
+ *
  * Implicit
  * {
  *     x: 4
@@ -8024,7 +8024,7 @@ var GetValue = __webpack_require__(11);
  * {
  *     x: { randFloat: [min, max] }
  * }
- * 
+ *
  *
  * @function Phaser.Utils.Objects.GetAdvancedValue
  * @since 3.0.0
@@ -10845,13 +10845,13 @@ var Class = __webpack_require__(0);
 /**
  * @classdesc
  * A seeded Random Data Generator.
- * 
+ *
  * Access via `Phaser.Math.RND` which is an instance of this class pre-defined
  * by Phaser. Or, create your own instance to use as you require.
- * 
+ *
  * The `Math.RND` generator is seeded by the Game Config property value `seed`.
  * If no such config property exists, a random number is used.
- * 
+ *
  * If you create your own instance of this class you should provide a seed for it.
  * If no seed is given it will use a 'random' one based on Date.now.
  *
@@ -12036,17 +12036,17 @@ module.exports = RoundAwayFromZero;
 
 /**
  * Round a value to the given precision.
- * 
+ *
  * For example:
- * 
+ *
  * ```javascript
  * RoundTo(123.456, 0) = 123
  * RoundTo(123.456, 1) = 120
  * RoundTo(123.456, 2) = 100
  * ```
- * 
+ *
  * To round the decimal, i.e. to round to precision, pass in a negative `place`:
- * 
+ *
  * ```javascript
  * RoundTo(123.456789, 0) = 123
  * RoundTo(123.456789, -1) = 123.5
@@ -12143,9 +12143,9 @@ var Vector2 = __webpack_require__(7);
 
 /**
  * Returns a Vec2 containing the x and y position of the given index in a `width` x `height` sized grid.
- * 
+ *
  * For example, in a 6 x 4 grid, index 16 would equal x: 4 y: 2.
- * 
+ *
  * If the given index is out of range an empty Vec2 is returned.
  *
  * @function Phaser.Math.ToXY
@@ -12877,7 +12877,7 @@ module.exports = RotateVec3;
 
 /**
  * Phaser Scale Modes.
- * 
+ *
  * @namespace Phaser.ScaleModes
  * @since 3.0.0
  */
@@ -12886,7 +12886,7 @@ var ScaleModes = {
 
     /**
      * Default Scale Mode (Linear).
-     * 
+     *
      * @name Phaser.ScaleModes.DEFAULT
      * @type {integer}
      * @readonly
@@ -12896,7 +12896,7 @@ var ScaleModes = {
 
     /**
      * Linear Scale Mode.
-     * 
+     *
      * @name Phaser.ScaleModes.LINEAR
      * @type {integer}
      * @readonly
@@ -12906,7 +12906,7 @@ var ScaleModes = {
 
     /**
      * Nearest Scale Mode.
-     * 
+     *
      * @name Phaser.ScaleModes.NEAREST
      * @type {integer}
      * @readonly
@@ -12931,7 +12931,7 @@ module.exports = ScaleModes;
 
 /**
  * The Scale Manager Resize Event.
- * 
+ *
  * This event is dispatched whenever the Scale Manager detects a resize event from the browser.
  * It sends three parameters to the callback, each of them being Size components. You can read
  * the `width`, `height`, `aspectRatio` and other properties of these components to help with
@@ -12939,7 +12939,7 @@ module.exports = ScaleModes;
  *
  * @event Phaser.Scale.Events#RESIZE
  * @since 3.16.1
- * 
+ *
  * @param {Phaser.Structs.Size} gameSize - A reference to the Game Size component. This is the un-scaled size of your game canvas.
  * @param {Phaser.Structs.Size} baseSize - A reference to the Base Size component. This is the game size multiplied by resolution.
  * @param {Phaser.Structs.Size} displaySize - A reference to the Display Size component. This is the scaled canvas size, after applying zoom and scale mode.
@@ -12997,12 +12997,12 @@ var ScenePlugin = new Class({
 
     /**
      * This method is called when the Scene boots. It is only ever called once.
-     * 
+     *
      * By this point the plugin properties `scene` and `systems` will have already been set.
-     * 
+     *
      * In here you can listen for Scene events and set-up whatever you need for this plugin to run.
      * Here are the Scene events you can listen to:
-     * 
+     *
      * start
      * ready
      * preupdate
@@ -13019,7 +13019,7 @@ var ScenePlugin = new Class({
      * transitionout
      * shutdown
      * destroy
-     * 
+     *
      * At the very least you should offer a destroy handler for when the Scene closes down, i.e:
      *
      * ```javascript
@@ -13271,14 +13271,14 @@ module.exports = {
 
 /**
  * The Scene Systems Boot Event.
- * 
+ *
  * This event is dispatched by a Scene during the Scene Systems boot process. Primarily used by Scene Plugins.
- * 
+ *
  * Listen to it from a Scene using `this.scene.events.on('boot', listener)`.
- * 
+ *
  * @event Phaser.Scenes.Events#BOOT
  * @since 3.0.0
- * 
+ *
  * @param {Phaser.Scenes.Systems} sys - A reference to the Scene Systems class of the Scene that emitted this event.
  */
 module.exports = 'boot';
@@ -13296,18 +13296,18 @@ module.exports = 'boot';
 
 /**
  * The Scene Create Event.
- * 
+ *
  * This event is dispatched by a Scene after it has been created by the Scene Manager.
- * 
+ *
  * If a Scene has a `create` method then this event is emitted _after_ that has run.
- * 
+ *
  * If there is a transition, this event will be fired after the `TRANSITION_START` event.
- * 
+ *
  * Listen to it from a Scene using `this.scene.events.on('create', listener)`.
- * 
+ *
  * @event Phaser.Scenes.Events#CREATE
  * @since 3.17.0
- * 
+ *
  * @param {Phaser.Scene} scene - A reference to the Scene that emitted this event.
  */
 module.exports = 'create';
@@ -13325,16 +13325,16 @@ module.exports = 'create';
 
 /**
  * The Scene Systems Destroy Event.
- * 
+ *
  * This event is dispatched by a Scene during the Scene Systems destroy process.
- * 
+ *
  * Listen to it from a Scene using `this.scene.events.on('destroy', listener)`.
- * 
+ *
  * You should destroy any resources that may be in use by your Scene in this event handler.
- * 
+ *
  * @event Phaser.Scenes.Events#DESTROY
  * @since 3.0.0
- * 
+ *
  * @param {Phaser.Scenes.Systems} sys - A reference to the Scene Systems class of the Scene that emitted this event.
  */
 module.exports = 'destroy';
@@ -13352,15 +13352,15 @@ module.exports = 'destroy';
 
 /**
  * The Scene Systems Pause Event.
- * 
+ *
  * This event is dispatched by a Scene when it is paused, either directly via the `pause` method, or as an
  * action from another Scene.
- * 
+ *
  * Listen to it from a Scene using `this.scene.events.on('pause', listener)`.
- * 
+ *
  * @event Phaser.Scenes.Events#PAUSE
  * @since 3.0.0
- * 
+ *
  * @param {Phaser.Scenes.Systems} sys - A reference to the Scene Systems class of the Scene that emitted this event.
  * @param {any} [data] - An optional data object that was passed to this Scene when it was paused.
  */
@@ -13379,24 +13379,24 @@ module.exports = 'pause';
 
 /**
  * The Scene Systems Post Update Event.
- * 
+ *
  * This event is dispatched by a Scene during the main game loop step.
- * 
+ *
  * The event flow for a single step of a Scene is as follows:
- * 
+ *
  * 1. [PRE_UPDATE]{@linkcode Phaser.Scenes.Events#event:PRE_UPDATE}
  * 2. [UPDATE]{@linkcode Phaser.Scenes.Events#event:UPDATE}
  * 3. The `Scene.update` method is called, if it exists
  * 4. [POST_UPDATE]{@linkcode Phaser.Scenes.Events#event:POST_UPDATE}
  * 5. [RENDER]{@linkcode Phaser.Scenes.Events#event:RENDER}
- * 
+ *
  * Listen to it from a Scene using `this.scene.events.on('postupdate', listener)`.
- * 
+ *
  * A Scene will only run its step if it is active.
- * 
+ *
  * @event Phaser.Scenes.Events#POST_UPDATE
  * @since 3.0.0
- * 
+ *
  * @param {Phaser.Scenes.Systems} sys - A reference to the Scene Systems class of the Scene that emitted this event.
  * @param {number} time - The current time. Either a High Resolution Timer value if it comes from Request Animation Frame, or Date.now if using SetTimeout.
  * @param {number} delta - The delta time in ms since the last frame. This is a smoothed and capped value based on the FPS rate.
@@ -13416,24 +13416,24 @@ module.exports = 'postupdate';
 
 /**
  * The Scene Systems Pre Update Event.
- * 
+ *
  * This event is dispatched by a Scene during the main game loop step.
- * 
+ *
  * The event flow for a single step of a Scene is as follows:
- * 
+ *
  * 1. [PRE_UPDATE]{@linkcode Phaser.Scenes.Events#event:PRE_UPDATE}
  * 2. [UPDATE]{@linkcode Phaser.Scenes.Events#event:UPDATE}
  * 3. The `Scene.update` method is called, if it exists
  * 4. [POST_UPDATE]{@linkcode Phaser.Scenes.Events#event:POST_UPDATE}
  * 5. [RENDER]{@linkcode Phaser.Scenes.Events#event:RENDER}
- * 
+ *
  * Listen to it from a Scene using `this.scene.events.on('preupdate', listener)`.
- * 
+ *
  * A Scene will only run its step if it is active.
- * 
+ *
  * @event Phaser.Scenes.Events#PRE_UPDATE
  * @since 3.0.0
- * 
+ *
  * @param {Phaser.Scenes.Systems} sys - A reference to the Scene Systems class of the Scene that emitted this event.
  * @param {number} time - The current time. Either a High Resolution Timer value if it comes from Request Animation Frame, or Date.now if using SetTimeout.
  * @param {number} delta - The delta time in ms since the last frame. This is a smoothed and capped value based on the FPS rate.
@@ -13453,16 +13453,16 @@ module.exports = 'preupdate';
 
 /**
  * The Scene Systems Ready Event.
- * 
+ *
  * This event is dispatched by a Scene during the Scene Systems start process.
  * By this point in the process the Scene is now fully active and rendering.
  * This event is meant for your game code to use, as all plugins have responded to the earlier 'start' event.
- * 
+ *
  * Listen to it from a Scene using `this.scene.events.on('ready', listener)`.
- * 
+ *
  * @event Phaser.Scenes.Events#READY
  * @since 3.0.0
- * 
+ *
  * @param {Phaser.Scenes.Systems} sys - A reference to the Scene Systems class of the Scene that emitted this event.
  * @param {any} [data] - An optional data object that was passed to this Scene when it was started.
  */
@@ -13481,25 +13481,25 @@ module.exports = 'ready';
 
 /**
  * The Scene Systems Render Event.
- * 
+ *
  * This event is dispatched by a Scene during the main game loop step.
- * 
+ *
  * The event flow for a single step of a Scene is as follows:
- * 
+ *
  * 1. [PRE_UPDATE]{@linkcode Phaser.Scenes.Events#event:PRE_UPDATE}
  * 2. [UPDATE]{@linkcode Phaser.Scenes.Events#event:UPDATE}
  * 3. The `Scene.update` method is called, if it exists
  * 4. [POST_UPDATE]{@linkcode Phaser.Scenes.Events#event:POST_UPDATE}
  * 5. [RENDER]{@linkcode Phaser.Scenes.Events#event:RENDER}
- * 
+ *
  * Listen to it from a Scene using `this.scene.events.on('render', listener)`.
- * 
+ *
  * A Scene will only render if it is visible and active.
  * By the time this event is dispatched, the Scene will have already been rendered.
- * 
+ *
  * @event Phaser.Scenes.Events#RENDER
  * @since 3.0.0
- * 
+ *
  * @param {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)} renderer - The renderer that rendered the Scene.
  */
 module.exports = 'render';
@@ -13517,15 +13517,15 @@ module.exports = 'render';
 
 /**
  * The Scene Systems Resume Event.
- * 
+ *
  * This event is dispatched by a Scene when it is resumed from a paused state, either directly via the `resume` method,
  * or as an action from another Scene.
- * 
+ *
  * Listen to it from a Scene using `this.scene.events.on('resume', listener)`.
- * 
+ *
  * @event Phaser.Scenes.Events#RESUME
  * @since 3.0.0
- * 
+ *
  * @param {Phaser.Scenes.Systems} sys - A reference to the Scene Systems class of the Scene that emitted this event.
  * @param {any} [data] - An optional data object that was passed to this Scene when it was resumed.
  */
@@ -13544,18 +13544,18 @@ module.exports = 'resume';
 
 /**
  * The Scene Systems Shutdown Event.
- * 
+ *
  * This event is dispatched by a Scene during the Scene Systems shutdown process.
- * 
+ *
  * Listen to it from a Scene using `this.scene.events.on('shutdown', listener)`.
- * 
+ *
  * You should free-up any resources that may be in use by your Scene in this event handler, on the understanding
  * that the Scene may, at any time, become active again. A shutdown Scene is not 'destroyed', it's simply not
  * currently active. Use the [DESTROY]{@linkcode Phaser.Scenes.Events#event:DESTROY} event to completely clear resources.
- * 
+ *
  * @event Phaser.Scenes.Events#SHUTDOWN
  * @since 3.0.0
- * 
+ *
  * @param {Phaser.Scenes.Systems} sys - A reference to the Scene Systems class of the Scene that emitted this event.
  * @param {any} [data] - An optional data object that was passed to this Scene when it was shutdown.
  */
@@ -13574,15 +13574,15 @@ module.exports = 'shutdown';
 
 /**
  * The Scene Systems Sleep Event.
- * 
+ *
  * This event is dispatched by a Scene when it is sent to sleep, either directly via the `sleep` method,
  * or as an action from another Scene.
- * 
+ *
  * Listen to it from a Scene using `this.scene.events.on('sleep', listener)`.
- * 
+ *
  * @event Phaser.Scenes.Events#SLEEP
  * @since 3.0.0
- * 
+ *
  * @param {Phaser.Scenes.Systems} sys - A reference to the Scene Systems class of the Scene that emitted this event.
  * @param {any} [data] - An optional data object that was passed to this Scene when it was sent to sleep.
  */
@@ -13601,14 +13601,14 @@ module.exports = 'sleep';
 
 /**
  * The Scene Systems Start Event.
- * 
+ *
  * This event is dispatched by a Scene during the Scene Systems start process. Primarily used by Scene Plugins.
- * 
+ *
  * Listen to it from a Scene using `this.scene.events.on('start', listener)`.
- * 
+ *
  * @event Phaser.Scenes.Events#START
  * @since 3.0.0
- * 
+ *
  * @param {Phaser.Scenes.Systems} sys - A reference to the Scene Systems class of the Scene that emitted this event.
  */
 module.exports = 'start';
@@ -13626,25 +13626,25 @@ module.exports = 'start';
 
 /**
  * The Scene Transition Complete Event.
- * 
+ *
  * This event is dispatched by the Target Scene of a transition.
- * 
+ *
  * It happens when the transition process has completed. This occurs when the duration timer equals or exceeds the duration
  * of the transition.
- * 
+ *
  * Listen to it from a Scene using `this.scene.events.on('transitioncomplete', listener)`.
- * 
+ *
  * The Scene Transition event flow is as follows:
- * 
+ *
  * 1. [TRANSITION_OUT]{@linkcode Phaser.Scenes.Events#event:TRANSITION_OUT} - the Scene that started the transition will emit this event.
  * 2. [TRANSITION_INIT]{@linkcode Phaser.Scenes.Events#event:TRANSITION_INIT} - the Target Scene will emit this event if it has an `init` method.
  * 3. [TRANSITION_START]{@linkcode Phaser.Scenes.Events#event:TRANSITION_START} - the Target Scene will emit this event after its `create` method is called, OR ...
  * 4. [TRANSITION_WAKE]{@linkcode Phaser.Scenes.Events#event:TRANSITION_WAKE} - the Target Scene will emit this event if it was asleep and has been woken-up to be transitioned to.
  * 5. [TRANSITION_COMPLETE]{@linkcode Phaser.Scenes.Events#event:TRANSITION_COMPLETE} - the Target Scene will emit this event when the transition finishes.
- * 
+ *
  * @event Phaser.Scenes.Events#TRANSITION_COMPLETE
  * @since 3.5.0
- * 
+ *
  * @param {Phaser.Scene} scene -The Scene on which the transitioned completed.
  */
 module.exports = 'transitioncomplete';
@@ -13662,25 +13662,25 @@ module.exports = 'transitioncomplete';
 
 /**
  * The Scene Transition Init Event.
- * 
+ *
  * This event is dispatched by the Target Scene of a transition.
- * 
+ *
  * It happens immediately after the `Scene.init` method is called. If the Scene does not have an `init` method,
  * this event is not dispatched.
- * 
+ *
  * Listen to it from a Scene using `this.scene.events.on('transitioninit', listener)`.
- * 
+ *
  * The Scene Transition event flow is as follows:
- * 
+ *
  * 1. [TRANSITION_OUT]{@linkcode Phaser.Scenes.Events#event:TRANSITION_OUT} - the Scene that started the transition will emit this event.
  * 2. [TRANSITION_INIT]{@linkcode Phaser.Scenes.Events#event:TRANSITION_INIT} - the Target Scene will emit this event if it has an `init` method.
  * 3. [TRANSITION_START]{@linkcode Phaser.Scenes.Events#event:TRANSITION_START} - the Target Scene will emit this event after its `create` method is called, OR ...
  * 4. [TRANSITION_WAKE]{@linkcode Phaser.Scenes.Events#event:TRANSITION_WAKE} - the Target Scene will emit this event if it was asleep and has been woken-up to be transitioned to.
  * 5. [TRANSITION_COMPLETE]{@linkcode Phaser.Scenes.Events#event:TRANSITION_COMPLETE} - the Target Scene will emit this event when the transition finishes.
- * 
+ *
  * @event Phaser.Scenes.Events#TRANSITION_INIT
  * @since 3.5.0
- * 
+ *
  * @param {Phaser.Scene} from - A reference to the Scene that is being transitioned from.
  * @param {number} duration - The duration of the transition in ms.
  */
@@ -13699,22 +13699,22 @@ module.exports = 'transitioninit';
 
 /**
  * The Scene Transition Out Event.
- * 
+ *
  * This event is dispatched by a Scene when it initiates a transition to another Scene.
- * 
+ *
  * Listen to it from a Scene using `this.scene.events.on('transitionout', listener)`.
- * 
+ *
  * The Scene Transition event flow is as follows:
- * 
+ *
  * 1. [TRANSITION_OUT]{@linkcode Phaser.Scenes.Events#event:TRANSITION_OUT} - the Scene that started the transition will emit this event.
  * 2. [TRANSITION_INIT]{@linkcode Phaser.Scenes.Events#event:TRANSITION_INIT} - the Target Scene will emit this event if it has an `init` method.
  * 3. [TRANSITION_START]{@linkcode Phaser.Scenes.Events#event:TRANSITION_START} - the Target Scene will emit this event after its `create` method is called, OR ...
  * 4. [TRANSITION_WAKE]{@linkcode Phaser.Scenes.Events#event:TRANSITION_WAKE} - the Target Scene will emit this event if it was asleep and has been woken-up to be transitioned to.
  * 5. [TRANSITION_COMPLETE]{@linkcode Phaser.Scenes.Events#event:TRANSITION_COMPLETE} - the Target Scene will emit this event when the transition finishes.
- * 
+ *
  * @event Phaser.Scenes.Events#TRANSITION_OUT
  * @since 3.5.0
- * 
+ *
  * @param {Phaser.Scene} target - A reference to the Scene that is being transitioned to.
  * @param {number} duration - The duration of the transition in ms.
  */
@@ -13733,28 +13733,28 @@ module.exports = 'transitionout';
 
 /**
  * The Scene Transition Start Event.
- * 
+ *
  * This event is dispatched by the Target Scene of a transition, only if that Scene was not asleep.
- * 
+ *
  * It happens immediately after the `Scene.create` method is called. If the Scene does not have a `create` method,
  * this event is dispatched anyway.
- * 
+ *
  * If the Target Scene was sleeping then the [TRANSITION_WAKE]{@linkcode Phaser.Scenes.Events#event:TRANSITION_WAKE} event is
  * dispatched instead of this event.
- * 
+ *
  * Listen to it from a Scene using `this.scene.events.on('transitionstart', listener)`.
- * 
+ *
  * The Scene Transition event flow is as follows:
- * 
+ *
  * 1. [TRANSITION_OUT]{@linkcode Phaser.Scenes.Events#event:TRANSITION_OUT} - the Scene that started the transition will emit this event.
  * 2. [TRANSITION_INIT]{@linkcode Phaser.Scenes.Events#event:TRANSITION_INIT} - the Target Scene will emit this event if it has an `init` method.
  * 3. [TRANSITION_START]{@linkcode Phaser.Scenes.Events#event:TRANSITION_START} - the Target Scene will emit this event after its `create` method is called, OR ...
  * 4. [TRANSITION_WAKE]{@linkcode Phaser.Scenes.Events#event:TRANSITION_WAKE} - the Target Scene will emit this event if it was asleep and has been woken-up to be transitioned to.
  * 5. [TRANSITION_COMPLETE]{@linkcode Phaser.Scenes.Events#event:TRANSITION_COMPLETE} - the Target Scene will emit this event when the transition finishes.
- * 
+ *
  * @event Phaser.Scenes.Events#TRANSITION_START
  * @since 3.5.0
- * 
+ *
  * @param {Phaser.Scene} from - A reference to the Scene that is being transitioned from.
  * @param {number} duration - The duration of the transition in ms.
  */
@@ -13773,23 +13773,23 @@ module.exports = 'transitionstart';
 
 /**
  * The Scene Transition Wake Event.
- * 
+ *
  * This event is dispatched by the Target Scene of a transition, only if that Scene was asleep before
  * the transition began. If the Scene was not asleep the [TRANSITION_START]{@linkcode Phaser.Scenes.Events#event:TRANSITION_START} event is dispatched instead.
- * 
+ *
  * Listen to it from a Scene using `this.scene.events.on('transitionwake', listener)`.
- * 
+ *
  * The Scene Transition event flow is as follows:
- * 
+ *
  * 1. [TRANSITION_OUT]{@linkcode Phaser.Scenes.Events#event:TRANSITION_OUT} - the Scene that started the transition will emit this event.
  * 2. [TRANSITION_INIT]{@linkcode Phaser.Scenes.Events#event:TRANSITION_INIT} - the Target Scene will emit this event if it has an `init` method.
  * 3. [TRANSITION_START]{@linkcode Phaser.Scenes.Events#event:TRANSITION_START} - the Target Scene will emit this event after its `create` method is called, OR ...
  * 4. [TRANSITION_WAKE]{@linkcode Phaser.Scenes.Events#event:TRANSITION_WAKE} - the Target Scene will emit this event if it was asleep and has been woken-up to be transitioned to.
  * 5. [TRANSITION_COMPLETE]{@linkcode Phaser.Scenes.Events#event:TRANSITION_COMPLETE} - the Target Scene will emit this event when the transition finishes.
- * 
+ *
  * @event Phaser.Scenes.Events#TRANSITION_WAKE
  * @since 3.5.0
- * 
+ *
  * @param {Phaser.Scene} from - A reference to the Scene that is being transitioned from.
  * @param {number} duration - The duration of the transition in ms.
  */
@@ -13808,24 +13808,24 @@ module.exports = 'transitionwake';
 
 /**
  * The Scene Systems Update Event.
- * 
+ *
  * This event is dispatched by a Scene during the main game loop step.
- * 
+ *
  * The event flow for a single step of a Scene is as follows:
- * 
+ *
  * 1. [PRE_UPDATE]{@linkcode Phaser.Scenes.Events#event:PRE_UPDATE}
  * 2. [UPDATE]{@linkcode Phaser.Scenes.Events#event:UPDATE}
  * 3. The `Scene.update` method is called, if it exists
  * 4. [POST_UPDATE]{@linkcode Phaser.Scenes.Events#event:POST_UPDATE}
  * 5. [RENDER]{@linkcode Phaser.Scenes.Events#event:RENDER}
- * 
+ *
  * Listen to it from a Scene using `this.scene.events.on('update', listener)`.
- * 
+ *
  * A Scene will only run its step if it is active.
- * 
+ *
  * @event Phaser.Scenes.Events#UPDATE
  * @since 3.0.0
- * 
+ *
  * @param {Phaser.Scenes.Systems} sys - A reference to the Scene Systems class of the Scene that emitted this event.
  * @param {number} time - The current time. Either a High Resolution Timer value if it comes from Request Animation Frame, or Date.now if using SetTimeout.
  * @param {number} delta - The delta time in ms since the last frame. This is a smoothed and capped value based on the FPS rate.
@@ -13845,15 +13845,15 @@ module.exports = 'update';
 
 /**
  * The Scene Systems Wake Event.
- * 
+ *
  * This event is dispatched by a Scene when it is woken from sleep, either directly via the `wake` method,
  * or as an action from another Scene.
- * 
+ *
  * Listen to it from a Scene using `this.scene.events.on('wake', listener)`.
- * 
+ *
  * @event Phaser.Scenes.Events#WAKE
  * @since 3.0.0
- * 
+ *
  * @param {Phaser.Scenes.Systems} sys - A reference to the Scene Systems class of the Scene that emitted this event.
  * @param {any} [data] - An optional data object that was passed to this Scene when it was woken up.
  */
@@ -23341,7 +23341,7 @@ var TextFile = __webpack_require__(185);
  * A Spine File suitable for loading by the Loader.
  *
  * These are created when you use the Phaser.Loader.LoaderPlugin#spine method and are not typically created directly.
- * 
+ *
  * For documentation about what all the arguments and configuration options mean please see Phaser.Loader.LoaderPlugin#spine.
  *
  * @class SpineFile
@@ -23540,7 +23540,7 @@ var SpineFile = new Class({
                 else
                 {
                     var key = file.key.substr(4).trim();
-   
+
                     this.loader.textureManager.addImage(key, file.data);
                 }
 
@@ -23580,7 +23580,7 @@ var IsPlainObject = __webpack_require__(2);
  * A single Image File suitable for loading by the Loader.
  *
  * These are created when you use the Phaser.Loader.LoaderPlugin#image method and are not typically created directly.
- * 
+ *
  * For documentation about what all the arguments and configuration options mean please see Phaser.Loader.LoaderPlugin#image.
  *
  * @class ImageFile
@@ -23724,7 +23724,7 @@ var ImageFile = new Class({
  * Adds an Image, or array of Images, to the current load queue.
  *
  * You can call this method from within your Scene's `preload`, along with any other files you wish to load:
- * 
+ *
  * ```javascript
  * function preload ()
  * {
@@ -23739,7 +23739,7 @@ var ImageFile = new Class({
  * The typical flow for a Phaser Scene is that you load assets in the Scene's `preload` method and then when the
  * Scene's `create` method is called you are guaranteed that all of those assets are ready for use and have been
  * loaded.
- * 
+ *
  * Phaser can load all common image types: png, jpg, gif and any other format the browser can natively handle.
  * If you try to load an animated gif only the first frame will be rendered. Browsers do not natively support playback
  * of animated gifs to Canvas elements.
@@ -23750,7 +23750,7 @@ var ImageFile = new Class({
  * then remove it from the Texture Manager first, before loading a new one.
  *
  * Instead of passing arguments you can pass a configuration object, such as:
- * 
+ *
  * ```javascript
  * this.load.image({
  *     key: 'logo',
@@ -23761,7 +23761,7 @@ var ImageFile = new Class({
  * See the documentation for `Phaser.Types.Loader.FileTypes.ImageFileConfig` for more details.
  *
  * Once the file has finished loading you can use it as a texture for a Game Object by referencing its key:
- * 
+ *
  * ```javascript
  * this.load.image('logo', 'images/AtariLogo.png');
  * // and later in your game ...
@@ -23780,13 +23780,13 @@ var ImageFile = new Class({
  *
  * Phaser also supports the automatic loading of associated normal maps. If you have a normal map to go with this image,
  * then you can specify it by providing an array as the `url` where the second element is the normal map:
- * 
+ *
  * ```javascript
  * this.load.image('logo', [ 'images/AtariLogo.png', 'images/AtariLogo-n.png' ]);
  * ```
  *
  * Or, if you are using a config object use the `normalMap` property:
- * 
+ *
  * ```javascript
  * this.load.image({
  *     key: 'logo',
@@ -23874,16 +23874,16 @@ module.exports = {
 
 /**
  * The Loader Plugin Add File Event.
- * 
+ *
  * This event is dispatched when a new file is successfully added to the Loader and placed into the load queue.
- * 
+ *
  * Listen to it from a Scene using: `this.load.on('addfile', listener)`.
- * 
+ *
  * If you add lots of files to a Loader from a `preload` method, it will dispatch this event for each one of them.
  *
  * @event Phaser.Loader.Events#ADD
  * @since 3.0.0
- * 
+ *
  * @param {string} key - The unique key of the file that was added to the Loader.
  * @param {string} type - The [file type]{@link Phaser.Loader.File#type} string of the file that was added to the Loader, i.e. `image`.
  * @param {Phaser.Loader.LoaderPlugin} loader - A reference to the Loader Plugin that dispatched this event.
@@ -23904,15 +23904,15 @@ module.exports = 'addfile';
 
 /**
  * The Loader Plugin Complete Event.
- * 
+ *
  * This event is dispatched when the Loader has fully processed everything in the load queue.
  * By this point every loaded file will now be in its associated cache and ready for use.
- * 
+ *
  * Listen to it from a Scene using: `this.load.on('complete', listener)`.
  *
  * @event Phaser.Loader.Events#COMPLETE
  * @since 3.0.0
- * 
+ *
  * @param {Phaser.Loader.LoaderPlugin} loader - A reference to the Loader Plugin that dispatched this event.
  * @param {integer} totalComplete - The total number of files that successfully loaded.
  * @param {integer} totalFailed - The total number of files that failed to load.
@@ -23932,16 +23932,16 @@ module.exports = 'complete';
 
 /**
  * The File Load Complete Event.
- * 
+ *
  * This event is dispatched by the Loader Plugin when any file in the queue finishes loading.
- * 
+ *
  * Listen to it from a Scene using: `this.load.on('filecomplete', listener)`.
- * 
+ *
  * You can also listen for the completion of a specific file. See the [FILE_KEY_COMPLETE]{@linkcode Phaser.Loader.Events#event:FILE_KEY_COMPLETE} event.
  *
  * @event Phaser.Loader.Events#FILE_COMPLETE
  * @since 3.0.0
- * 
+ *
  * @param {string} key - The key of the file that just loaded and finished processing.
  * @param {string} type - The [file type]{@link Phaser.Loader.File#type} of the file that just loaded, i.e. `image`.
  * @param {any} data - The raw data the file contained.
@@ -23961,11 +23961,11 @@ module.exports = 'filecomplete';
 
 /**
  * The File Load Complete Event.
- * 
+ *
  * This event is dispatched by the Loader Plugin when any file in the queue finishes loading.
- * 
+ *
  * It uses a special dynamic event name constructed from the key and type of the file.
- * 
+ *
  * For example, if you have loaded an `image` with a key of `monster`, you can listen for it
  * using the following:
  *
@@ -23976,26 +23976,26 @@ module.exports = 'filecomplete';
  * ```
  *
  * Or, if you have loaded a texture `atlas` with a key of `Level1`:
- * 
+ *
  * ```javascript
  * this.load.on('filecomplete-atlas-Level1', function (key, type, data) {
  *     // Your handler code
  * });
  * ```
- * 
+ *
  * Or, if you have loaded a sprite sheet with a key of `Explosion` and a prefix of `GAMEOVER`:
- * 
+ *
  * ```javascript
  * this.load.on('filecomplete-spritesheet-GAMEOVERExplosion', function (key, type, data) {
  *     // Your handler code
  * });
  * ```
- * 
+ *
  * You can also listen for the generic completion of files. See the [FILE_COMPLETE]{@linkcode Phaser.Loader.Events#event:FILE_COMPLETE} event.
  *
  * @event Phaser.Loader.Events#FILE_KEY_COMPLETE
  * @since 3.0.0
- * 
+ *
  * @param {string} key - The key of the file that just loaded and finished processing.
  * @param {string} type - The [file type]{@link Phaser.Loader.File#type} of the file that just loaded, i.e. `image`.
  * @param {any} data - The raw data the file contained.
@@ -24015,14 +24015,14 @@ module.exports = 'filecomplete-';
 
 /**
  * The File Load Error Event.
- * 
+ *
  * This event is dispatched by the Loader Plugin when a file fails to load.
- * 
+ *
  * Listen to it from a Scene using: `this.load.on('loaderror', listener)`.
  *
  * @event Phaser.Loader.Events#FILE_LOAD_ERROR
  * @since 3.0.0
- * 
+ *
  * @param {Phaser.Loader.File} file - A reference to the File which errored during load.
  */
 module.exports = 'loaderror';
@@ -24040,15 +24040,15 @@ module.exports = 'loaderror';
 
 /**
  * The File Load Event.
- * 
+ *
  * This event is dispatched by the Loader Plugin when a file finishes loading,
  * but _before_ it is processed and added to the internal Phaser caches.
- * 
+ *
  * Listen to it from a Scene using: `this.load.on('load', listener)`.
  *
  * @event Phaser.Loader.Events#FILE_LOAD
  * @since 3.0.0
- * 
+ *
  * @param {Phaser.Loader.File} file - A reference to the File which just finished loading.
  */
 module.exports = 'load';
@@ -24066,15 +24066,15 @@ module.exports = 'load';
 
 /**
  * The File Load Progress Event.
- * 
+ *
  * This event is dispatched by the Loader Plugin during the load of a file, if the browser receives a DOM ProgressEvent and
  * the `lengthComputable` event property is true. Depending on the size of the file and browser in use, this may, or may not happen.
- * 
+ *
  * Listen to it from a Scene using: `this.load.on('fileprogress', listener)`.
  *
  * @event Phaser.Loader.Events#FILE_PROGRESS
  * @since 3.0.0
- * 
+ *
  * @param {Phaser.Loader.File} file - A reference to the File which errored during load.
  * @param {number} percentComplete - A value between 0 and 1 indicating how 'complete' this file is.
  */
@@ -24093,18 +24093,18 @@ module.exports = 'fileprogress';
 
 /**
  * The Loader Plugin Post Process Event.
- * 
+ *
  * This event is dispatched by the Loader Plugin when the Loader has finished loading everything in the load queue.
  * It is dispatched before the internal lists are cleared and each File is destroyed.
- * 
+ *
  * Use this hook to perform any last minute processing of files that can only happen once the
  * Loader has completed, but prior to it emitting the `complete` event.
- * 
+ *
  * Listen to it from a Scene using: `this.load.on('postprocess', listener)`.
  *
  * @event Phaser.Loader.Events#POST_PROCESS
  * @since 3.0.0
- * 
+ *
  * @param {Phaser.Loader.LoaderPlugin} loader - A reference to the Loader Plugin that dispatched this event.
  */
 module.exports = 'postprocess';
@@ -24122,14 +24122,14 @@ module.exports = 'postprocess';
 
 /**
  * The Loader Plugin Progress Event.
- * 
+ *
  * This event is dispatched when the Loader updates its load progress, typically as a result of a file having completed loading.
- * 
+ *
  * Listen to it from a Scene using: `this.load.on('progress', listener)`.
  *
  * @event Phaser.Loader.Events#PROGRESS
  * @since 3.0.0
- * 
+ *
  * @param {number} progress - The current progress of the load. A value between 0 and 1.
  */
 module.exports = 'progress';
@@ -24147,16 +24147,16 @@ module.exports = 'progress';
 
 /**
  * The Loader Plugin Start Event.
- * 
+ *
  * This event is dispatched when the Loader starts running. At this point load progress is zero.
- * 
+ *
  * This event is dispatched even if there aren't any files in the load queue.
- * 
+ *
  * Listen to it from a Scene using: `this.load.on('start', listener)`.
  *
  * @event Phaser.Loader.Events#START
  * @since 3.0.0
- * 
+ *
  * @param {Phaser.Loader.LoaderPlugin} loader - A reference to the Loader Plugin that dispatched this event.
  */
 module.exports = 'start';
@@ -24294,7 +24294,7 @@ var IsPlainObject = __webpack_require__(2);
  * A single JSON File suitable for loading by the Loader.
  *
  * These are created when you use the Phaser.Loader.LoaderPlugin#json method and are not typically created directly.
- * 
+ *
  * For documentation about what all the arguments and configuration options mean please see Phaser.Loader.LoaderPlugin#json.
  *
  * @class JSONFile
@@ -24398,7 +24398,7 @@ var JSONFile = new Class({
  * Adds a JSON file, or array of JSON files, to the current load queue.
  *
  * You can call this method from within your Scene's `preload`, along with any other files you wish to load:
- * 
+ *
  * ```javascript
  * function preload ()
  * {
@@ -24413,14 +24413,14 @@ var JSONFile = new Class({
  * The typical flow for a Phaser Scene is that you load assets in the Scene's `preload` method and then when the
  * Scene's `create` method is called you are guaranteed that all of those assets are ready for use and have been
  * loaded.
- * 
+ *
  * The key must be a unique String. It is used to add the file to the global JSON Cache upon a successful load.
  * The key should be unique both in terms of files being loaded and files already present in the JSON Cache.
  * Loading a file using a key that is already taken will result in a warning. If you wish to replace an existing file
  * then remove it from the JSON Cache first, before loading a new one.
  *
  * Instead of passing arguments you can pass a configuration object, such as:
- * 
+ *
  * ```javascript
  * this.load.json({
  *     key: 'wavedata',
@@ -24431,7 +24431,7 @@ var JSONFile = new Class({
  * See the documentation for `Phaser.Types.Loader.FileTypes.JSONFileConfig` for more details.
  *
  * Once the file has finished loading you can access it from its Cache using its key:
- * 
+ *
  * ```javascript
  * this.load.json('wavedata', 'files/AlienWaveData.json');
  * // and later in your game ...
@@ -24450,7 +24450,7 @@ var JSONFile = new Class({
  *
  * You can also optionally provide a `dataKey` to use. This allows you to extract only a part of the JSON and store it in the Cache,
  * rather than the whole file. For example, if your JSON data had a structure like this:
- * 
+ *
  * ```json
  * {
  *     "level1": {
@@ -24517,7 +24517,7 @@ var Class = __webpack_require__(0);
  * @classdesc
  * A MultiFile is a special kind of parent that contains two, or more, Files as children and looks after
  * the loading and processing of them all. It is commonly extended and used as a base class for file types such as AtlasJSON or BitmapFont.
- * 
+ *
  * You shouldn't create an instance of a MultiFile directly, but should extend it with your own class, setting a custom type and processing methods.
  *
  * @class MultiFile
@@ -24901,24 +24901,24 @@ var SpineGameObjectRender = __webpack_require__(212);
  * A Spine Game Object is a Phaser level object that can be added to your Phaser Scenes. It encapsulates
  * a Spine Skeleton with Spine Animation Data and Animation State, with helper methods to allow you to
  * easily change the skin, slot attachment, bone positions and more.
- * 
+ *
  * Spine Game Objects can be created via the Game Object Factory, Game Object Creator, or directly.
  * You can only create them if the Spine plugin has been loaded into Phaser.
- * 
+ *
  * The quickest way is the Game Object Factory:
- * 
+ *
  * ```javascript
  * let jelly = this.add.spine(512, 550, 'jelly', 'jelly-think', true);
  * ```
- * 
+ *
  * Here we are creating a new Spine Game Object positioned at 512 x 550. It's using the `jelly`
  * Spine data, which has previously been loaded into your Scene. The `jelly-think` argument is
  * an optional animation to start playing on the skeleton. The final argument `true` sets the
  * animation to loop. Look at the documentation for further details on each of these options.
- * 
+ *
  * For more control, you can use the Game Object Creator, passing in a Spine Game Object
  * Configuration object:
- * 
+ *
  * ```javascript
  * let jelly = this.make.spine({
  *     x: 512, y: 550, key: 'jelly',
@@ -24928,28 +24928,28 @@ var SpineGameObjectRender = __webpack_require__(212);
  *     slotName: 'hat', attachmentName: 'images/La_14'
  * });
  * ```
- * 
+ *
  * Here, you've got the ability to specify extra details, such as the slot name, attachments or
  * overall scale.
- * 
+ *
  * If you wish to instantiate a Spine Game Object directly you can do so, but in order for it to
  * update and render, it must be added to the display and update lists of your Scene:
- * 
+ *
  * ```javascript
  * let jelly = new SpineGameObject(this, this.spine, 512, 550, 'jelly', 'jelly-think', true);
  * this.sys.displayList.add(jelly);
  * this.sys.updateList.add(jelly);
  * ```
- * 
+ *
  * It's possible to enable Spine Game Objects for input, but you should be aware that it will use
  * the bounds of the skeletons current pose to create the hit area from. Sometimes this is ok, but
  * often not. Make use of the `InputPlugin.enableDebug` method to view the input shape being created.
  * If it's not suitable, provide your own shape to the `setInteractive` method.
- * 
+ *
  * Due to the way Spine handles scaling, it's not recommended to enable a Spine Game Object for
  * physics directly. Instead, you should look at creating a proxy body and syncing the Spine Game
  * Object position with it. See the examples for further details.
- * 
+ *
  * If your Spine Game Object has black outlines around the different parts of the texture when it
  * renders then you have exported the files from Spine with pre-multiplied alpha enabled, but have
  * forgotten to set that flag when loading the Spine data. Please see the loader docs for more details.
@@ -25049,7 +25049,7 @@ var SpineGameObject = new Class({
          * @since 3.19.0
          */
         this.bounds = null;
-        
+
         /**
          * A Game Object level flag that allows you to enable debug drawing
          * to the Skeleton Debug Renderer by toggling it.
@@ -25133,9 +25133,9 @@ var SpineGameObject = new Class({
 
     /**
      * Set the Alpha level for the whole Skeleton of this Game Object.
-     * 
+     *
      * The alpha controls the opacity of the Game Object as it renders.
-     * 
+     *
      * Alpha values are provided as a float between 0, fully transparent, and 1, fully opaque.
      *
      * @method SpineGameObject#setAlpha
@@ -25168,7 +25168,7 @@ var SpineGameObject = new Class({
 
     /**
      * The alpha value of the Skeleton.
-     * 
+     *
      * A value between 0 and 1.
      *
      * This is a global value, impacting the entire Skeleton, not just a region of it.
@@ -25207,7 +25207,7 @@ var SpineGameObject = new Class({
 
     /**
      * The amount of red used when rendering the Skeleton.
-     * 
+     *
      * A value between 0 and 1.
      *
      * This is a global value, impacting the entire Skeleton, not just a region of it.
@@ -25237,7 +25237,7 @@ var SpineGameObject = new Class({
 
     /**
      * The amount of green used when rendering the Skeleton.
-     * 
+     *
      * A value between 0 and 1.
      *
      * This is a global value, impacting the entire Skeleton, not just a region of it.
@@ -25267,7 +25267,7 @@ var SpineGameObject = new Class({
 
     /**
      * The amount of blue used when rendering the Skeleton.
-     * 
+     *
      * A value between 0 and 1.
      *
      * This is a global value, impacting the entire Skeleton, not just a region of it.
@@ -25303,7 +25303,7 @@ var SpineGameObject = new Class({
      *
      * @param {integer} [color=0xffffff] - The color being applied to the Skeleton or named Slot. Set to white to disable any previously set color.
      * @param {string} [slotName] - The name of the slot to set the color on. If not give, will be set on the whole skeleton.
-     * 
+     *
      * @return {this} This Game Object instance.
      */
     setColor: function (color, slotName)
@@ -25345,7 +25345,7 @@ var SpineGameObject = new Class({
      *
      * @method SpineGameObject#setSkeletonFromJSON
      * @since 3.19.0
-     * 
+     *
      * @param {string} atlasDataKey - The key of the Spine data to use for this Skeleton.
      * @param {object} skeletonJSON - The JSON data for the Skeleton.
      * @param {string} [animationName] - Optional name of the animation to set on the Skeleton.
@@ -25360,13 +25360,13 @@ var SpineGameObject = new Class({
 
     /**
      * Sets this Game Object to use the given Skeleton based on its cache key.
-     * 
+     *
      * Typically, once set, the Skeleton doesn't change. Instead, you change the skin,
      * or slot attachment, or any other property to adjust it.
      *
      * @method SpineGameObject#setSkeleton
      * @since 3.19.0
-     * 
+     *
      * @param {string} atlasDataKey - The key of the Spine data to use for this Skeleton.
      * @param {object} skeletonJSON - The JSON data for the Skeleton.
      * @param {string} [animationName] - Optional name of the animation to set on the Skeleton.
@@ -25443,7 +25443,7 @@ var SpineGameObject = new Class({
      * @fires SpinePluginEvents#COMPLETE
      * @private
      * @since 3.19.0
-     * 
+     *
      * @param {any} entry - The event data from Spine.
      */
     onComplete: function (entry)
@@ -25458,7 +25458,7 @@ var SpineGameObject = new Class({
      * @fires SpinePluginEvents#DISPOSE
      * @private
      * @since 3.19.0
-     * 
+     *
      * @param {any} entry - The event data from Spine.
      */
     onDispose: function (entry)
@@ -25473,7 +25473,7 @@ var SpineGameObject = new Class({
      * @fires SpinePluginEvents#END
      * @private
      * @since 3.19.0
-     * 
+     *
      * @param {any} entry - The event data from Spine.
      */
     onEnd: function (entry)
@@ -25488,7 +25488,7 @@ var SpineGameObject = new Class({
      * @fires SpinePluginEvents#EVENT
      * @private
      * @since 3.19.0
-     * 
+     *
      * @param {any} entry - The event data from Spine.
      * @param {spine.Event} event - The Spine event.
      */
@@ -25504,7 +25504,7 @@ var SpineGameObject = new Class({
      * @fires SpinePluginEvents#INTERRUPTED
      * @private
      * @since 3.19.0
-     * 
+     *
      * @param {any} entry - The event data from Spine.
      */
     onInterrupted: function (entry)
@@ -25519,7 +25519,7 @@ var SpineGameObject = new Class({
      * @fires SpinePluginEvents#START
      * @private
      * @since 3.19.0
-     * 
+     *
      * @param {any} entry - The event data from Spine.
      */
     onStart: function (entry)
@@ -25529,15 +25529,15 @@ var SpineGameObject = new Class({
 
     /**
      * Refreshes the data about the current Skeleton.
-     * 
+     *
      * This will reset the rotation, position and size of the Skeleton to match this Game Object.
-     * 
+     *
      * Call this method if you need to access the Skeleton data directly, and it may have changed
      * recently.
      *
      * @method SpineGameObject#refresh
      * @since 3.19.0
-     * 
+     *
      * @return {this} This Game Object.
      */
     refresh: function ()
@@ -25557,20 +25557,20 @@ var SpineGameObject = new Class({
 
     /**
      * Sets the size of this Game Object.
-     * 
+     *
      * If no arguments are given it uses the current skeleton data dimensions.
-     * 
+     *
      * You can use this method to set a fixed size of this Game Object, such as for input detection,
      * when the skeleton data doesn't match what is required in-game.
      *
      * @method SpineGameObject#setSize
      * @since 3.19.0
-     * 
+     *
      * @param {number} [width] - The width of the Skeleton. If not given it defaults to the Skeleton Data width.
      * @param {number} [height] - The height of the Skeleton. If not given it defaults to the Skeleton Data height.
      * @param {number} [offsetX=0] - The horizontal offset of the Skeleton from its x and y coordinate.
      * @param {number} [offsetY=0] - The vertical offset of the Skeleton from its x and y coordinate.
-     * 
+     *
      * @return {this} This Game Object.
      */
     setSize: function (width, height, offsetX, offsetY)
@@ -25593,15 +25593,15 @@ var SpineGameObject = new Class({
 
     /**
      * Sets the offset of this Game Object from the Skeleton position.
-     * 
+     *
      * You can use this method to adjust how the position of this Game Object relates to the Skeleton it is using.
      *
      * @method SpineGameObject#setOffset
      * @since 3.19.0
-     * 
+     *
      * @param {number} [offsetX=0] - The horizontal offset of the Skeleton from its x and y coordinate.
      * @param {number} [offsetY=0] - The vertical offset of the Skeleton from its x and y coordinate.
-     * 
+     *
      * @return {this} This Game Object.
      */
     setOffset: function (offsetX, offsetY)
@@ -25620,13 +25620,13 @@ var SpineGameObject = new Class({
     /**
      * Internal method that syncs all of the Game Object position and scale data to the Skeleton.
      * It then syncs the skeleton bounds back to this Game Object.
-     * 
+     *
      * This method is called automatically as needed internally, however, it's also exposed should
      * you require overriding the size settings.
      *
      * @method SpineGameObject#updateSize
      * @since 3.19.0
-     * 
+     *
      * @return {this} This Game Object.
      */
     updateSize: function ()
@@ -25715,7 +25715,7 @@ var SpineGameObject = new Class({
      *
      * @method SpineGameObject#getBoneList
      * @since 3.19.0
-     * 
+     *
      * @return {string[]} An array containing the names of all the bones in the Skeleton Data.
      */
     getBoneList: function ()
@@ -25740,7 +25740,7 @@ var SpineGameObject = new Class({
      *
      * @method SpineGameObject#getSkinList
      * @since 3.19.0
-     * 
+     *
      * @return {string[]} An array containing the names of all the skins in the Skeleton Data.
      */
     getSkinList: function ()
@@ -25765,7 +25765,7 @@ var SpineGameObject = new Class({
      *
      * @method SpineGameObject#getSlotList
      * @since 3.19.0
-     * 
+     *
      * @return {string[]} An array containing the names of all the slots in the Skeleton.
      */
     getSlotList: function ()
@@ -25787,7 +25787,7 @@ var SpineGameObject = new Class({
      *
      * @method SpineGameObject#getAnimationList
      * @since 3.19.0
-     * 
+     *
      * @return {string[]} An array containing the names of all the animations in the Skeleton Data.
      */
     getAnimationList: function ()
@@ -25812,9 +25812,9 @@ var SpineGameObject = new Class({
      *
      * @method SpineGameObject#getCurrentAnimation
      * @since 3.19.0
-     * 
+     *
      * @param {integer} [trackIndex=0] - The track to return the current animation on.
-     * 
+     *
      * @return {?spine.Animation} The current Animation on the given track, or `undefined` if there is no current animation.
      */
     getCurrentAnimation: function (trackIndex)
@@ -25832,7 +25832,7 @@ var SpineGameObject = new Class({
     /**
      * Sets the current animation for a track, discarding any queued animations.
      * If the formerly current track entry was never applied to a skeleton, it is replaced (not mixed from).
-     * 
+     *
      * Animations are referenced by a unique string-based key, as defined in the Spine software.
      *
      * @method SpineGameObject#play
@@ -25855,7 +25855,7 @@ var SpineGameObject = new Class({
     /**
      * Sets the current animation for a track, discarding any queued animations.
      * If the formerly current track entry was never applied to a skeleton, it is replaced (not mixed from).
-     * 
+     *
      * Animations are referenced by a unique string-based key, as defined in the Spine software.
      *
      * @method SpineGameObject#setAnimation
@@ -25877,7 +25877,7 @@ var SpineGameObject = new Class({
         if (ignoreIfPlaying && this.state)
         {
             var currentTrack = this.state.getCurrent(0);
- 
+
             if (currentTrack && currentTrack.animation.name === animationName && !currentTrack.isComplete())
             {
                 return;
@@ -25893,9 +25893,9 @@ var SpineGameObject = new Class({
     /**
      * Adds an animation to be played after the current or last queued animation for a track.
      * If the track is empty, it is equivalent to calling setAnimation.
-     * 
+     *
      * Animations are referenced by a unique string-based key, as defined in the Spine software.
-     * 
+     *
      * The delay is a float. If > 0, sets delay. If <= 0, the delay set is the duration of the previous
      * track entry minus any mix duration (from the AnimationStateData) plus the specified delay
      * (ie the mix ends at (delay = 0) or before (delay < 0) the previous track entry duration).
@@ -25919,13 +25919,13 @@ var SpineGameObject = new Class({
     /**
      * Sets an empty animation for a track, discarding any queued animations, and sets the track
      * entry's mixDuration. An empty animation has no timelines and serves as a placeholder for mixing in or out.
-     * 
+     *
      * Mixing out is done by setting an empty animation with a mix duration using either setEmptyAnimation,
      * setEmptyAnimations, or addEmptyAnimation. Mixing to an empty animation causes the previous animation to be
      * applied less and less over the mix duration. Properties keyed in the previous animation transition to
      * the value from lower tracks or to the setup pose value if no lower tracks key the property.
      * A mix duration of 0 still mixes out over one frame.
-     * 
+     *
      * Mixing in is done by first setting an empty animation, then adding an animation using addAnimation
      * and on the returned track entry, set the mixDuration. Mixing from an empty animation causes the new
      * animation to be applied more and more over the mix duration. Properties keyed in the new animation
@@ -25947,7 +25947,7 @@ var SpineGameObject = new Class({
 
     /**
      * Removes all animations from the track, leaving skeletons in their current pose.
-     * 
+     *
      * It may be desired to use setEmptyAnimation to mix the skeletons back to the setup pose,
      * rather than leaving them in their current pose.
      *
@@ -25964,10 +25964,10 @@ var SpineGameObject = new Class({
 
         return this;
     },
-     
+
     /**
      * Removes all animations from all tracks, leaving skeletons in their current pose.
-     * 
+     *
      * It may be desired to use setEmptyAnimation to mix the skeletons back to the setup pose,
      * rather than leaving them in their current pose.
      *
@@ -25985,11 +25985,11 @@ var SpineGameObject = new Class({
 
     /**
      * Sets the skin used to look up attachments before looking in the defaultSkin.
-     * 
+     *
      * Attachments from the new skin are attached if the corresponding attachment from the
      * old skin was attached. If there was no old skin, each slot's setup mode attachment is
      * attached from the new skin.
-     * 
+     *
      * After changing the skin, the visible attachments can be reset to those attached in the
      * setup pose by calling setSlotsToSetupPose. Also, often apply is called before the next time
      * the skeleton is rendered to allow any attachment keys in the current animation(s) to hide
@@ -25997,7 +25997,7 @@ var SpineGameObject = new Class({
      *
      * @method SpineGameObject#setSkinByName
      * @since 3.19.0
-     * 
+     *
      * @param {string} skinName - The name of the skin to set.
      *
      * @return {this} This Game Object.
@@ -26017,11 +26017,11 @@ var SpineGameObject = new Class({
 
     /**
      * Sets the skin used to look up attachments before looking in the defaultSkin.
-     * 
+     *
      * Attachments from the new skin are attached if the corresponding attachment from the
      * old skin was attached. If there was no old skin, each slot's setup mode attachment is
      * attached from the new skin.
-     * 
+     *
      * After changing the skin, the visible attachments can be reset to those attached in the
      * setup pose by calling setSlotsToSetupPose. Also, often apply is called before the next time
      * the skeleton is rendered to allow any attachment keys in the current animation(s) to hide
@@ -26029,7 +26029,7 @@ var SpineGameObject = new Class({
      *
      * @method SpineGameObject#setSkin
      * @since 3.19.0
-     * 
+     *
      * @param {?spine.Skin} newSkin - The Skin to set. May be `null`.
      *
      * @return {this} This Game Object.
@@ -26052,7 +26052,7 @@ var SpineGameObject = new Class({
      *
      * @method SpineGameObject#setMix
      * @since 3.19.0
-     * 
+     *
      * @param {string} fromName - The animation to mix from.
      * @param {string} toName - The animation to mix to.
      * @param {number} [duration] - Seconds for mixing from the previous animation to this animation. Defaults to the value provided by AnimationStateData getMix based on the animation before this animation (if any).
@@ -26073,7 +26073,7 @@ var SpineGameObject = new Class({
      *
      * @method SpineGameObject#getAttachment
      * @since 3.19.0
-     * 
+     *
      * @param {integer} slotIndex - The slot index to search.
      * @param {string} attachmentName - The attachment name to look for.
      *
@@ -26089,7 +26089,7 @@ var SpineGameObject = new Class({
      *
      * @method SpineGameObject#getAttachmentByName
      * @since 3.19.0
-     * 
+     *
      * @param {string} slotName - The slot name to search.
      * @param {string} attachmentName - The attachment name to look for.
      *
@@ -26106,7 +26106,7 @@ var SpineGameObject = new Class({
      *
      * @method SpineGameObject#setAttachment
      * @since 3.19.0
-     * 
+     *
      * @param {string} slotName - The slot name to add the attachment to.
      * @param {string} attachmentName - The attachment name to add.
      *
@@ -26194,7 +26194,7 @@ var SpineGameObject = new Class({
      *
      * @method SpineGameObject#angleBoneToXY
      * @since 3.19.0
-     * 
+     *
      * @param {spine.Bone} bone - The bone to rotate towards the world position.
      * @param {number} worldX - The world x coordinate to rotate the bone towards.
      * @param {number} worldY - The world y coordinate to rotate the bone towards.
@@ -26226,7 +26226,7 @@ var SpineGameObject = new Class({
      *
      * @method SpineGameObject#findBone
      * @since 3.19.0
-     * 
+     *
      * @param {string} boneName - The name of the bone to find.
      *
      * @return {spine.Bone} The bone, or null.
@@ -26242,7 +26242,7 @@ var SpineGameObject = new Class({
      *
      * @method SpineGameObject#findBoneIndex
      * @since 3.19.0
-     * 
+     *
      * @param {string} boneName - The name of the bone to find.
      *
      * @return {integer} The bone index. Or -1 if the bone was not found.
@@ -26258,7 +26258,7 @@ var SpineGameObject = new Class({
      *
      * @method SpineGameObject#findSlot
      * @since 3.19.0
-     * 
+     *
      * @param {string} slotName - The name of the slot to find.
      *
      * @return {spine.Slot} The Slot. May be null.
@@ -26274,7 +26274,7 @@ var SpineGameObject = new Class({
      *
      * @method SpineGameObject#findSlotIndex
      * @since 3.19.0
-     * 
+     *
      * @param {string} slotName - The name of the slot to find.
      *
      * @return {integer} The slot index. Or -1 if the Slot was not found.
@@ -26290,7 +26290,7 @@ var SpineGameObject = new Class({
      *
      * @method SpineGameObject#findSkin
      * @since 3.19.0
-     * 
+     *
      * @param {string} skinName - The name of the skin to find.
      *
      * @return {spine.Skin} The Skin. May be null.
@@ -26306,7 +26306,7 @@ var SpineGameObject = new Class({
      *
      * @method SpineGameObject#findEvent
      * @since 3.19.0
-     * 
+     *
      * @param {string} eventDataName - The name of the event to find.
      *
      * @return {spine.EventData} The Event Data. May be null.
@@ -26322,7 +26322,7 @@ var SpineGameObject = new Class({
      *
      * @method SpineGameObject#findAnimation
      * @since 3.19.0
-     * 
+     *
      * @param {string} animationName - The name of the animation to find.
      *
      * @return {spine.Animation} The Animation. May be null.
@@ -26338,7 +26338,7 @@ var SpineGameObject = new Class({
      *
      * @method SpineGameObject#findIkConstraint
      * @since 3.19.0
-     * 
+     *
      * @param {string} constraintName - The name of the constraint to find.
      *
      * @return {spine.IkConstraintData} The IK constraint. May be null.
@@ -26354,7 +26354,7 @@ var SpineGameObject = new Class({
      *
      * @method SpineGameObject#findTransformConstraint
      * @since 3.19.0
-     * 
+     *
      * @param {string} constraintName - The name of the constraint to find.
      *
      * @return {spine.TransformConstraintData} The transform constraint. May be null.
@@ -26370,7 +26370,7 @@ var SpineGameObject = new Class({
      *
      * @method SpineGameObject#findPathConstraint
      * @since 3.19.0
-     * 
+     *
      * @param {string} constraintName - The name of the constraint to find.
      *
      * @return {spine.PathConstraintData} The path constraint. May be null.
@@ -26386,7 +26386,7 @@ var SpineGameObject = new Class({
      *
      * @method SpineGameObject#findPathConstraintIndex
      * @since 3.19.0
-     * 
+     *
      * @param {string} constraintName - The name of the constraint to find.
      *
      * @return {integer} The constraint index. Or -1 if the constraint was not found.
@@ -26398,15 +26398,15 @@ var SpineGameObject = new Class({
 
     /**
      * Returns the axis aligned bounding box (AABB) of the region and mesh attachments for the current pose.
-     * 
+     *
      * The returned object contains two properties: `offset` and `size`:
-     * 
+     *
      * `offset` - The distance from the skeleton origin to the bottom left corner of the AABB.
      * `size` - The width and height of the AABB.
      *
      * @method SpineGameObject#getBounds
      * @since 3.19.0
-     * 
+     *
      * @return {any} The bounds object.
      */
     getBounds: function ()
@@ -26420,7 +26420,7 @@ var SpineGameObject = new Class({
      * @method SpineGameObject#preUpdate
      * @protected
      * @since 3.19.0
-     * 
+     *
      * @param {number} time - The current timestamp.
      * @param {number} delta - The delta time, in ms, elapsed since the last frame.
      */
@@ -26477,7 +26477,7 @@ module.exports = SpineGameObject;
 /**
  * Provides methods used for calculating and setting the size of a non-Frame based Game Object.
  * Should be applied as a mixin and not used directly.
- * 
+ *
  * @namespace Phaser.GameObjects.Components.ComputedSize
  * @since 3.0.0
  */
@@ -26486,11 +26486,11 @@ var ComputedSize = {
 
     /**
      * The native (un-scaled) width of this Game Object.
-     * 
+     *
      * Changing this value will not change the size that the Game Object is rendered in-game.
      * For that you need to either set the scale of the Game Object (`setScale`) or use
      * the `displayWidth` property.
-     * 
+     *
      * @name Phaser.GameObjects.Components.ComputedSize#width
      * @type {number}
      * @since 3.0.0
@@ -26499,11 +26499,11 @@ var ComputedSize = {
 
     /**
      * The native (un-scaled) height of this Game Object.
-     * 
+     *
      * Changing this value will not change the size that the Game Object is rendered in-game.
      * For that you need to either set the scale of the Game Object (`setScale`) or use
      * the `displayHeight` property.
-     * 
+     *
      * @name Phaser.GameObjects.Components.ComputedSize#height
      * @type {number}
      * @since 3.0.0
@@ -26512,11 +26512,11 @@ var ComputedSize = {
 
     /**
      * The displayed width of this Game Object.
-     * 
+     *
      * This value takes into account the scale factor.
-     * 
+     *
      * Setting this value will adjust the Game Object's scale property.
-     * 
+     *
      * @name Phaser.GameObjects.Components.ComputedSize#displayWidth
      * @type {number}
      * @since 3.0.0
@@ -26537,11 +26537,11 @@ var ComputedSize = {
 
     /**
      * The displayed height of this Game Object.
-     * 
+     *
      * This value takes into account the scale factor.
-     * 
+     *
      * Setting this value will adjust the Game Object's scale property.
-     * 
+     *
      * @name Phaser.GameObjects.Components.ComputedSize#displayHeight
      * @type {number}
      * @since 3.0.0
@@ -26562,21 +26562,21 @@ var ComputedSize = {
 
     /**
      * Sets the internal size of this Game Object, as used for frame or physics body creation.
-     * 
+     *
      * This will not change the size that the Game Object is rendered in-game.
      * For that you need to either set the scale of the Game Object (`setScale`) or call the
      * `setDisplaySize` method, which is the same thing as changing the scale but allows you
      * to do so by giving pixel values.
-     * 
+     *
      * If you have enabled this Game Object for input, changing the size will _not_ change the
      * size of the hit area. To do this you should adjust the `input.hitArea` object directly.
-     * 
+     *
      * @method Phaser.GameObjects.Components.ComputedSize#setSize
      * @since 3.4.0
      *
      * @param {number} width - The width of this Game Object.
      * @param {number} height - The height of this Game Object.
-     * 
+     *
      * @return {this} This Game Object instance.
      */
     setSize: function (width, height)
@@ -26589,15 +26589,15 @@ var ComputedSize = {
 
     /**
      * Sets the display size of this Game Object.
-     * 
+     *
      * Calling this will adjust the scale.
-     * 
+     *
      * @method Phaser.GameObjects.Components.ComputedSize#setDisplaySize
      * @since 3.4.0
      *
      * @param {number} width - The width of this Game Object.
      * @param {number} height - The height of this Game Object.
-     * 
+     *
      * @return {this} This Game Object instance.
      */
     setDisplaySize: function (width, height)
@@ -26626,7 +26626,7 @@ module.exports = ComputedSize;
 /**
  * Provides methods used for setting the depth of a Game Object.
  * Should be applied as a mixin and not used directly.
- * 
+ *
  * @namespace Phaser.GameObjects.Components.Depth
  * @since 3.0.0
  */
@@ -26635,7 +26635,7 @@ var Depth = {
 
     /**
      * Private internal value. Holds the depth of the Game Object.
-     * 
+     *
      * @name Phaser.GameObjects.Components.Depth#_depth
      * @type {integer}
      * @private
@@ -26646,7 +26646,7 @@ var Depth = {
 
     /**
      * The depth of this Game Object within the Scene.
-     * 
+     *
      * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
      * of Game Objects, without actually moving their position in the display list.
      *
@@ -26654,7 +26654,7 @@ var Depth = {
      * value will always render in front of one with a lower value.
      *
      * Setting the depth will queue a depth sort event within the Scene.
-     * 
+     *
      * @name Phaser.GameObjects.Components.Depth#depth
      * @type {number}
      * @since 3.0.0
@@ -26676,7 +26676,7 @@ var Depth = {
 
     /**
      * The depth of this Game Object within the Scene.
-     * 
+     *
      * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
      * of Game Objects, without actually moving their position in the display list.
      *
@@ -26684,12 +26684,12 @@ var Depth = {
      * value will always render in front of one with a lower value.
      *
      * Setting the depth will queue a depth sort event within the Scene.
-     * 
+     *
      * @method Phaser.GameObjects.Components.Depth#setDepth
      * @since 3.0.0
      *
      * @param {integer} value - The depth of this Game Object.
-     * 
+     *
      * @return {this} This Game Object instance.
      */
     setDepth: function (value)
@@ -26719,7 +26719,7 @@ module.exports = Depth;
 /**
  * Provides methods used for visually flipping a Game Object.
  * Should be applied as a mixin and not used directly.
- * 
+ *
  * @namespace Phaser.GameObjects.Components.Flip
  * @since 3.0.0
  */
@@ -26728,11 +26728,11 @@ var Flip = {
 
     /**
      * The horizontally flipped state of the Game Object.
-     * 
+     *
      * A Game Object that is flipped horizontally will render inversed on the horizontal axis.
      * Flipping always takes place from the middle of the texture and does not impact the scale value.
      * If this Game Object has a physics body, it will not change the body. This is a rendering toggle only.
-     * 
+     *
      * @name Phaser.GameObjects.Components.Flip#flipX
      * @type {boolean}
      * @default false
@@ -26742,11 +26742,11 @@ var Flip = {
 
     /**
      * The vertically flipped state of the Game Object.
-     * 
+     *
      * A Game Object that is flipped vertically will render inversed on the vertical axis (i.e. upside down)
      * Flipping always takes place from the middle of the texture and does not impact the scale value.
      * If this Game Object has a physics body, it will not change the body. This is a rendering toggle only.
-     * 
+     *
      * @name Phaser.GameObjects.Components.Flip#flipY
      * @type {boolean}
      * @default false
@@ -26756,14 +26756,14 @@ var Flip = {
 
     /**
      * Toggles the horizontal flipped state of this Game Object.
-     * 
+     *
      * A Game Object that is flipped horizontally will render inversed on the horizontal axis.
      * Flipping always takes place from the middle of the texture and does not impact the scale value.
      * If this Game Object has a physics body, it will not change the body. This is a rendering toggle only.
-     * 
+     *
      * @method Phaser.GameObjects.Components.Flip#toggleFlipX
      * @since 3.0.0
-     * 
+     *
      * @return {this} This Game Object instance.
      */
     toggleFlipX: function ()
@@ -26775,10 +26775,10 @@ var Flip = {
 
     /**
      * Toggles the vertical flipped state of this Game Object.
-     * 
+     *
      * @method Phaser.GameObjects.Components.Flip#toggleFlipY
      * @since 3.0.0
-     * 
+     *
      * @return {this} This Game Object instance.
      */
     toggleFlipY: function ()
@@ -26790,16 +26790,16 @@ var Flip = {
 
     /**
      * Sets the horizontal flipped state of this Game Object.
-     * 
+     *
      * A Game Object that is flipped horizontally will render inversed on the horizontal axis.
      * Flipping always takes place from the middle of the texture and does not impact the scale value.
      * If this Game Object has a physics body, it will not change the body. This is a rendering toggle only.
-     * 
+     *
      * @method Phaser.GameObjects.Components.Flip#setFlipX
      * @since 3.0.0
      *
      * @param {boolean} value - The flipped state. `false` for no flip, or `true` to be flipped.
-     * 
+     *
      * @return {this} This Game Object instance.
      */
     setFlipX: function (value)
@@ -26811,12 +26811,12 @@ var Flip = {
 
     /**
      * Sets the vertical flipped state of this Game Object.
-     * 
+     *
      * @method Phaser.GameObjects.Components.Flip#setFlipY
      * @since 3.0.0
      *
      * @param {boolean} value - The flipped state. `false` for no flip, or `true` to be flipped.
-     * 
+     *
      * @return {this} This Game Object instance.
      */
     setFlipY: function (value)
@@ -26828,17 +26828,17 @@ var Flip = {
 
     /**
      * Sets the horizontal and vertical flipped state of this Game Object.
-     * 
+     *
      * A Game Object that is flipped will render inversed on the flipped axis.
      * Flipping always takes place from the middle of the texture and does not impact the scale value.
      * If this Game Object has a physics body, it will not change the body. This is a rendering toggle only.
-     * 
+     *
      * @method Phaser.GameObjects.Components.Flip#setFlip
      * @since 3.0.0
      *
      * @param {boolean} x - The horizontal flipped state. `false` for no flip, or `true` to be flipped.
      * @param {boolean} y - The horizontal flipped state. `false` for no flip, or `true` to be flipped.
-     * 
+     *
      * @return {this} This Game Object instance.
      */
     setFlip: function (x, y)
@@ -26851,7 +26851,7 @@ var Flip = {
 
     /**
      * Resets the horizontal and vertical flipped state of this Game Object back to their default un-flipped state.
-     * 
+     *
      * @method Phaser.GameObjects.Components.Flip#resetFlip
      * @since 3.0.0
      *
@@ -26900,7 +26900,7 @@ var ScrollFactor = {
      * A value of 1 means it will move exactly in sync with a camera.
      * A value of 0 means it will not move at all, even if the camera moves.
      * Other values control the degree to which the camera movement is mapped to this Game Object.
-     * 
+     *
      * Please be aware that scroll factor values other than 1 are not taken in to consideration when
      * calculating physics collisions. Bodies always collide based on their world position, but changing
      * the scroll factor is a visual adjustment to where the textures are rendered, which can offset
@@ -26924,7 +26924,7 @@ var ScrollFactor = {
      * A value of 1 means it will move exactly in sync with a camera.
      * A value of 0 means it will not move at all, even if the camera moves.
      * Other values control the degree to which the camera movement is mapped to this Game Object.
-     * 
+     *
      * Please be aware that scroll factor values other than 1 are not taken in to consideration when
      * calculating physics collisions. Bodies always collide based on their world position, but changing
      * the scroll factor is a visual adjustment to where the textures are rendered, which can offset
@@ -26948,7 +26948,7 @@ var ScrollFactor = {
      * A value of 1 means it will move exactly in sync with a camera.
      * A value of 0 means it will not move at all, even if the camera moves.
      * Other values control the degree to which the camera movement is mapped to this Game Object.
-     * 
+     *
      * Please be aware that scroll factor values other than 1 are not taken in to consideration when
      * calculating physics collisions. Bodies always collide based on their world position, but changing
      * the scroll factor is a visual adjustment to where the textures are rendered, which can offset
@@ -27006,7 +27006,7 @@ var Transform = {
 
     /**
      * Private internal value. Holds the horizontal scale value.
-     * 
+     *
      * @name Phaser.GameObjects.Components.Transform#_scaleX
      * @type {number}
      * @private
@@ -27017,7 +27017,7 @@ var Transform = {
 
     /**
      * Private internal value. Holds the vertical scale value.
-     * 
+     *
      * @name Phaser.GameObjects.Components.Transform#_scaleY
      * @type {number}
      * @private
@@ -27028,7 +27028,7 @@ var Transform = {
 
     /**
      * Private internal value. Holds the rotation value in radians.
-     * 
+     *
      * @name Phaser.GameObjects.Components.Transform#_rotation
      * @type {number}
      * @private
@@ -27081,7 +27081,7 @@ var Transform = {
     /**
      * This is a special setter that allows you to set both the horizontal and vertical scale of this Game Object
      * to the same value, at the same time. When reading this value the result returned is `(scaleX + scaleY) / 2`.
-     * 
+     *
      * Use of this property implies you wish the horizontal and vertical scales to be equal to each other. If this
      * isn't the case, use the `scaleX` or `scaleY` properties instead.
      *
@@ -27178,7 +27178,7 @@ var Transform = {
 
     /**
      * The angle of this Game Object as expressed in degrees.
-     * 
+     *
      * Phaser uses a right-hand clockwise rotation system, where 0 is right, 90 is down, 180/-180 is left
      * and -90 is up.
      *
@@ -27205,7 +27205,7 @@ var Transform = {
 
     /**
      * The angle of this Game Object in radians.
-     * 
+     *
      * Phaser uses a right-hand clockwise rotation system, where 0 is right, 90 is down, 180/-180 is left
      * and -90 is up.
      *
@@ -27261,7 +27261,7 @@ var Transform = {
     /**
      * Sets the position of this Game Object to be a random position within the confines of
      * the given area.
-     * 
+     *
      * If no area is specified a random position between 0 x 0 and the game width x height is used instead.
      *
      * The position does not factor in the size of this Game Object, meaning that only the origin is
@@ -27482,7 +27482,7 @@ var Transform = {
 
     /**
      * Gets the sum total rotation of all of this Game Objects parent Containers.
-     * 
+     *
      * The returned value is in radians and will be zero if this Game Object has no parent container.
      *
      * @method Phaser.GameObjects.Components.Transform#getParentRotation
@@ -27795,13 +27795,13 @@ var TransformMatrix = new Class({
             if (a || b)
             {
                 // var r = Math.sqrt(a * a + b * b);
-    
+
                 return (b > 0) ? Math.acos(a / this.scaleX) : -Math.acos(a / this.scaleX);
             }
             else if (c || d)
             {
                 // var s = Math.sqrt(c * c + d * d);
-    
+
                 return MATH_CONST.TAU - ((d > 0) ? Math.acos(-c / this.scaleY) : -Math.acos(c / this.scaleY));
             }
             else
@@ -27944,7 +27944,7 @@ var TransformMatrix = new Class({
 
     /**
      * Multiply this Matrix by the given Matrix.
-     * 
+     *
      * If an `out` Matrix is given then the results will be stored in it.
      * If it is not given, this matrix will be updated in place instead.
      * Use an `out` Matrix if you do not wish to mutate this matrix.
@@ -27990,7 +27990,7 @@ var TransformMatrix = new Class({
 
     /**
      * Multiply this Matrix by the matrix given, including the offset.
-     * 
+     *
      * The offsetX is added to the tx value: `offsetX * a + offsetY * c + tx`.
      * The offsetY is added to the ty value: `offsetY * b + offsetY * d + ty`.
      *
@@ -28224,7 +28224,7 @@ var TransformMatrix = new Class({
 
     /**
      * Copy the values in this Matrix to the array given.
-     * 
+     *
      * Where array indexes 0, 1, 2, 3, 4 and 5 are mapped to a, b, c, d, e and f.
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#copyToArray
@@ -28286,9 +28286,9 @@ var TransformMatrix = new Class({
 
     /**
      * Decompose this Matrix into its translation, scale and rotation values using QR decomposition.
-     * 
+     *
      * The result must be applied in the following order to reproduce the current matrix:
-     * 
+     *
      * translate -> rotate -> scale
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#decomposeMatrix
@@ -28380,7 +28380,7 @@ var TransformMatrix = new Class({
     /**
      * Takes the `x` and `y` values and returns a new position in the `output` vector that is the inverse of
      * the current matrix with its transformation applied.
-     * 
+     *
      * Can be used to translate points from world to local space.
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#applyInverse
@@ -28419,7 +28419,7 @@ var TransformMatrix = new Class({
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#getX
      * @since 3.12.0
-     * 
+     *
      * @param {number} x - The x value.
      * @param {number} y - The y value.
      *
@@ -28436,7 +28436,7 @@ var TransformMatrix = new Class({
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#getY
      * @since 3.12.0
-     * 
+     *
      * @param {number} x - The x value.
      * @param {number} y - The y value.
      *
@@ -28495,7 +28495,7 @@ var _FLAG = 1; // 0001
 /**
  * Provides methods used for setting the visibility of a Game Object.
  * Should be applied as a mixin and not used directly.
- * 
+ *
  * @namespace Phaser.GameObjects.Components.Visible
  * @since 3.0.0
  */
@@ -28504,7 +28504,7 @@ var Visible = {
 
     /**
      * Private internal value. Holds the visible value.
-     * 
+     *
      * @name Phaser.GameObjects.Components.Visible#_visible
      * @type {boolean}
      * @private
@@ -28515,9 +28515,9 @@ var Visible = {
 
     /**
      * The visible state of the Game Object.
-     * 
+     *
      * An invisible Game Object will skip rendering, but will still process update logic.
-     * 
+     *
      * @name Phaser.GameObjects.Components.Visible#visible
      * @type {boolean}
      * @since 3.0.0
@@ -28547,14 +28547,14 @@ var Visible = {
 
     /**
      * Sets the visibility of this Game Object.
-     * 
+     *
      * An invisible Game Object will skip rendering, but will still process update logic.
      *
      * @method Phaser.GameObjects.Components.Visible#setVisible
      * @since 3.0.0
      *
      * @param {boolean} value - The visible state of the Game Object.
-     * 
+     *
      * @return {this} This Game Object instance.
      */
     setVisible: function (value)
@@ -28632,9 +28632,9 @@ var GameObject = new Class({
 
         /**
          * The current state of this Game Object.
-         * 
+         *
          * Phaser itself will never modify this value, although plugins may do so.
-         * 
+         *
          * Use this property to track the state of a Game Object during its lifetime. For example, it could move from
          * a state of 'moving', to 'attacking', to 'dead'. The state value should be an integer (ideally mapped to a constant
          * in your game code), or a string. These are recommended to keep it light and simple, with fast comparisons.
@@ -28804,9 +28804,9 @@ var GameObject = new Class({
 
     /**
      * Sets the current state of this Game Object.
-     * 
+     *
      * Phaser itself will never modify the State of a Game Object, although plugins may do so.
-     * 
+     *
      * For example, a Game Object could change from a state of 'moving', to 'attacking', to 'dead'.
      * The state value should typically be an integer (ideally mapped to a constant
      * in your game code), but could also be a string. It is recommended to keep it light and simple.
@@ -29011,7 +29011,7 @@ var GameObject = new Class({
      * If you wish to only temporarily stop an object from receiving input then use
      * `disableInteractive` instead, as that toggles the interactive state, where-as
      * this erases it completely.
-     * 
+     *
      * If you wish to resize a hit area, don't remove and then set it as being
      * interactive. Instead, access the hitarea object directly and resize the shape
      * being used. I.e.: `sprite.input.hitArea.setSize(width, height)` (assuming the
@@ -29356,13 +29356,13 @@ var DataManager = new Class({
          * ```
          *
          * You can also modify it directly:
-         * 
+         *
          * ```javascript
          * this.data.values.gold += 1000;
          * ```
          *
          * Doing so will emit a `setdata` event from the parent of this Data Manager.
-         * 
+         *
          * Do not modify this object directly. Adding properties directly to this object will not
          * emit any events. Always use `DataManager.set` to create new items the first time around.
          *
@@ -29394,19 +29394,19 @@ var DataManager = new Class({
      * Retrieves the value for the given key, or undefined if it doesn't exist.
      *
      * You can also access values via the `values` object. For example, if you had a key called `gold` you can do either:
-     * 
+     *
      * ```javascript
      * this.data.get('gold');
      * ```
      *
      * Or access the value directly:
-     * 
+     *
      * ```javascript
      * this.data.values.gold;
      * ```
      *
      * You can also pass in an array of keys, in which case an array of values will be returned:
-     * 
+     *
      * ```javascript
      * this.data.get([ 'gold', 'armor', 'health' ]);
      * ```
@@ -29491,7 +29491,7 @@ var DataManager = new Class({
 
     /**
      * Sets a value for the given key. If the key doesn't already exist in the Data Manager then it is created.
-     * 
+     *
      * ```javascript
      * data.set('name', 'Red Gem Stone');
      * ```
@@ -29503,13 +29503,13 @@ var DataManager = new Class({
      * ```
      *
      * To get a value back again you can call `get`:
-     * 
+     *
      * ```javascript
      * data.get('gold');
      * ```
-     * 
+     *
      * Or you can access the value directly via the `values` property, where it works like any other variable:
-     * 
+     *
      * ```javascript
      * data.values.gold += 50;
      * ```
@@ -29593,7 +29593,7 @@ var DataManager = new Class({
             Object.defineProperty(this.values, key, {
 
                 enumerable: true,
-                
+
                 configurable: true,
 
                 get: function ()
@@ -29693,9 +29693,9 @@ var DataManager = new Class({
      *
      * If the key is found in this Data Manager it is removed from the internal lists and a
      * `removedata` event is emitted.
-     * 
+     *
      * You can also pass in an array of keys, in which case all keys in the array will be removed:
-     * 
+     *
      * ```javascript
      * this.data.remove([ 'gold', 'armor', 'health' ]);
      * ```
@@ -29787,7 +29787,7 @@ var DataManager = new Class({
 
     /**
      * Determines whether the given key is set in this Data Manager.
-     * 
+     *
      * Please note that the keys are case-sensitive and must be valid JavaScript Object property strings.
      * This means the keys `gold` and `Gold` are treated as two unique values within the Data Manager.
      *
@@ -29948,18 +29948,18 @@ module.exports = {
 
 /**
  * The Change Data Event.
- * 
+ *
  * This event is dispatched by a Data Manager when an item in the data store is changed.
- * 
+ *
  * Game Objects with data enabled have an instance of a Data Manager under the `data` property. So, to listen for
  * a change data event from a Game Object you would use: `sprite.data.on('changedata', listener)`.
- * 
+ *
  * This event is dispatched for all items that change in the Data Manager.
  * To listen for the change of a specific item, use the `CHANGE_DATA_KEY_EVENT` event.
  *
  * @event Phaser.Data.Events#CHANGE_DATA
  * @since 3.0.0
- * 
+ *
  * @param {any} parent - A reference to the object that the Data Manager responsible for this event belongs to.
  * @param {string} key - The unique key of the data item within the Data Manager.
  * @param {any} value - The new value of the item in the Data Manager.
@@ -29980,9 +29980,9 @@ module.exports = 'changedata';
 
 /**
  * The Change Data Key Event.
- * 
+ *
  * This event is dispatched by a Data Manager when an item in the data store is changed.
- * 
+ *
  * Game Objects with data enabled have an instance of a Data Manager under the `data` property. So, to listen for
  * the change of a specific data item from a Game Object you would use: `sprite.data.on('changedata-key', listener)`,
  * where `key` is the unique string key of the data item. For example, if you have a data item stored called `gold`
@@ -29990,7 +29990,7 @@ module.exports = 'changedata';
  *
  * @event Phaser.Data.Events#CHANGE_DATA_KEY
  * @since 3.16.1
- * 
+ *
  * @param {any} parent - A reference to the object that owns the instance of the Data Manager responsible for this event.
  * @param {string} key - The unique key of the data item within the Data Manager.
  * @param {any} value - The item that was updated in the Data Manager. This can be of any data type, i.e. a string, boolean, number, object or instance.
@@ -30011,15 +30011,15 @@ module.exports = 'changedata-';
 
 /**
  * The Remove Data Event.
- * 
+ *
  * This event is dispatched by a Data Manager when an item is removed from it.
- * 
+ *
  * Game Objects with data enabled have an instance of a Data Manager under the `data` property. So, to listen for
  * the removal of a data item on a Game Object you would use: `sprite.data.on('removedata', listener)`.
  *
  * @event Phaser.Data.Events#REMOVE_DATA
  * @since 3.0.0
- * 
+ *
  * @param {any} parent - A reference to the object that owns the instance of the Data Manager responsible for this event.
  * @param {string} key - The unique key of the data item within the Data Manager.
  * @param {any} data - The item that was removed from the Data Manager. This can be of any data type, i.e. a string, boolean, number, object or instance.
@@ -30039,15 +30039,15 @@ module.exports = 'removedata';
 
 /**
  * The Set Data Event.
- * 
+ *
  * This event is dispatched by a Data Manager when a new item is added to the data store.
- * 
+ *
  * Game Objects with data enabled have an instance of a Data Manager under the `data` property. So, to listen for
  * the addition of a new data item on a Game Object you would use: `sprite.data.on('setdata', listener)`.
  *
  * @event Phaser.Data.Events#SET_DATA
  * @since 3.0.0
- * 
+ *
  * @param {any} parent - A reference to the object that owns the instance of the Data Manager responsible for this event.
  * @param {string} key - The unique key of the data item within the Data Manager.
  * @param {any} data - The item that was added to the Data Manager. This can be of any data type, i.e. a string, boolean, number, object or instance.
@@ -30427,14 +30427,14 @@ module.exports = { DESTROY: __webpack_require__(204) };
 
 /**
  * The Game Object Destroy Event.
- * 
+ *
  * This event is dispatched when a Game Object instance is being destroyed.
- * 
+ *
  * Listen for it on a Game Object instance using `GameObject.on('destroy', listener)`.
  *
  * @event Phaser.GameObjects.Events#DESTROY
  * @since 3.0.0
- * 
+ *
  * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object which is being destroyed.
  */
 module.exports = 'destroy';
@@ -30660,10 +30660,10 @@ var SpineGameObjectWebGLRenderer = function (renderer, src, interpolationPercent
         {
             //  The next object in the display list is not a Spine object, so we end the batch
             sceneRenderer.end();
-    
+
             renderer.rebindPipeline(renderer.pipelines.TextureTintPipeline);
         }
-    
+
         return;
     }
 
