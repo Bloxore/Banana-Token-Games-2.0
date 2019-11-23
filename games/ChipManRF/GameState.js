@@ -1,6 +1,7 @@
 import { Player } from './player.js';
 import { Chip }  from './Chip.js';
 import { createFlag } from './Flag.js';
+import { ArrowScreenTransition } from './FX/ArrowScreenTransition.js';
 
 class GameState extends Phaser.Scene {
   constructor() {
@@ -157,7 +158,15 @@ class GameState extends Phaser.Scene {
       } else {
         this.scale.startFullscreen();
       }
-    })
+    });
+
+
+    /* Test FX */
+    ArrowScreenTransition.apply({
+      scene: this,
+      arrowThickness: 200,
+      arrowDirection: ArrowScreenTransition.RIGHT
+    });
   }
 
   _allChipsCollected() {
@@ -165,6 +174,10 @@ class GameState extends Phaser.Scene {
   }
 
   _timeOut() {
+    // prevent the game over after winning
+    this.timer.destroy();
+
+    /* Stop the player and prevent the camera from following him anymore */
     this.player.disableMovement();
     this.player.disableBody();
     this.cameras.main.stopFollow();
@@ -199,6 +212,9 @@ class GameState extends Phaser.Scene {
   }
 
   _levelCompletedSuccessfully() {
+    // prevent the game over after winning
+    this.timer.destroy();
+    // Destroy the flag collider to prevent clearing the level more than once
     this.flagCollider.destroy();
     // Other level over stuff here.
     this.player.disableMovement();
