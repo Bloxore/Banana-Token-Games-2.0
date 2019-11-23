@@ -39,7 +39,7 @@ class GameState extends Phaser.Scene {
     const WORLD_HEIGHT = TILE_HEIGHT * VERTICAL_TILES;
 
     /* Game variables */
-    this._chipsCollected = false;
+    this._chipsCollected = true;
     this._totalChips = 0;
 
     /* Setup camera */
@@ -159,14 +159,6 @@ class GameState extends Phaser.Scene {
         this.scale.startFullscreen();
       }
     });
-
-
-    /* Test FX */
-    ArrowScreenTransition.apply({
-      scene: this,
-      arrowThickness: 200,
-      arrowDirection: ArrowScreenTransition.RIGHT
-    });
   }
 
   _allChipsCollected() {
@@ -228,9 +220,20 @@ class GameState extends Phaser.Scene {
       ease: Phaser.Math.Easing.Circular.Out,
       callback: () => {
         this.cameras.main.stopFollow();
+
+        // After zoom play the arrows
+        ArrowScreenTransition.apply({
+          scene: this,
+          arrowThickness: 150,
+          arrowSpeed: 1500,
+          duration: 500,
+          gapWidth: 50,
+          color: 0xf0f000,
+          arrowDirection: ArrowScreenTransition.RIGHT
+        });
       },
       callbackScope: this
-    })
+    });
   }
 
   update() {
