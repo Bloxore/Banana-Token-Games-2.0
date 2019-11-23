@@ -91,35 +91,43 @@ const ArrowScreenTransition = {
       }
     })
 
+    /*
+      Direction influences positions and angle
+      RIGHT: 0
+      UP: 1
+      LEFT: 2
+      DOWN: 3
+
+      Thus position is calculated like so
+      if (Vertical)
+        startX = the middle
+        startY = screenHeight/2 * (DIRECTION - 1)
+      else
+        startX = screenWidth/2 * DIRECTION
+        startY = the middle
+    */
+    // Generate the start position for the arrows
+    let startX = arrowDirection % 2 == 1 ? canvasWidth / 2 : (canvasWidth / 2) * arrowDirection;
+    let startY = arrowDirection % 2 == 1 ? (canvasHeight / 2) * (arrowDirection - 1) : (canvasHeight / 2);
     let _dummyUpdateLoop = new Phaser.GameObjects.GameObject(scene);
     _dummyUpdateLoop.preUpdate = () => { // my own private game loop *yay*
       let first = arrowContainer.getAt(0);
       let last = arrowContainer.getAt(arrowContainer.length - 1);
-
-      if (last) {
-        if (last.x + arrowContainer.x + arrowThickness / 2 > gapWidth + last.width) {
-          let arrow = scene.add.image(last.x - gapWidth - last.width - arrowThickness / 2, 0, textureKey);
-          arrow.setAngle(90 * arrowDirection);
-          arrowContainer.add(arrow);
-        }
-      } else {
-        // The first arrow
-        let arrow = scene.add.image(-arrowThickness, 0, textureKey);
-        arrow.setAngle(90 * arrowDirection);
-        arrowContainer.add(arrow);
-      }
-
-      if (first) { // TODO: recycle old arrows
-        // I'm just deleting them for now, but implement the recylcing later!!!
-        if (first.x + arrowContainer.x > canvasWidth + arrowThickness / 2) {
-          arrowContainer.remove(first);
-        }
-      }
+      if 
     };
     scene.add.existing(_dummyUpdateLoop);
   },
 
+  /*
+    Takes a position on the screen and translates it to where it is in
+    arrowContainer.
+  */
+  _generateOffsetCoordinates(x, y) {
+    let newX = x + this.arrowContainer.x;
+    let newY = y + this.arrowContainer.y;
 
+    return {x: newX, y: newY};
+  }
 
   /*
     Generate the arrow texture once, so that it may be reused by many objects
