@@ -63,7 +63,7 @@ const ArrowScreenTransition = {
     let canvasWidth = scene.game.canvas.width;
     let canvasHeight = scene.game.canvas.height;
 
-    let textureKey = "-ArrowScreenTransition-" + color;
+    let textureKey = "-ArrowScreenTransition-" + "-" + color + "-" + arrowThickness + "-" + arrowDirection;
 
     /* No need to generate a texture if it already exists in cache */
     if (scene.load.textureManager.exists(textureKey) == false) {
@@ -234,7 +234,7 @@ const ArrowScreenTransition = {
 
     // store the graphic to the cache for use later
     arrowGraphic.generateTexture(
-      "-ArrowScreenTransition-" + color, // key
+      "-ArrowScreenTransition-" + "-" + color + "-" + arrowThickness + "-" + arrowDirection, // key
       arrowThickness + indentWidth, // width of graphic
       arrowWidth // height of graphic
     );

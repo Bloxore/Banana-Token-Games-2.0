@@ -2,6 +2,7 @@ import { Player } from './player.js';
 import { Chip }  from './Chip.js';
 import { createFlag } from './Flag.js';
 import { ArrowScreenTransition } from './FX/ArrowScreenTransition.js';
+import { ArrowHUD } from './ArrowHUD.js';
 
 class GameState extends Phaser.Scene {
   constructor() {
@@ -14,7 +15,7 @@ class GameState extends Phaser.Scene {
     this.load.image("levelTiles", "levelArt/levelTilemap.png");
     this.load.spritesheet("levelEntities", "levelArt/levelEntities.png", { frameWidth: 32, frameHeight: 32 });
     /* Load Level Data */
-    this.load.tilemapTiledJSON("level1", "levelData/level1.json");
+    this.load.tilemapTiledJSON("level1", "levelData/level2.json");
 
     /* ChipMan Spine Load */
     this.load.spine("chipman", "chipman-spine/ChipMan Flash Collection.json", "chipman-spine/ChipMan Flash Collection.atlas", true);
@@ -39,7 +40,7 @@ class GameState extends Phaser.Scene {
     const WORLD_HEIGHT = TILE_HEIGHT * VERTICAL_TILES;
 
     /* Game variables */
-    this._chipsCollected = true;
+    this._chipsCollected = false;
     this._totalChips = 0;
 
     /* Setup camera */
@@ -159,6 +160,13 @@ class GameState extends Phaser.Scene {
         this.scale.startFullscreen();
       }
     });
+
+    let arrow = new ArrowHUD(this, this.player.x, this.player.y, {
+      arrowWidth: 600,
+      arrowHeight: 120,
+      cutPercent: 0.1
+    });
+    //this.add.existing(arrow);
   }
 
   _allChipsCollected() {
@@ -229,7 +237,7 @@ class GameState extends Phaser.Scene {
           duration: 500,
           gapWidth: 50,
           color: 0xf0f000,
-          arrowDirection: ArrowScreenTransition.RIGHT
+          arrowDirection: ArrowScreenTransition.LEFT
         });
       },
       callbackScope: this
