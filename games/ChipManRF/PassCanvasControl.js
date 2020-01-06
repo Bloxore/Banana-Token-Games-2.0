@@ -36,9 +36,8 @@ let CanvasControl = {
     if (this._freedCanvas == null) {
       // Fetching a canvas that is not freed should be an error.
       throw new Error('Attempted to restrain a freed canvas, when there was none.')
-
-      this._freedCanvas = null;
     }
+    this._freedCanvas = null;
   }
 };
 

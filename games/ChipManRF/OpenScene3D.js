@@ -25,25 +25,50 @@ export function startOpenCinematic() {
   // This comment is here in case anything goes haywire.
   //renderer.setSize( 640 , 480 );
 
+  // Texture loader
+  let textureLoader = new THREE.TextureLoader();
 
   // Ground
-  let planeGeom = new THREE.PlaneGeometry( 10, 10, 1 );
-  let material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-  let basicGround = new THREE.Mesh( planeGeom, material );
-  scene.add( basicGround );
-  basicGround.rotation.x = -Math.PI/2;
-  basicGround.position.set(0, -1, 0);
+  let groundTexture = textureLoader.load("assets/games/ChipManRF/ThreeJS/groundTexture.jpg");
+
+  let cylinderGeom = new THREE.CylinderGeometry( 1, 1, 1, 40 );
+  let material = new THREE.MeshLambertMaterial( {
+                                                  color: 0xffffff,
+                                                  map: groundTexture
+                                                }
+                                              );
+  let ground = new THREE.Mesh( cylinderGeom, material );
+  scene.add( ground );
+  ground.rotation.z = Math.PI/2;
+  ground.scale.set(10, 100, 10);
 
   // Light
-  let light = new THREE.PointLight( 0xff0000, 1, 100);
-  light.position.set(50, 50, 50);
+  let light = new THREE.HemisphereLight( 0xfffff0, 0xffff00 );
+  light.position.set(-7, 12, 20);
   scene.add( light );
 
-  camera.position.z = 5;
+  camera.position.set(0,15,16);
 
   function animate() {
-  	requestAnimationFrame( animate );
-  	renderer.render( scene, camera );
+    if (renderer) {
+      // Only render if there's something to render to
+      requestAnimationFrame( animate );
+  	  renderer.render( scene, camera );
+
+      ground.rotation.x += 0.01;
+      terminateSequence();
+    }
   }
   animate();
+
+  function terminateSequence() {
+    // Destroy everything and return to phaser
+    scene.dispose();
+    renderer.dispose();
+    scene = null;
+    camera = null;
+    renderer = null;
+
+    CanvasControl.freeCanvas(canvas);
+  }
 }

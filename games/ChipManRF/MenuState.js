@@ -10,7 +10,12 @@ class MenuState extends Phaser.Scene {
   preload() {
     this.load.setPath("assets/games/ChipManRF/");
 
-    this.load.image("titleGraphic", "graphics/Title.png");
+    // Make sure this isn't reloaded later
+    this.load.spine("chipman", "chipman-spine/ChipMan Flash Collection.json", "chipman-spine/ChipMan Flash Collection.atlas", true);
+
+    this.load.image("titleGraphic", "graphics/ChipManTitle.png");
+    this.load.image("moon", "graphics/Moon.png");
+    this.load.image("house", "graphics/ChipManHouse.png")
   }
 
   create() {
@@ -19,13 +24,50 @@ class MenuState extends Phaser.Scene {
     this.game.renderer.clearPipeline();
     this.game.loop.sleep();
     CanvasControl.freeCanvas(this.game.renderer.canvas,
-                             this.resumeControlFromThreeJS);
+                             this.resumeControlFromThreeJS.bind(this));
     // Notify THREE.JS everything is good to go
     OpenScene3D.startOpenCinematic();
   }
 
   resumeControlFromThreeJS() {
+    this.game.loop.wake(true);
 
+    let background = this.add.graphics();
+    background.fillStyle(0x000000);
+    background.fillRect(0, 0, 640, 480);
+
+    let title = this.add.image(430, 100, "titleGraphic");
+    title.setScale(0.5, 0.5);
+
+    let house = this.add.image(0, 0, "house");
+    house.setScale(0.5, 0.5);
+    house.setOrigin(.5, 3.27);
+
+    // Get ChipMan in on the action
+    let chipman = this.add.spine(0, -222, "chipman");
+    chipman.setAnimation(0, "run", true);
+    chipman.setScale(0.1, 0.1);
+
+    let chipmanContainer = this.add.container(0, 0, chipman)
+
+    let moon = this.add.image(0, 0, "moon");
+    moon.setScale(0.5, 0.5);
+
+    let moonContainer = this.add.container(100, 450, [house, moon, chipmanContainer]);
+
+    // All things on the "rotating" moon should go here
+    this.add.tween({
+      targets: moonContainer,
+      angle: 360,
+      duration: 50000,
+      loop: -1,
+    });
+
+    this.add.tween({
+      targets: chipmanContainer,
+      angle: 100,
+      duration: 5000
+    })
   }
 
   update() {
