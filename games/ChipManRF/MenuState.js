@@ -45,7 +45,6 @@ class MenuState extends Phaser.Scene {
 
     // Get ChipMan in on the action
     let chipman = this.add.spine(0, -222, "chipman");
-    chipman.setAnimation(0, "run", true);
     chipman.setScale(0.1, 0.1);
 
     let chipmanContainer = this.add.container(0, 0, chipman)
@@ -59,15 +58,96 @@ class MenuState extends Phaser.Scene {
     this.add.tween({
       targets: moonContainer,
       angle: 360,
-      duration: 50000,
+      duration: 70000,
       loop: -1,
     });
 
-    this.add.tween({
-      targets: chipmanContainer,
-      angle: 100,
-      duration: 5000
-    })
+    let chipmanActions = {
+      runLeft: (distance) => {
+        chipman.scaleX = -.1;
+        chipman.setAnimation(0, "run", true);
+        this.add.tween({
+          targets: chipmanContainer,
+          angle: chipmanContainer.angle - distance,
+          duration: distance / 0.02, // 0.02 is the speed
+          onComplete: chipmanNextAction,
+          onCompleteScope: this,
+        })
+      },
+      runRight: (distance) => {
+        chipman.scaleX = .1;
+        chipman.setAnimation(0, "run", true);
+        this.add.tween({
+          targets: chipmanContainer,
+          angle: chipmanContainer.angle + distance,
+          duration: distance / 0.02, // 0.02 is the speed
+          onComplete: chipmanNextAction,
+          onCompleteScope: this,
+        })
+      },
+      stall: (time) => {
+        chipman.setAnimation(0, "idle", true);
+        this.time.addEvent({
+          delay: time,
+          callback: chipmanNextAction,
+          callbackScope: this,
+        })
+      },
+      jump: () => {
+        this.add.tween({
+          targets: chipman,
+          y: -350,
+          duration: 1000, // 0.02 is the speed
+          ease: Phaser.Math.Easing.Quadratic.Out,
+          onCompleteScope: this,
+          onComplete: () => {
+            this.add.tween({
+              targets: chipman,
+              y: -222,
+              duration: 1000, // 0.02 is the speed
+              ease: Phaser.Math.Easing.Quadratic.In,
+            });
+          }
+        });
+      }
+    };
+
+    let actions = ["runLeft", "runRight", "stall", "jump"]
+    function chipmanNextAction() {
+      if (chipmanContainer.angle + moonContainer.angle % 360 < -30 ||
+          chipmanContainer.angle + moonContainer.angle % 360 > 270) {
+        let distance = Math.random() * (80) + 20;
+        chipmanActions["runRight"](distance);
+        // Randomly jumps
+        if (Math.random() > 0.75) {
+          chipmanActions["jump"]();
+        }
+      }
+      else if (chipmanContainer.angle + moonContainer.angle % 360 > 70) {
+        let distance = Math.random() * (80) + 20;
+        chipmanActions["runLeft"](distance);
+        // Randomly jumps
+        if (Math.random() > 0.75) {
+          chipmanActions["jump"]();
+        }
+      }
+      else {
+        let action = Math.floor(Math.random() * 3);
+        if (action < 2) { // distance
+          let distance = Math.random() * (80) + 20;
+          chipmanActions[actions[action]](distance); // give random distance
+          // Randomly jumps
+          if (Math.random() > 0.75) {
+            chipmanActions["jump"]();
+          }
+        } else {
+          // Stall
+          chipmanActions[actions[action]](Math.random() * (900) + 100); // random time
+        }
+      }
+    }
+
+    chipmanNextAction();
   }
 
   update() {
