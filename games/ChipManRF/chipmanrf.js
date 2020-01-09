@@ -1,5 +1,4 @@
 import { MenuState } from "./MenuState.js";
-import { GameState } from "./GameState.js";
 
 let config = {
     type: Phaser.WEBGL,

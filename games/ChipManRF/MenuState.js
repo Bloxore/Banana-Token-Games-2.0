@@ -1,5 +1,6 @@
 import { CanvasControl } from './PassCanvasControl.js';
 import * as OpenScene3D from './OpenScene3D.js';
+import { GameState } from "./GameState.js";
 
 
 class MenuState extends Phaser.Scene {
@@ -15,7 +16,10 @@ class MenuState extends Phaser.Scene {
 
     this.load.image("titleGraphic", "graphics/ChipManTitle.png");
     this.load.image("moon", "graphics/Moon.png");
-    this.load.image("house", "graphics/ChipManHouse.png")
+    this.load.image("house", "graphics/ChipManHouse.png");
+    this.load.image("startButton", "graphics/MenuButton.png");
+    this.load.image("startButtonArrow", "graphics/MenuButtonExtension.png");
+    this.load.image("startButtonBack", "graphics/MenuButtonBack.png");
   }
 
   create() {
@@ -116,7 +120,7 @@ class MenuState extends Phaser.Scene {
     function chipmanNextAction() {
       if (chipmanContainer.angle + moonContainer.angle % 360 < -30 ||
           chipmanContainer.angle + moonContainer.angle % 360 > 270) {
-        let distance = Math.random() * (80) + 20;
+        let distance = Math.random() * (60) + 40;
         chipmanActions["runRight"](distance);
         // Randomly jumps
         if (Math.random() > 0.75) {
@@ -124,7 +128,7 @@ class MenuState extends Phaser.Scene {
         }
       }
       else if (chipmanContainer.angle + moonContainer.angle % 360 > 70) {
-        let distance = Math.random() * (80) + 20;
+        let distance = Math.random() * (60) + 40;
         chipmanActions["runLeft"](distance);
         // Randomly jumps
         if (Math.random() > 0.75) {
@@ -134,7 +138,7 @@ class MenuState extends Phaser.Scene {
       else {
         let action = Math.floor(Math.random() * 3);
         if (action < 2) { // distance
-          let distance = Math.random() * (80) + 20;
+          let distance = Math.random() * (60) + 40;
           chipmanActions[actions[action]](distance); // give random distance
           // Randomly jumps
           if (Math.random() > 0.75) {
@@ -148,6 +152,18 @@ class MenuState extends Phaser.Scene {
     }
 
     chipmanNextAction();
+
+    // Add the menu options
+    let startButton = this.add.image(460, 240, "startButton");
+    startButton.setScale(0.5, 0.5);
+    startButton.setInteractive();
+    startButton.on("pointerup", startGame.bind(this));
+
+    function startGame() {
+      // Fix this later (it is a game crash)
+      this.game.scene.stop("MenuState");
+      this.game.scene.add("GameState", GameState, true);
+    }
   }
 
   update() {
