@@ -5,16 +5,18 @@ let CanvasControl = {
 
   // This is an explicit statment that hands over control of a canvas
   freeCanvas: function(canvas, onFree) {
-    if (this.onFree != null) {
-      // Invoke the previous caller's right to know when the canvas is freed
-      this.onFree();
-    }
     // This is only legal is a canvas is not already free
     if (this._freedCanvas != null) {
       throw new Error('Attempted to free a canvas, when one has already been freed.')
     }
 
     this._freedCanvas = canvas;
+
+    // Once the canvas is free
+    if (this.onFree != null) {
+      // Invoke the previous caller's right to know when the canvas is freed
+      this.onFree();
+    }
 
     // Set up the onFree callback
     if (onFree != undefined) {

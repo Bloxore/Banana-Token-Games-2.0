@@ -1,6 +1,7 @@
 import { CanvasControl } from './PassCanvasControl.js';
 import * as OpenScene3D from './OpenScene3D.js';
 import { GameState } from "./GameState.js";
+import { PreloadState } from "./PreloadState.js";
 
 
 class MenuState extends Phaser.Scene {
@@ -12,7 +13,7 @@ class MenuState extends Phaser.Scene {
     this.load.setPath("assets/games/ChipManRF/");
 
     // Make sure this isn't reloaded later
-    this.load.spine("chipman", "chipman-spine/ChipMan Flash Collection.json", "chipman-spine/ChipMan Flash Collection.atlas", true);
+    this.load.spine("chipman", "chipman-spine/Chipman.json", "chipman-spine/Chipman.atlas", true);
 
     this.load.image("titleGraphic", "graphics/ChipManTitle.png");
     this.load.image("moon", "graphics/Moon.png");
@@ -34,6 +35,8 @@ class MenuState extends Phaser.Scene {
   }
 
   resumeControlFromThreeJS() {
+    // Reclaim the canvas
+    CanvasControl.restrainCanvas();
     this.game.loop.wake(true);
 
     let background = this.add.graphics();
@@ -161,6 +164,7 @@ class MenuState extends Phaser.Scene {
 
     function startGame() {
       // Fix this later (it is a game crash)
+      //chipman.destroy();
       this.game.scene.stop("MenuState");
       this.game.scene.add("GameState", GameState, true);
     }
