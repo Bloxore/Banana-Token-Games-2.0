@@ -1,4 +1,4 @@
-import { MenuState } from "./MenuState.js";
+import { PreloadState } from "./PreloadState.js";
 
 let config = {
     type: Phaser.WEBGL,
@@ -17,7 +17,7 @@ let config = {
                 { key: 'SpinePlugin', plugin: window.SpinePlugin, mapping: 'spine' }
              ]
     },
-    scene: [ MenuState ],
+    scene: [ PreloadState ],
     physics: {
         default: 'arcade',
         arcade: {

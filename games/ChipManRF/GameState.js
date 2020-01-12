@@ -4,21 +4,25 @@ import { createFlag } from './Flag.js';
 import { ArrowScreenTransition } from './FX/ArrowScreenTransition.js';
 import { ArrowHUD } from './ArrowHUD.js';
 
-class GameState extends Phaser.Scene {
+export class GameState extends Phaser.Scene {
   constructor() {
     super({key: "GameState"});
   }
 
   preload() {
+
+    /* Setup loading scene */
+    let loadText = this.add.bitmapText(480, 455, "mainFont", "Loading: 0%", 12);
+    loadText.setDepth(0);
+    loadText.setScrollFactor(0);
+    loadText.setTintFill(0xffffff);
+
     this.load.setPath("assets/games/ChipManRF/");
     /* Level Art */
     this.load.image("levelTiles", "levelArt/levelTilemap.png");
     this.load.spritesheet("levelEntities", "levelArt/levelEntities.png", { frameWidth: 32, frameHeight: 32 });
     /* Load Level Data */
-    this.load.tilemapTiledJSON("level1", "levelData/level2.json");
-
-    /* ChipMan Spine Load */
-    this.load.spine("chipman", "chipman-spine/ChipMan Flash Collection.json", "chipman-spine/ChipMan Flash Collection.atlas", true);
+    this.load.tilemapTiledJSON("level1", "levelData/level1.json");
 
     /* Flag Spine Load */
     this.load.spine("flag", "flag-spine/ChipMan Flag.json", "flag-spine/ChipMan Flag.atlas", true);
@@ -26,8 +30,13 @@ class GameState extends Phaser.Scene {
     /* Status box */
     this.load.image("status", "graphics/StatusBox.png");
 
-    /* Bitmap font*/
-    this.load.bitmapFont("mainFont", "fonts/PressStart/PressStart2P.png", "fonts/PressStart/PressStart2P.fnt");
+    this.load.on("progress", (e) => {
+      loadText.text = "Loading: " + e.toFixed(2)*100 + "%";
+    })
+
+    this.load.on("complete", () => {
+      loadText.destroy();
+    });
   }
 
   create() {
@@ -48,6 +57,10 @@ class GameState extends Phaser.Scene {
 
     /* Setup timer object */
     this.timer = this.time.addEvent();
+
+    this.background = this.add.graphics();
+    this.background.fillStyle(0x202020);
+    this.background.fillRect(0, 0, WORLD_WIDTH, WORLD_HEIGHT);
 
     /* Chips */
     this.chipGroup = this.physics.add.group({
@@ -80,7 +93,7 @@ class GameState extends Phaser.Scene {
 
     // The time text
     //getElapsedSeconds()
-    this.timeText = this.add.bitmapText(450, 15, "mainFont", "Time: ", 24, "left");
+    this.timeText = this.add.bitmapText(450, 15, "mainFont", "Time: ", 24);
     this.timeText.setDepth(2);
     this.timeText.setOrigin(0, 0);
     this.timeText.setScrollFactor(0);
@@ -169,6 +182,16 @@ class GameState extends Phaser.Scene {
     //this.add.existing(arrow);
   }
 
+  update() {
+    // Once the player stops touching the flag (or stops moving) re-enable the hit animation
+    if (this.flag.body.overlapX == 0 && this.flag.body.overlapY == 0) {
+      this._flagBeenHit = false;
+    }
+
+    this.timeText.setText("Time:" + (this.timer.delay/1000 - Math.floor(this.timer.getElapsedSeconds())));
+    this.chipText.setText("Chips:" + (this._totalChips - this.chipGroup.getLength()) + "/" + this._totalChips)
+  }
+
   _allChipsCollected() {
     this._chipsCollected = true;
   }
@@ -243,16 +266,4 @@ class GameState extends Phaser.Scene {
       callbackScope: this
     });
   }
-
-  update() {
-    // Once the player stops touching the flag (or stops moving) re-enable the hit animation
-    if (this.flag.body.overlapX == 0 && this.flag.body.overlapY == 0) {
-      this._flagBeenHit = false;
-    }
-
-    this.timeText.setText("Time:" + (this.timer.delay/1000 - Math.floor(this.timer.getElapsedSeconds())));
-    this.chipText.setText("Chips:" + (this._totalChips - this.chipGroup.getLength()) + "/" + this._totalChips)
-  }
 }
-
-export { GameState };

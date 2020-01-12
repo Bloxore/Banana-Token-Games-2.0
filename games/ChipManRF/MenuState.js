@@ -14,16 +14,7 @@ export class MenuState extends Phaser.Scene {
 
   preload() {
     this.load.setPath("assets/games/ChipManRF/");
-
-    // Make sure this isn't reloaded later
-    this.load.spine("chipman", "chipman-spine/Chipman.json", "chipman-spine/Chipman.atlas", true);
-
-    this.load.image("titleGraphic", "graphics/ChipManTitle.png");
-    this.load.image("moon", "graphics/Moon.png");
-    this.load.image("house", "graphics/ChipManHouse.png");
-    this.load.image("startButton", "graphics/MenuButton.png");
-    this.load.image("startButtonArrow", "graphics/MenuButtonExtension.png");
-    this.load.image("startButtonBack", "graphics/MenuButtonBack.png");
+    // All preloaded
   }
 
   create() {
@@ -64,7 +55,6 @@ export class MenuState extends Phaser.Scene {
     let startButton = this.add.image(460, 240, "startButton");
     startButton.setScale(0.5, 0.5);
     startButton.setInteractive();
-    startButton.on("pointerup", this.startGame.bind(this));
     startButton.depth = 5;
 
     // The name of the game all fancy like
@@ -76,6 +66,9 @@ export class MenuState extends Phaser.Scene {
     // Add the moon bound objects to the moon
     this.moonContainer.add([house, moon, this.chipmanContainer]);
 
+    // Make the start button active
+    startButton.on("pointerup", this._startGame.bind(this));
+
     // The scene is now fully set up, I do this before the three.js hand-off
     // to reduce any intialization lag when the game switchs back to Phaser.
 
@@ -84,7 +77,7 @@ export class MenuState extends Phaser.Scene {
     this.game.loop.sleep();
     CanvasControl.freeCanvas(this.game.renderer.canvas,
                              // Make there there's a way back to Phaser
-                             this.resumeControlFromThreeJS.bind(this));
+                             this._resumeControlFromThreeJS.bind(this));
     // Notify THREE.JS everything is good to go
     OpenScene3D.startOpenCinematic();
   }
@@ -96,11 +89,11 @@ export class MenuState extends Phaser.Scene {
   /* ===== ACTION FUNCTIONS ===== */
 
   /*
-   * chipmanNextAction()
+   * _chipmanNextAction()
    * Will create a Phaser Tween based on what action is randomly decided upon
    * Special cases favor certain directions over others
    */
-  chipmanNextAction() {
+  _chipmanNextAction() {
     let actionNames = this.chipmanActions.names;
 
     if (this.chipmanContainer.angle + this.moonContainer.angle % 360 < -30 ||
@@ -137,11 +130,11 @@ export class MenuState extends Phaser.Scene {
   }
 
   /*
-   * generateChipManActions() -> object{names: array[string], *: function() ... }
+   * _generateChipManActions() -> object{names: array[string], *: function() ... }
    * Returns a large object with functions that define menu screen
    * animations for chipman.
    */
-  generateChipManActions() {
+  _generateChipManActions() {
     return {
       // Have a list of the name of each function
       // Order should be consistent and constant
@@ -154,7 +147,7 @@ export class MenuState extends Phaser.Scene {
           targets: this.chipmanContainer,
           angle: this.chipmanContainer.angle - distance,
           duration: distance / 0.02, // 0.02 is the speed
-          onComplete: this.chipmanNextAction,
+          onComplete: this._chipmanNextAction,
           onCompleteScope: this,
         })
       },
@@ -165,7 +158,7 @@ export class MenuState extends Phaser.Scene {
           targets: this.chipmanContainer,
           angle: this.chipmanContainer.angle + distance,
           duration: distance / 0.02, // 0.02 is the speed
-          onComplete: this.chipmanNextAction,
+          onComplete: this._chipmanNextAction,
           onCompleteScope: this,
         })
       },
@@ -173,7 +166,7 @@ export class MenuState extends Phaser.Scene {
         this.chipman.setAnimation(0, "idle", true);
         this.time.addEvent({
           delay: time,
-          callback: this.chipmanNextAction,
+          callback: this._chipmanNextAction,
           callbackScope: this,
         })
       },
@@ -198,10 +191,10 @@ export class MenuState extends Phaser.Scene {
   }
 
   /*
-   * resumeControlFromThreeJS()
+   * _resumeControlFromThreeJS()
    * Will get the actions going on the menu.
    */
-  resumeControlFromThreeJS() {
+  _resumeControlFromThreeJS() {
     // Reclaim the canvas
     CanvasControl.restrainCanvas();
     this.game.loop.wake(true);
@@ -214,16 +207,16 @@ export class MenuState extends Phaser.Scene {
       loop: -1,
     });
 
-    this.chipmanActions = this.generateChipManActions();
+    this.chipmanActions = this._generateChipManActions();
 
-    this.chipmanNextAction();
+    this._chipmanNextAction();
   }
 
   /*
-    startGame()
+    _startGame()
     Shuts down the main menu and begins the game proper.
   */
-  startGame() {
+  _startGame() {
     this.game.scene.stop("MenuState");
     this.game.scene.add("GameState", GameState, true);
   }

@@ -1,5 +1,4 @@
-import { CanvasControl } from './PassCanvasControl.js';
-import { GameState } from "./GameState.js";
+import { MenuState } from "./MenuState.js";
 
 /*
  * The job of this state is to load all essential assets of the game.
@@ -16,10 +15,6 @@ export class PreloadState extends Phaser.Scene {
   }
 
   preload() {
-
-  }
-
-  create() {
     /* == CLASS VARIABLES == */
 
     // Progress bar
@@ -35,13 +30,45 @@ export class PreloadState extends Phaser.Scene {
     // Progress bar
     // Outer shell (the border)
     let pBOuterShell = this.add.graphics();
-    pBOuterShell.lineStyle(5, 0x000000);
-    pBOuterShell.strokeRect(0, 0, 100, 20);
-    this.progressBar.add(pBOuterShell); // First member
+    pBOuterShell.lineStyle(4, 0x000000);
+    pBOuterShell.strokeRect(0, 0, 300, 40);
+    pBOuterShell.x = 300;
+    pBOuterShell.y = 405;
+
+    this.pBInnerShell = this.add.graphics();
+    this.pBInnerShell.fillStyle(0x000000);
+    this.pBInnerShell.fillRect(5, 5, 290, 30);
+    this.pBInnerShell.x = 300;
+    this.pBInnerShell.y = 405;
 
     /* == ACTION == */
-    console.log(this.progressBar);
-    this.progressBar.shiftPosition(400, 200);
+    // Set up all the things to be loaded here
+    this.load.setPath("assets/games/ChipManRF/");
+
+    /* ChipMan Spine Load */
+    this.load.spine("chipman", "chipman-spine/ChipMan.json", "chipman-spine/ChipMan.atlas", true);
+
+    /* Bitmap font*/
+    this.load.bitmapFont("mainFont", "fonts/PressStart/PressStart2P.png", "fonts/PressStart/PressStart2P.fnt");
+
+    /* = Main menu graphics = */
+    this.load.image("titleGraphic", "graphics/ChipManTitle.png");
+    this.load.image("moon", "graphics/Moon.png");
+    this.load.image("house", "graphics/ChipManHouse.png");
+    this.load.image("startButton", "graphics/MenuButton.png");
+    this.load.image("startButtonArrow", "graphics/MenuButtonExtension.png");
+    this.load.image("startButtonBack", "graphics/MenuButtonBack.png");
+
+    this.load.on("progress", (e) => {
+      this.pBInnerShell.clear();
+      this.pBInnerShell.fillStyle(0x000000);
+      this.pBInnerShell.fillRect(5, 5, 290*e, 30);
+    }, this);
+  }
+
+  create() {
+    this.game.scene.stop("PreloadState");
+    this.game.scene.add("MenuState", MenuState, true);
   }
 
   update() {
