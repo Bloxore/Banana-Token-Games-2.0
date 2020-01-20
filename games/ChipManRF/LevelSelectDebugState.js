@@ -14,8 +14,11 @@ export class LevelSelectDebugState extends Phaser.Scene {
     let levelList = this.cache.json.get("levelList");
 
     let list = new List(this);
-    list.newListItem("level1");
-    list.newListItem("level2");
+
+    for (let i = 0; i < levelList.length; i++) {
+      list.newListItem(levelList[i]);
+    }
+
     this.input.keyboard.addKey("DOWN").on("down", () => {
       list.nextItem();
     })
