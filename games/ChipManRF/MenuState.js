@@ -1,7 +1,5 @@
 import { CanvasControl } from './PassCanvasControl.js';
 import * as OpenScene3D from './OpenScene3D.js';
-import { GameState } from "./GameState.js";
-import { PreloadState } from "./PreloadState.js";
 
 
 export class MenuState extends Phaser.Scene {
@@ -80,10 +78,6 @@ export class MenuState extends Phaser.Scene {
                              this._resumeControlFromThreeJS.bind(this));
     // Notify THREE.JS everything is good to go
     OpenScene3D.startOpenCinematic();
-  }
-
-  update() {
-
   }
 
   /* ===== ACTION FUNCTIONS ===== */
@@ -217,8 +211,9 @@ export class MenuState extends Phaser.Scene {
     Shuts down the main menu and begins the game proper.
   */
   _startGame() {
-    this.game.scene.stop("MenuState");
-    this.game.scene.add("GameState", GameState, true);
+    this.scene.stop();
+    // this.game.scene.add("GameState", GameState, true);
+    this.scene.start("LevelSelectDebugState");
   }
 
   // Temp (only keeping here for later reference)

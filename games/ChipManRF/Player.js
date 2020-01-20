@@ -14,6 +14,7 @@ const BLINK_RANGE = [1000, 5000]; // Milliseconds between blinks
 class Player extends Phaser.GameObjects.Container {
   constructor(scene,x, y) {
     super(scene, x, y);
+    this.uniqueID = Math.random();
 
     //Render above chips
     this.depth = 2;
@@ -182,7 +183,7 @@ class Player extends Phaser.GameObjects.Container {
     this.body.setEnable(true);
   }
 
-  kill(removeFromScene) {
+  destroy(fromScene) {
     this.up_key.destroy();
     this.down_key.destroy();
     this.left_key.destroy();
@@ -190,9 +191,9 @@ class Player extends Phaser.GameObjects.Container {
 
     this.blinkTimer.destroy();
 
-    this.spine.destroy(removeFromScene);
+    this.spine.destroy(fromScene);
 
-    this.destroy(removeFromScene);
+    Phaser.GameObjects.Container.prototype.destroy.call(this, fromScene);
   }
 
   setSpineRelativePosition(x, y) {

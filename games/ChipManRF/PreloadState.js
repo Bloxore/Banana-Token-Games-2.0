@@ -1,4 +1,6 @@
 import { MenuState } from "./MenuState.js";
+import { GameState } from "./GameState.js";
+import { LevelSelectDebugState } from "./LevelSelectDebugState.js";
 
 /*
  * The job of this state is to load all essential assets of the game.
@@ -67,11 +69,14 @@ export class PreloadState extends Phaser.Scene {
   }
 
   create() {
-    this.game.scene.stop("PreloadState");
+    this.game.scene.stop();
+    // Add all of the game's scenes here
+    this.game.scene.add("LevelSelectDebugState", LevelSelectDebugState);
+    this.game.scene.add("GameState", GameState);
+
+    // Stop this state
+    this.scene.stop();
+
     this.game.scene.add("MenuState", MenuState, true);
-  }
-
-  update() {
-
   }
 }
