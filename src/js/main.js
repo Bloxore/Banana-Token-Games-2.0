@@ -1,5 +1,7 @@
 'use strict';
 
+//import "core-js";
+
 import * as game_switcher from "./game_switcher.js";
 
 import * as breaker from "../games/breaker.js";

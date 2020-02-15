@@ -55,6 +55,12 @@ export class MenuState extends Phaser.Scene {
     startButton.setInteractive();
     startButton.depth = 5;
 
+    let debugButton = this.add.image(410, 300, "startButton");
+    debugButton.setScale(0.25, 0.25);
+    debugButton.setTint("0xff0000");
+    debugButton.setInteractive();
+    debugButton.depth = 5;
+
     // The name of the game all fancy like
     let title = this.add.image(430, 100, "titleGraphic");
     title.setScale(0.5, 0.5);
@@ -66,6 +72,9 @@ export class MenuState extends Phaser.Scene {
 
     // Make the start button active
     startButton.on("pointerup", this._startGame.bind(this));
+
+    // Make the debug button active
+    debugButton.on("pointerup", this._launchDebug.bind(this));
 
     // The scene is now fully set up, I do this before the three.js hand-off
     // to reduce any intialization lag when the game switchs back to Phaser.
@@ -214,6 +223,14 @@ export class MenuState extends Phaser.Scene {
     this.scene.stop();
     // this.game.scene.add("GameState", GameState, true);
     this.scene.start("LevelSelectDebugState");
+  }
+
+  /*
+    _launchDebug()
+    Shuts down the main menu and begins the debug state
+  */
+  _launchDebug() {
+    this.scene.start("DebugState");
   }
 
   // Temp (only keeping here for later reference)

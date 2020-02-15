@@ -1,4 +1,4 @@
-import * as SpinePlugin from '../../js/SpinePlugin.js';
+import * as SpinePlugin from '../../../lib/SpinePlugin.js';
 import { GameState } from "./GameState.js";
 
 let config = {
