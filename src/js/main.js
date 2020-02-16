@@ -9,6 +9,7 @@ import * as shape_shooter from "../games/shape_shooter/shape_shooter.js";
 import * as eightbomb from "../games/EightBomb/eightbomb.js";
 import * as spinetest from "../games/SpineTest/spinetest.js";
 import * as chipmanrf from "../games/ChipManRF/chipmanrf.js";
+import * as splitarmy from "../games/SplitArmy/splitarmy.js";
 
 function run() {
   let container = new game_switcher.GameContainer(document);
@@ -17,7 +18,7 @@ function run() {
 
   container.add_to_page();
 
-  container.start_game(chipmanrf.config);
+  container.start_game(splitarmy.config);
 }
 
 run();

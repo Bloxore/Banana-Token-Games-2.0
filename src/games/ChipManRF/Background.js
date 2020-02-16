@@ -86,6 +86,7 @@ class MoonBackground extends BaseBackground {
     // Moon glow <learn shaders>
 
     // Moon dust particles
+    
   }
 
   setDepth(depth) {
