@@ -1,4 +1,5 @@
 import { GameState } from "./GameState.js";
+import { GameStateHUD } from "./GameStateHUD.js";
 
 /*
  * The job of this state is to load all essential assets of the game.
@@ -60,7 +61,7 @@ export class PreloadState extends Phaser.Scene {
   create() {
     this.game.scene.stop();
     // Add all of the game's scenes here
-    //this.game.scene.add("GameState", GameState);
+    this.game.scene.add("GameStateHUD", GameStateHUD);
 
     // Stop this state
     this.scene.stop();
