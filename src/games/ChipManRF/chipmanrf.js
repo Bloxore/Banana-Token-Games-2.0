@@ -2,28 +2,27 @@ import { PreloadState } from "./PreloadState.js";
 
 let config = {
     type: Phaser.WEBGL,
-    width: 640,
-    height: 480,
     backgroundColor: '#000000',
     scale: {
-      parent: "game",
-      mode: Phaser.Scale.FIT,
-      width: 640,
-      height: 480,
-      zoom: Phaser.Scale.Zoom.MAX_ZOOM,
+        mode: Phaser.Scale.FIT,
+        parent: 'game',
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+        width: 640,
+        height: 480,
+        zoom: Phaser.MAXZOOM,
     },
     plugins: {
       scene: [
                 { key: 'SpinePlugin', plugin: window.SpinePlugin, mapping: 'spine' }
              ]
     },
-    scene: [ PreloadState ],
     physics: {
         default: 'arcade',
         arcade: {
-          //debug: true
+            debug: false
         }
-    }
+    },
+    scene: PreloadState
 };
 
 export { config };

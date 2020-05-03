@@ -3,6 +3,7 @@ import { Chip }  from './Chip.js';
 import { createFlag } from './Flag.js';
 import { ArrowScreenTransition } from './FX/ArrowScreenTransition.js';
 import { ArrowHUD } from './ArrowHUD.js';
+import { Background, BACKGROUND_TYPES } from './Background.js';
 
 export class GameState extends Phaser.Scene {
   constructor() {
@@ -72,9 +73,8 @@ export class GameState extends Phaser.Scene {
     let timer = this.time.addEvent();
     this.data.set("timer", timer);
 
-    let background = this.add.graphics();
-    background.fillStyle(0x202020);
-    background.fillRect(0, 0, WORLD_WIDTH, WORLD_HEIGHT);
+    let background = new Background(this, WORLD_WIDTH, WORLD_HEIGHT);
+    background.setLayer(0, BACKGROUND_TYPES.MOON, 0);
 
     /* Chips */
     let chipGroup = this.physics.add.group({

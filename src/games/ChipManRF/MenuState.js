@@ -1,5 +1,6 @@
 import { CanvasControl } from './PassCanvasControl.js';
 import * as OpenScene3D from './OpenScene3D.js';
+import { FullScreenButton } from './FullScreenButton.js';
 
 
 export class MenuState extends Phaser.Scene {
@@ -65,6 +66,13 @@ export class MenuState extends Phaser.Scene {
     let title = this.add.image(430, 100, "titleGraphic");
     title.setScale(0.5, 0.5);
     title.depth = 5;
+
+    // The fullscreen button
+    let fsButton = new FullScreenButton(this, 0, 0);
+    fsButton.x = this.cameras.main.displayWidth - fsButton.width - 10;
+    fsButton.y = this.cameras.main.displayHeight - fsButton.height - 10;
+
+    this.add.existing(fsButton);
 
     /* === Action === */
     // Add the moon bound objects to the moon

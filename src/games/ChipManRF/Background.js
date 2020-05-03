@@ -3,13 +3,9 @@
   background have it's own class?
   Well...
 
-  The backgrounds in ChipMan are effectively split into 3
-  parts:
-  (0) Very near
-  (1) Further
-  (2) Very far away
+  The backgrounds should be about 5 layers, thus I limited the number in this class
 
-  Not every background instance may use all three layers, but it can
+  Not every background instance may use all five layers, but it can
   if it chooses.
 */
 export class Background extends Phaser.GameObjects.GameObject {
@@ -23,11 +19,13 @@ export class Background extends Phaser.GameObjects.GameObject {
     this.width = width;
     this.height = height;
 
-    // Only the indexes 0, 1, and 2 may be read and changed
+    // Only the indexes 0, 1, 2, 3, and 4 may be read and changed
     this.backgroundLayers = {
       0: null,
       1: null,
-      2: null
+      2: null,
+      3: null,
+      4: null
     };
   }
 
@@ -38,12 +36,12 @@ export class Background extends Phaser.GameObjects.GameObject {
     and sets the passed layer to that bg.
   */
   setLayer(layer, bg, scrollFactor) {
-    if (layer < 0 || layer > 2) {
+    if (layer < 0 || layer > 4) {
       throw "Layer is out of range";
     }
     // Initialize the new background
     this.backgroundLayers[layer] = new bg(this.scene, this.width, this.height);
-    this.backgroundLayers[layer].setDepth(layer);
+    this.backgroundLayers[layer].setDepth(layer / 5); // depths are 0, .2, .4, .6, .8
   }
 }
 
@@ -86,7 +84,7 @@ class MoonBackground extends BaseBackground {
     // Moon glow <learn shaders>
 
     // Moon dust particles
-    
+
   }
 
   setDepth(depth) {
