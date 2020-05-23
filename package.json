@@ -1,0 +1,33 @@
+{
+  "name": "bananatokenarcade",
+  "version": "1.0.0",
+  "description": "The HTML5 game library for BTA",
+  "scripts": {
+    "run": "http-server -c-1 -o",
+    "build": "build_dev.bat",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bloxore/Banana-Token-Games-2.0.git"
+  },
+  "author": "Max Klinman",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Bloxore/Banana-Token-Games-2.0/issues"
+  },
+  "homepage": "https://github.com/Bloxore/Banana-Token-Games-2.0#readme",
+  "dependencies": {
+    "core-js": "^3.6.4",
+    "npm": "^6.13.7"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "babel-preset-minify": "^0.5.1",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
+  },
+  "private": true
+}
