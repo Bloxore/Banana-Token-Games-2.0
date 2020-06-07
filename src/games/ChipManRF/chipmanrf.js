@@ -1,4 +1,4 @@
-import { PreloadState } from "./PreloadState.js";
+import { PreloadState } from "./States/PreloadState.js";
 
 let config = {
     type: Phaser.WEBGL,
