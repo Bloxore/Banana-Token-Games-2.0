@@ -1,6 +1,5 @@
-import { CanvasControl } from './PassCanvasControl.js';
-import * as OpenScene3D from './OpenScene3D.js';
 import { FullScreenButton } from './FullScreenButton.js';
+import { MenuButton } from './MenuButton.js';
 
 
 export class MenuState extends Phaser.Scene {
@@ -29,7 +28,8 @@ export class MenuState extends Phaser.Scene {
 
     // Holds the moon and everything on it (to rotate slowly)
     // This includes chipman's container!
-    this.moonContainer = this.add.container(100, 450);
+    this.moonContainer = this.add.container(320, 820);
+    this.moonContainer.setScale(2, 2);
     this.moonContainer.depth = 1;
 
     /* === Local Variables === */
@@ -51,54 +51,55 @@ export class MenuState extends Phaser.Scene {
     // Depth is set in the order of the add array
 
     // Add the menu options
-    let startButton = this.add.image(460, 240, "startButton");
-    startButton.setScale(0.5, 0.5);
-    startButton.setInteractive();
-    startButton.depth = 5;
+    let startButton = new MenuButton(this, 320, 380, "startButton");
+    startButton.setDepth(5);
+    startButton.setScale(2, 2);
+    this.add.existing(startButton);
 
-    let debugButton = this.add.image(410, 300, "startButton");
+    /*let debugButton = this.add.image(410, 300, "startButton");
     debugButton.setScale(0.25, 0.25);
     debugButton.setTint("0xff0000");
     debugButton.setInteractive();
-    debugButton.depth = 5;
+    debugButton.depth = 5;*/
 
     // The name of the game all fancy like
-    let title = this.add.image(430, 100, "titleGraphic");
-    title.setScale(0.5, 0.5);
+    let title = this.add.image(320, 120, "titleGraphic");
+    title.setScale(0.8, 0.8);
     title.depth = 5;
 
-    // The fullscreen button
-    let fsButton = new FullScreenButton(this, 0, 0);
-    fsButton.x = this.cameras.main.displayWidth - fsButton.width - 10;
-    fsButton.y = this.cameras.main.displayHeight - fsButton.height - 10;
-
-    this.add.existing(fsButton);
+    // Copyright info
+    let copyright = this.add.bitmapText(320, 480, "mainFont", "(C) 2020 Copyright BananaToken Arcade All Rights Reserved", 9);
+    copyright.setOrigin(.5,1);
+    copyright.setDepth(6);
+    copyright.setTintFill(0x000000);
 
     /* === Action === */
     // Add the moon bound objects to the moon
     this.moonContainer.add([house, moon, this.chipmanContainer]);
 
     // Make the start button active
-    startButton.on("pointerup", this._startGame.bind(this));
+    //startButton.on("pointerup", this._startGame.bind(this));
 
     // Make the debug button active
-    debugButton.on("pointerup", this._launchDebug.bind(this));
+    //debugButton.on("pointerup", this._launchDebug.bind(this));
 
-    // The scene is now fully set up, I do this before the three.js hand-off
-    // to reduce any intialization lag when the game switchs back to Phaser.
+    // All things on the "rotating" moon should go here
+    this.add.tween({
+      targets: this.moonContainer,
+      angle: 360,
+      duration: 70000,
+      loop: -1,
+    });
 
-    // Prepare the hand over to Three.JS
-    this.game.renderer.clearPipeline();
-    this.game.loop.sleep();
-    CanvasControl.freeCanvas(this.game.renderer.canvas,
-                             // Make there there's a way back to Phaser
-                             this._resumeControlFromThreeJS.bind(this));
-    // Notify THREE.JS everything is good to go
-    OpenScene3D.startOpenCinematic();
+    this.chipmanActions = this._generateChipManActions();
+
+    this._chipmanNextAction();
   }
 
   /* ===== ACTION FUNCTIONS ===== */
-
+  update() {
+    console.log(this.chipmanContainer.angle + this.moonContainer.angle % 360)
+  }
   /*
    * _chipmanNextAction()
    * Will create a Phaser Tween based on what action is randomly decided upon
@@ -106,9 +107,7 @@ export class MenuState extends Phaser.Scene {
    */
   _chipmanNextAction() {
     let actionNames = this.chipmanActions.names;
-
-    if (this.chipmanContainer.angle + this.moonContainer.angle % 360 < -30 ||
-        this.chipmanContainer.angle + this.moonContainer.angle % 360 > 270) {
+    if (this.chipmanContainer.angle + this.moonContainer.angle % 360 < -30) {
       let distance = Math.random() * (60) + 40;
       this.chipmanActions["runRight"](distance);
       // Randomly jumps
@@ -116,7 +115,7 @@ export class MenuState extends Phaser.Scene {
         this.chipmanActions["jump"]();
       }
     }
-    else if (this.chipmanContainer.angle + this.moonContainer.angle % 360 > 70) {
+    else if (this.chipmanContainer.angle + this.moonContainer.angle % 360 > 30) {
       let distance = Math.random() * (60) + 40;
       this.chipmanActions["runLeft"](distance);
       // Randomly jumps
@@ -202,28 +201,6 @@ export class MenuState extends Phaser.Scene {
   }
 
   /*
-   * _resumeControlFromThreeJS()
-   * Will get the actions going on the menu.
-   */
-  _resumeControlFromThreeJS() {
-    // Reclaim the canvas
-    CanvasControl.restrainCanvas();
-    this.game.loop.wake(true);
-
-    // All things on the "rotating" moon should go here
-    this.add.tween({
-      targets: this.moonContainer,
-      angle: 360,
-      duration: 70000,
-      loop: -1,
-    });
-
-    this.chipmanActions = this._generateChipManActions();
-
-    this._chipmanNextAction();
-  }
-
-  /*
     _startGame()
     Shuts down the main menu and begins the game proper.
   */
@@ -240,67 +217,4 @@ export class MenuState extends Phaser.Scene {
   _launchDebug() {
     this.scene.start("DebugState");
   }
-
-  // Temp (only keeping here for later reference)
-  /*titleGraphicAnimation(titleGraphic) {
-    titleGraphic.setTint(0x000000);
-    // Fade in title (old fashion method)
-    let titleTimeline = this.tweens.createTimeline();
-
-    // Fade black to blue
-    titleTimeline.queue(this.tweens.addCounter({
-        from: 0,
-        to: 128,
-        duration: 100,
-        paused: true,
-        onUpdate: function (tween)
-        {
-            let value = Math.floor(tween.getValue());
-
-            titleGraphic.setTint(Phaser.Display.Color.GetColor(0, 0, value));
-        }
-    }));
-
-    // Blue to white
-    titleTimeline.queue(this.tweens.addCounter({
-        from: 0,
-        to: 255,
-        duration: 300,
-        paused: true,
-        onUpdate: function (tween)
-        {
-            let value = Math.floor(tween.getValue());
-
-            let offsetValue = 128 + value/2;
-
-            titleGraphic.setTint(Phaser.Display.Color.GetColor(value, value, offsetValue));
-        }
-    }));
-
-    // White to yellow (TODO: also scale up slightly)
-    titleTimeline.queue(this.tweens.addCounter({
-        from: 255,
-        to: 50,
-        delay: 2000,
-        duration: 600,
-        easing: Phaser.Math.Easing.Expo.Out,
-        paused: true,
-        onUpdate: function (tween)
-        {
-            let value = Math.floor(tween.getValue());
-
-            titleGraphic.setTint(Phaser.Display.Color.GetColor(255, 255, value));
-        }
-    }));
-
-    titleTimeline.play();
-    // Zoom Title
-    this.add.tween({
-      targets: titleGraphic,
-      delay: 5000,
-      scaleX: 20,
-      scaleY: 20,
-      ease: Phaser.Math.Easing.Expo.In
-    })
-  }*/
 }
