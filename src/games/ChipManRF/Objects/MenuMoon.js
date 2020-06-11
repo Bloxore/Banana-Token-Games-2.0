@@ -33,6 +33,9 @@ export class MenuMoon extends Phaser.GameObjects.Container {
 
     this.add([house, moon, this.chipmanContainer]);
 
+    // Start the moon slightly to the left for the screen scroll
+    this.angle = - 30;
+
     // All things on the "rotating" moon should go here
     this.scene.add.tween({
       targets: this,

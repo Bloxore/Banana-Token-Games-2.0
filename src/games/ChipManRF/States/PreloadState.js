@@ -63,6 +63,7 @@ export class PreloadState extends Phaser.Scene {
     this.load.image("menuButtonMask", "graphics/MenuButtonMask.png");
     this.load.image("menuButtonExt", "graphics/MenuButtonExtension.png");
     this.load.image("menuButtonBack", "graphics/MenuButtonBack.png");
+    this.load.image("star", "graphics/star.png");
 
     this.load.on("progress", (e) => {
       this.pBInnerShell.clear();
