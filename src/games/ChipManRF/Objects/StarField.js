@@ -8,6 +8,7 @@ export class StarField extends Phaser.GameObjects.Group {
   constructor(scene) {
     super(scene);
     this.depth = 0;
+    this.runChildUpdate = true;
   }
 
   /*
@@ -62,6 +63,11 @@ export class StarField extends Phaser.GameObjects.Group {
       let scale = config.distribution(random.frac())*(config.sizeRange[1] - config.sizeRange[0]) + config.sizeRange[0];
       star.setScale(scale);
       star.setDepth(this.depth);
+
+      star.update = () => {
+        // TODO: Make better star animation
+        star.setScale(Math.abs(Math.sin(this.scene.time.now/200)*scale) + .1);
+      }
     }
   }
 

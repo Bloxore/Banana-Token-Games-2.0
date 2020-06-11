@@ -1,5 +1,4 @@
 import { FullScreenButton } from '../Objects/UI/FullScreenButton.js';
-import { MenuButton } from '../Objects/UI/MenuButton.js';
 import { MenuMoon } from '../Objects/MenuMoon.js';
 import { DISTRIBUTIONS, StarField } from '../Objects/StarField.js';
 
@@ -42,17 +41,29 @@ export class MenuState extends Phaser.Scene {
 
     this._generateStarFields();
 
-    // Add the menu options
-    /*let startButton = new MenuButton(this, 320, 380, "startButton");
-    startButton.setDepth(5);
-    startButton.setScale(2, 2);
-    this.add.existing(startButton);*/
+    let fragsrc =
+    `
+    #ifdef GL_ES
+    precision mediump float;
+    #endif
 
-    /*let debugButton = this.add.image(410, 300, "startButton");
-    debugButton.setScale(0.25, 0.25);
-    debugButton.setTint("0xff0000");
-    debugButton.setInteractive();
-    debugButton.depth = 5;*/
+    uniform float time;
+
+    void main(void) {
+      gl_FragColor = vec4(abs(sin(time + 1.0)),abs(sin(time + 2.0)),abs(sin(time+ 3.0)),1.0);
+    }
+    `;
+    let baseShader = new Phaser.Display.BaseShader("rainbow", fragsrc);
+    let shader = this.add.shader(baseShader, 320, 315,480, 100).setDepth(10);
+
+
+    // Add the menu options
+    let startText = this.add.bitmapText(320, 320, "mainFont", "Click or Tap to Start", 11);
+    startText.setOrigin(.5,1);
+    startText.setDepth(6);
+    startText.setTintFill(0xffffff);
+    let textMask = startText.createBitmapMask();
+    shader.setMask(textMask);
 
     // The name of the game all fancy like
     let title = this.add.image(320, 120, "titleGraphic");
@@ -125,6 +136,7 @@ export class MenuState extends Phaser.Scene {
   _generateStarFields() {
     // Stars
     let stars = new StarField(this);
+    this.add.existing(stars);
     stars.setDepth(1);
     stars.generateField({
       bounds: new Phaser.Geom.Rectangle(0, -this.game.config.height*4, this.game.config.width, this.game.config.height),
@@ -151,7 +163,7 @@ export class MenuState extends Phaser.Scene {
       bounds: new Phaser.Geom.Rectangle(0, -this.game.config.height, this.game.config.width, this.game.config.height*2),
       numStars: 200,
       sizeRange: [.2, .6],
-      randomSeed: "arcade",
+      randomSeed: "arcade++",
       distribution: DISTRIBUTIONS.POLY
     });
   }
