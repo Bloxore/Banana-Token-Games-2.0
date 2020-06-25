@@ -64,9 +64,13 @@ export class StarField extends Phaser.GameObjects.Group {
       star.setScale(scale);
       star.setDepth(this.depth);
 
+      let offset = Phaser.Math.RND.integerInRange(0, 10000)
+
+      star.setRotation(random.frac() * 2*Math.PI);
+
       star.update = () => {
         // TODO: Make better star animation
-        star.setScale(Math.abs(Math.sin(this.scene.time.now/200)*scale) + .1);
+        star.setScale(Math.abs(Math.sin((this.scene.time.now+offset)/200)*(scale)));
       }
     }
   }

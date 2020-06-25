@@ -140,30 +140,30 @@ export class MenuState extends Phaser.Scene {
     stars.setDepth(1);
     stars.generateField({
       bounds: new Phaser.Geom.Rectangle(0, -this.game.config.height*4, this.game.config.width, this.game.config.height),
-      numStars: 100,
-      sizeRange: [.2, .6],
+      numStars: 50,
+      sizeRange: [.5, .6],
       randomSeed: "banana",
       distribution: DISTRIBUTIONS.POLY
     })
     stars.generateField({
       bounds: new Phaser.Geom.Rectangle(0, -this.game.config.height*3, this.game.config.width, this.game.config.height),
-      numStars: 100,
-      sizeRange: [.2, .6],
+      numStars: 50,
+      sizeRange: [.5, .6],
       randomSeed: "token+",
       distribution: DISTRIBUTIONS.POLY
     });
     stars.generateField({
       bounds: new Phaser.Geom.Rectangle(0, -this.game.config.height*2, this.game.config.width, this.game.config.height),
-      numStars: 100,
-      sizeRange: [.2, .6],
+      numStars: 50,
+      sizeRange: [.5, .6],
       randomSeed: "token+",
       distribution: DISTRIBUTIONS.POLY
     });
     stars.generateField({
       bounds: new Phaser.Geom.Rectangle(0, -this.game.config.height, this.game.config.width, this.game.config.height*2),
-      numStars: 200,
-      sizeRange: [.2, .6],
-      randomSeed: "arcade++",
+      numStars: 75,
+      sizeRange: [.5, .6],
+      randomSeed: "arcade",
       distribution: DISTRIBUTIONS.POLY
     });
   }
