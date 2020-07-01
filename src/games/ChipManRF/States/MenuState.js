@@ -22,8 +22,6 @@ export class MenuState extends Phaser.Scene {
   create() {
     this.cameras.main.setScroll(0, -this.game.config.height*4);
 
-    this._cameraPanToTitle();
-
     /* === Class Variables === */
     // Holds the moon and everything on it (to rotate slowly)
     // This includes chipman's container!
@@ -39,7 +37,15 @@ export class MenuState extends Phaser.Scene {
     background.fillRect(0, 0, 640, 480);
     background.depth = 0;
 
-    this._generateStarFields();
+    let stars = this._generateStarFields();
+
+    this._cameraPanToTitle(() => {
+      // Kill those offscreen stars to reduce CPU load
+      for (let star of stars.topStars.children.entries) {
+        // Hopefully the act of destruction isn't lagging in it of itself
+        star.destroy();
+      }
+    });
 
     let fragsrc =
     `
@@ -135,36 +141,45 @@ export class MenuState extends Phaser.Scene {
 
   _generateStarFields() {
     // Stars
-    let stars = new StarField(this);
-    this.add.existing(stars);
-    stars.setDepth(1);
-    stars.generateField({
+    let topStars = new StarField(this);
+    this.add.existing(topStars);
+    topStars.setDepth(1);
+    topStars.generateField({
       bounds: new Phaser.Geom.Rectangle(0, -this.game.config.height*4, this.game.config.width, this.game.config.height),
       numStars: 50,
       sizeRange: [.5, .6],
       randomSeed: "banana",
       distribution: DISTRIBUTIONS.POLY
     })
-    stars.generateField({
+    topStars.generateField({
       bounds: new Phaser.Geom.Rectangle(0, -this.game.config.height*3, this.game.config.width, this.game.config.height),
       numStars: 50,
       sizeRange: [.5, .6],
       randomSeed: "token+",
       distribution: DISTRIBUTIONS.POLY
     });
-    stars.generateField({
+    topStars.generateField({
       bounds: new Phaser.Geom.Rectangle(0, -this.game.config.height*2, this.game.config.width, this.game.config.height),
       numStars: 50,
       sizeRange: [.5, .6],
       randomSeed: "token+",
       distribution: DISTRIBUTIONS.POLY
     });
-    stars.generateField({
+
+    let titleStars = new StarField(this);
+    this.add.existing(titleStars);
+    titleStars.setDepth(1);
+    titleStars.generateField({
       bounds: new Phaser.Geom.Rectangle(0, -this.game.config.height, this.game.config.width, this.game.config.height*2),
       numStars: 75,
       sizeRange: [.5, .6],
       randomSeed: "arcade",
       distribution: DISTRIBUTIONS.POLY
     });
+
+    return {
+      topStars: topStars,
+      titleStars: titleStars
+    };
   }
 }
