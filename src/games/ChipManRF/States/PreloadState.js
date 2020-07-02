@@ -57,6 +57,7 @@ export class PreloadState extends Phaser.Scene {
 
     /* = Main menu graphics = */
     this.load.image("titleGraphic", "graphics/ChipManTitle.png");
+    this.load.image("titleShadow", "graphics/Title.png");
     this.load.image("moon", "graphics/Moon.png");
     this.load.image("house", "graphics/ChipManHouse.png");
     this.load.image("menuButton", "graphics/MenuButton.png");

@@ -16,7 +16,27 @@ export class MenuState extends Phaser.Scene {
   }
 
   update() {
-    //console.log(this.cameras.main.scrollY);
+    // Title wobble
+    if (this.titleWobbleEnable) {
+      this.title.x = Math.sin(this.titleWobbleFrameCount/70)*10 + this.titleOrigin.x
+      this.title.y = Math.sin(this.titleWobbleFrameCount/45)*10 + this.titleOrigin.y
+      this.titleWobbleFrameCount++;
+    }
+
+    // Leave behind that cool 90s fade effect
+    let titleFade = this.add.image(this.title.x, this.title.y, "titleShadow")
+    titleFade.depth = 4;
+    titleFade.setScale(this.title.scaleX);
+    titleFade.setTintFill(0xfec909);
+    this.add.tween({
+      targets: titleFade,
+      alpha: 0,
+      duration: 1000,
+      onCompleteScope: this,
+      onComplete: () => {
+        titleFade.destroy();
+      }
+    })
   }
 
   create() {
@@ -38,14 +58,6 @@ export class MenuState extends Phaser.Scene {
     background.depth = 0;
 
     let stars = this._generateStarFields();
-
-    this._cameraPanToTitle(() => {
-      // Kill those offscreen stars to reduce CPU load
-      for (let star of stars.topStars.children.entries) {
-        // Hopefully the act of destruction isn't lagging in it of itself
-        star.destroy();
-      }
-    });
 
     let fragsrc =
     `
@@ -72,9 +84,16 @@ export class MenuState extends Phaser.Scene {
     shader.setMask(textMask);
 
     // The name of the game all fancy like
-    let title = this.add.image(320, 120, "titleGraphic");
-    title.setScale(0.8, 0.8);
-    title.depth = 5;
+    this.title = this.add.image(320, 120, "titleShadow");
+    this.title.setScale(0, 0);
+    this.title.setTintFill(0x6abd45);
+    this.title.depth = 5;
+    this.titleOrigin = {
+      x: 320,
+      y: 120
+    }
+    this.titleWobbleFrameCount = 0;
+    this.titleWobbleEnable = false;
 
     // Copyright info
     let copyright = this.add.bitmapText(320, 480, "mainFont", "(C) 2020 Copyright BananaToken Arcade All Rights Reserved", 9);
@@ -82,9 +101,76 @@ export class MenuState extends Phaser.Scene {
     copyright.setDepth(6);
     copyright.setTintFill(0x000000);
 
-    /* === Action === */
-    // Make the start button active
-    //startButton.on("pointerup", this._startGame.bind(this));
+    // Camera pan animation
+    this._cameraPanToTitle(() => {
+      // Kill those offscreen stars to reduce CPU load
+      for (let star of stars.topStars.children.entries) {
+        // Hopefully the act of destruction isn't lagging in it of itself
+        star.destroy();
+      }
+
+      this.titleWobbleEnable = true;
+      // Make title zoom in
+      let titleZoomTween = this.add.tween({
+        targets: this.title,
+        scaleX: 0.8,
+        scaleY: 0.8,
+        ease: Phaser.Math.Easing.Quintic.In,
+        duration: 1000,
+        onCompleteScope: this,
+      })
+
+      // Start the chipman moon animations
+      this.time.addEvent({
+        delay: 200,
+        callbackScope: this,
+        callback: () => {
+          this.moonContainer.startChipman();
+        }
+      });
+
+      // Start listening for the GameStart click
+      this.input.once('pointerdown', () => {
+        titleZoomTween.remove();
+
+        // Mega zoom the title towards the screen
+        this.titleWobbleEnable = false;
+        this.add.tween({
+          targets: this.title,
+          scaleX: 100,
+          scaleY: 100,
+          duration: 2000,
+        })
+        this.add.tween({
+          targets: this.title,
+          y: 240,
+          x: 320,
+          duration: 1000,
+          ease: Phaser.Math.Easing.Quintic.InOut,
+        })
+
+        // Fade our the moon for the camera zoom
+        this.add.tween({
+          targets: [this.moonContainer, startText, textMask],
+          alpha: 0,
+          duration: 2000,
+          delay: 2000
+        })
+
+        // Zoom the camera into the darkness
+        this.add.tween({
+          targets: this.cameras.main,
+          zoom: 14,
+          duration: 4000,
+          ease: Phaser.Math.Easing.Quintic.In,
+          onCompleteScope: this,
+          onComplete: () => {
+            // Start the game
+            this._startGame();
+          }
+        })
+      })
+    });
 
     // Make the debug button active
     //debugButton.on("pointerup", this._launchDebug.bind(this));
@@ -172,6 +258,14 @@ export class MenuState extends Phaser.Scene {
     titleStars.generateField({
       bounds: new Phaser.Geom.Rectangle(0, -this.game.config.height, this.game.config.width, this.game.config.height*2),
       numStars: 75,
+      sizeRange: [.5, .6],
+      randomSeed: "arcade",
+      distribution: DISTRIBUTIONS.POLY
+    });
+
+    titleStars.generateField({
+      bounds: new Phaser.Geom.Rectangle(0, 100, this.game.config.width/3, this.game.config.height/2),
+      numStars: 5,
       sizeRange: [.5, .6],
       randomSeed: "arcade",
       distribution: DISTRIBUTIONS.POLY

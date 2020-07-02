@@ -14,11 +14,13 @@ export class MenuMoon extends Phaser.GameObjects.Container {
     // The chipman spine that is shown running around on the title screen
     this.chipman = this.scene.add.spine(0, -222, "chipman");
     this.chipman.setScale(0.1, 0.1);
+    this.chipman.alpha = 0;
 
     // A mostly empty container that only holds chipman
     // Phaser strongly reccomends against this, but until I can rotate
     //  or anchor a spine object, this is my only option.
     this.chipmanContainer = this.scene.add.container(0, 0, this.chipman)
+    this.chipmanContainer.angle = -4;
 
     // Chipman's house that will live and rotate on the moon
     let house = this.scene.add.image(0, 0, "house");
@@ -44,9 +46,21 @@ export class MenuMoon extends Phaser.GameObjects.Container {
       loop: -1,
     });
 
-    this.chipmanActions = this._generateChipManActions();
 
-    this._chipmanNextAction();
+  }
+
+  startChipman() {
+    this.scene.add.tween({
+      targets: this.chipman,
+      alpha: 1,
+      duration: 100,
+      onCompleteScope: this,
+      onComplete: () => {
+        this.chipmanActions = this._generateChipManActions();
+
+        this._chipmanNextAction();
+      }
+    })
   }
 
   /*
