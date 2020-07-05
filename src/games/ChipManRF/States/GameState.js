@@ -57,14 +57,27 @@ export class GameState extends Phaser.Scene {
     /* Constants */
     const TILE_WIDTH = 32;
     const TILE_HEIGHT = 32;
-    const HORIZONTAL_TILES = 20;
-    const VERTICAL_TILES = 74;
-    const WORLD_WIDTH = TILE_WIDTH * HORIZONTAL_TILES;
-    const WORLD_HEIGHT = TILE_HEIGHT * VERTICAL_TILES;
 
     /* Game variables */
     this.data.set("chipsCollected", false);
     this.data.set("totalChips", 0);
+
+    /*
+      Setup Level Tilemap
+      Do this first so that I can get this number of total tiles
+     */
+    let levelKey = this.data.get("levelKey");
+    let tilemap = this.make.tilemap({ key: levelKey });
+    let tiles = tilemap.addTilesetImage("levelTilemap", "levelTiles");
+    let layer = tilemap.createStaticLayer(0, tiles, 0, 0);
+    tilemap.setCollisionBetween(1, 6);
+    layer.setDepth(1);
+
+    const HORIZONTAL_TILES = 20;
+    const VERTICAL_TILES = 74;
+    console.log(tilemap.height);
+    const WORLD_WIDTH = TILE_WIDTH * HORIZONTAL_TILES;
+    const WORLD_HEIGHT = TILE_HEIGHT * VERTICAL_TILES;
 
     /* Setup camera */
     this.cameras.main.setBounds(0, 0, WORLD_WIDTH, WORLD_HEIGHT);
@@ -74,7 +87,9 @@ export class GameState extends Phaser.Scene {
     this.data.set("timer", timer);
 
     let background = new Background(this, WORLD_WIDTH, WORLD_HEIGHT);
+    background.setDepth(0);
     background.setLayer(0, BACKGROUND_TYPES.MOON, 0);
+    background.setLayer(1, BACKGROUND_TYPES.STAR, 0)
 
     /* Chips */
     let chipGroup = this.physics.add.group({
@@ -82,29 +97,25 @@ export class GameState extends Phaser.Scene {
       callback: this._timeOut,
       callbackScope: this
     });
+    chipGroup.setDepth(2);
     this.data.set("chipGroup", chipGroup);
 
     let flag = createFlag(this, 0, 0);
+    flag.setDepth(2);
     this.data.set("flag", flag);
 
     /* Setup Player */
     let player = new Player(this, 200, 200);
     this.add.existing(player);
     this.cameras.main.startFollow(player, true);
+    player.setDepth(3);
     this.data.set("player", player);
-
-    /* Setup Level Tilemap */
-    let levelKey = this.data.get("levelKey");
-    let tilemap = this.make.tilemap({ key: levelKey });
-    let tiles = tilemap.addTilesetImage("levelTilemap", "levelTiles");
-    let layer = tilemap.createStaticLayer(0, tiles, 0, 0);
-    tilemap.setCollisionBetween(1, 6);
 
     /* Git sum HUD up in here */
     // The hud box that stores the time text and chip count
     let statusBox = this.add.image(641,-1,"status");
     statusBox.setOrigin(1, 0);
-    statusBox.setDepth(2);
+    statusBox.setDepth(4);
     statusBox.setScale(1, .75);
     statusBox.setScrollFactor(0);
     statusBox.setAlpha(.9);
@@ -113,13 +124,13 @@ export class GameState extends Phaser.Scene {
     // The time text
     //getElapsedSeconds()
     let timeText = this.add.bitmapText(450, 15, "mainFont", "Time: ", 24);
-    timeText.setDepth(2);
+    timeText.setDepth(5);
     timeText.setOrigin(0, 0);
     timeText.setScrollFactor(0);
     this.data.set("timeText", timeText);
 
     let chipText = this.add.bitmapText(455, 45, "mainFont", "Chips: ", 16);
-    chipText.setDepth(2);
+    chipText.setDepth(5);
     chipText.setOrigin(0, 0);
     chipText.setScrollFactor(0);
     this.data.set("chipText", chipText);
@@ -149,7 +160,7 @@ export class GameState extends Phaser.Scene {
       if (object.name == "Player Spawn") {
         playerSpawnPos = object;
       } else if (object.name == "Chip") {
-        chipGroup.add(new Chip(this, object.x, object.y), true);
+        chipGroup.add(new Chip(this, object.x, object.y).setDepth(2), true);
       } else if (object.name == "Flag") {
         flag.setPosition(object.x, object.y);
       } else if (object.name == "Timer") {
