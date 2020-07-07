@@ -1,3 +1,5 @@
+import { StarField, DISTRIBUTIONS } from './StarField.js';
+
 /*
   Some may ask, and rightfully so, why on earth does the
   background have it's own class?
@@ -18,6 +20,8 @@ export class Background extends Phaser.GameObjects.GameObject {
 
     this.width = width;
     this.height = height;
+
+    this.depth = 0;
 
     // Only the indexes 0, 1, 2, 3, and 4 may be read and changed
     this.backgroundLayers = {
@@ -41,7 +45,21 @@ export class Background extends Phaser.GameObjects.GameObject {
     }
     // Initialize the new background
     this.backgroundLayers[layer] = new bg(this.scene, this.width, this.height);
-    this.backgroundLayers[layer].setDepth(layer / 5); // depths are 0, .2, .4, .6, .8
+    this.backgroundLayers[layer].setDepth(this.depth + layer / 5); // depths are 0, .2, .4, .6, .8
+  }
+
+  /*
+    Try to do this first
+  */
+  setDepth(depth) {
+    this.depth = depth;
+
+    let i;
+    for (i = 0; i < 5; i++) {
+      if (this.backgroundLayers[i] != null) {
+          this.backgroundLayers[i].setDepth(depth + i/5);
+      }
+    }
   }
 }
 
@@ -92,6 +110,30 @@ class MoonBackground extends BaseBackground {
   }
 }
 
+class StarBackground extends BaseBackground {
+  constructor(scene, width, height) {
+    super(scene, width, height);
+
+    // The star field
+    this.starfield = new StarField(scene);
+    this.starfield.generateField({
+      bounds: new Phaser.Geom.Rectangle(0, 0, width, height),
+      numStars: 200,
+      sizeRange: [.5, .6],
+      randomSeed: "banana",
+      distribution: DISTRIBUTIONS.POLY
+    })
+
+    scene.add.existing(this.starfield);
+  }
+
+  setDepth(depth) {
+    // This is slow af (but whatevs)
+    this.starfield.setDepth(depth);
+  }
+}
+
 export let BACKGROUND_TYPES = {
-  MOON: MoonBackground
+  MOON: MoonBackground,
+  STAR: StarBackground
 };
