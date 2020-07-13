@@ -216,12 +216,12 @@ export class GameState extends Phaser.Scene {
       }
     });
 
-    let arrow = new ArrowHUD(this, player.x, player.y, {
+    /*let arrow = new ArrowHUD(this, player.x, player.y, {
       arrowWidth: 600,
       arrowHeight: 120,
       cutPercent: 0.1
     });
-    this.add.existing(arrow);
+    this.add.existing(arrow);*/
 
     // DO NOT TOUCH THIS (pls)
     // Sometimes phaser likes to update before running create

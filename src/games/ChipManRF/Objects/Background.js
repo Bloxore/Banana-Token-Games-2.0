@@ -114,11 +114,14 @@ class StarBackground extends BaseBackground {
   constructor(scene, width, height) {
     super(scene, width, height);
 
+    // Generate a perdictable amount of stars based on stage size
+    let numStars = Math.floor(width*height / 10000);
+
     // The star field
     this.starfield = new StarField(scene);
     this.starfield.generateField({
       bounds: new Phaser.Geom.Rectangle(0, 0, width, height),
-      numStars: 200,
+      numStars: numStars,
       sizeRange: [.5, .6],
       randomSeed: "banana",
       distribution: DISTRIBUTIONS.POLY

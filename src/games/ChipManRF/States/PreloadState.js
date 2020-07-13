@@ -81,10 +81,11 @@ export class PreloadState extends Phaser.Scene {
     this.game.scene.add("DebugState", DebugState)
     this.game.scene.add("LevelSelectDebugState", LevelSelectDebugState);
     this.game.scene.add("GameState", GameState);
+    this.game.scene.add("MenuState", MenuState);
 
     // Stop this state
     this.scene.stop();
 
-    this.game.scene.add("MenuState", MenuState, true);
+    this.scene.start("LevelSelectDebugState");
   }
 }

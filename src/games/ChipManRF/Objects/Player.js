@@ -57,6 +57,10 @@ class Player extends Phaser.GameObjects.Container {
     /* Animation mixes */
     this.spine.setMix("idle", "run", .1);
     this.spine.setMix("run", "idle", .1);
+    this.spine.setMix("run", "jump", .1);
+    this.spine.setMix("idle", "jump", .1);
+    this.spine.setMix("jump", "run", .1);
+    this.spine.setMix("jump", "idle", .1);
 
     /* Blinking */
     this.blinkTimer = this.scene.time.addEvent({
@@ -129,23 +133,43 @@ class Player extends Phaser.GameObjects.Container {
     if (this._enableMovement) {
       if (this.left_key.isDown && this.right_key.isDown) {
         /* Do nothing */
-        this.spine.setAnimation(0, "idle", true, true);
+        if (this.body.onFloor()) {
+          this.spine.setAnimation(0, "idle", true, true);
+        }
       }
       else if (this.left_key.isDown) {
         this.body.setVelocityX(-PLAYER_RUN_SPEED);
         this.spine.scaleX = -.14;
         this.body.setOffset(2, -18);
-        this.spine.setAnimation(0, "run", true, true);
+        // Only show run animation if on the ground
+        if (this.body.onFloor()) {
+          this.spine.setAnimation(0, "run", true, true);
+        }
       }
       else if (this.right_key.isDown) {
         this.body.setVelocityX(PLAYER_RUN_SPEED);
         this.spine.scaleX = .14;
         this.body.setOffset(0, -18);
-        this.spine.setAnimation(0, "run", true, true);
+        // Only show run animation if on the ground
+        if (this.body.onFloor()) {
+          this.spine.setAnimation(0, "run", true, true);
+        }
       }
       else {
         //Turn off running animation when stationary
-        this.spine.setAnimation(0, "idle", true, true);
+        if (this.body.onFloor()) {
+          this.spine.setAnimation(0, "idle", true, true);
+        }
+      }
+
+      /*
+        If chipman is not grounded he must be arial, thus start the jumping animation
+      */
+      if (!this.body.onFloor()) {
+        // Only play the animation a single time
+        if (this.spine.getCurrentAnimation().name != "jump") {
+            this.spine.setAnimation(0, "jump", false, true);
+        }
       }
 
 
