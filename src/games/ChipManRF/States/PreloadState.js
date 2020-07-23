@@ -86,6 +86,6 @@ export class PreloadState extends Phaser.Scene {
     // Stop this state
     this.scene.stop();
 
-    this.scene.start("LevelSelectDebugState");
+    this.scene.start("MenuState");
   }
 }
