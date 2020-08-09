@@ -1,4 +1,4 @@
-import { COLORS } from './Colors.js';
+import { COLORS } from '../../Utility/Colors.js';
 /*
   DialogueBox
 

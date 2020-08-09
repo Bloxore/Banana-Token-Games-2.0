@@ -2,6 +2,6 @@ servers/
 package*
 node_modules/
 devblogs/
-build_dev.bat
+build_tools/
 assets/
 cards/

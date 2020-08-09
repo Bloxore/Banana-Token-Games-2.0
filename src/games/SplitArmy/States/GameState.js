@@ -1,11 +1,12 @@
-import { Map } from './Map.js';
-import { UnitGroup } from './UnitGroup.js';
+import { Map } from '../Objects/Map.js';
+import { UnitGroup } from '../Objects/UnitGroup.js';
 
 export class GameState extends Phaser.Scene {
   constructor() {
     super({key: "GameState"});
   }
 
+  // TODO: Avoid loading resources more than once
   preload() {
     this.load.setPath("assets/games/SplitArmy/");
 

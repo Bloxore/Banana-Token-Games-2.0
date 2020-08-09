@@ -1,4 +1,4 @@
-import { PreloadState } from "./PreloadState.js";
+import { PreloadState } from "./States/PreloadState.js";
 
 let config = {
     type: Phaser.WEBGL,
@@ -8,6 +8,7 @@ let config = {
     scale: {
       parent: "game",
       mode: Phaser.Scale.FIT,
+      autoCenter: Phaser.Scale.CENTER_BOTH,
       width: 480,
       height: 480,
       zoom: Phaser.Scale.Zoom.MAX_ZOOM,

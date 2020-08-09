@@ -1,5 +1,6 @@
 import { GameState } from "./GameState.js";
 import { GameStateHUD } from "./GameStateHUD.js";
+import { Manager } from "../../../lib/[[DEBUG]]Manager.js";
 
 /*
  * The job of this state is to load all essential assets of the game.
@@ -56,6 +57,8 @@ export class PreloadState extends Phaser.Scene {
       this.pBInnerShell.fillStyle(0x000000);
       this.pBInnerShell.fillRect(5, 5, 290*e, 30);
     }, this);
+
+    this.game.scene.add("Manager", Manager, true);
   }
 
   create() {

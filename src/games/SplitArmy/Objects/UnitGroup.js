@@ -1,4 +1,4 @@
-import { COLORS } from './Colors.js';
+import { COLORS } from '../Utility/Colors.js';
 export class UnitGroup extends Phaser.GameObjects.Container {
   constructor(scene, map, numberOfUnits = 10, player = true) {
     super(scene);

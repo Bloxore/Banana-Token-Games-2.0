@@ -52,8 +52,10 @@ export class Manager extends Phaser.Scene {
           this.pauseGame();
         }
       }
-    })
+    });
+
   }
+
 
   update() {
     if (this.scene.getIndex(this) != 0) {
@@ -62,6 +64,7 @@ export class Manager extends Phaser.Scene {
   }
 
   pauseGame() {
+
     this.scenesPaused = true;
     for (let scene of this.scene.manager.scenes) {
       if (scene.scene.key != "Manager" && scene.scene.isActive()) {
@@ -73,6 +76,7 @@ export class Manager extends Phaser.Scene {
   }
 
   resumeGame() {
+
     this.scenesPaused = false;
     for (let scene of this.scene.manager.scenes) {
       if (scene.scene.key != "Manager" && scene.scene.isPaused()) {
@@ -334,4 +338,4 @@ class DashButton extends Phaser.GameObjects.Zone {
     this.background.setPosition(this.x, this.y);
     this.icon.setPosition(this.x + this.icon.offset.x, this.y + this.icon.offset.y);
   }
-}
+}

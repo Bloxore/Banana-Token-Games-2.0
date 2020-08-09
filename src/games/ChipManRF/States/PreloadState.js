@@ -2,7 +2,7 @@ import { MenuState } from "./MenuState.js";
 import { GameState } from "./GameState.js";
 import { LevelSelectDebugState } from "./LevelSelectDebugState.js";
 import { DebugState } from "./DebugState.js";
-import { Manager } from "../../../lib/Manager.js";
+import { Manager } from "../../../lib/[[DEBUG]]Manager.js";
 
 /*
  * The job of this state is to load all essential assets of the game.
