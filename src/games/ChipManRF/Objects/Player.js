@@ -99,6 +99,11 @@ class Player extends Phaser.GameObjects.Container {
         this.slamCancel = false;
       }
     })
+
+    /* The player object is complex, and because of that the possibility of subpixel
+        camera following is much more of a problem. Thus reducing the point to following
+        to a single object is the best move */
+    this.follow_point = new Phaser.Geom.Point(this.x, this.y)
   }
 
   preUpdate() {
@@ -181,6 +186,10 @@ class Player extends Phaser.GameObjects.Container {
         this.body.setVelocityY(600);
       }
     }
+
+    // Update the follow point no matter what is going on
+    this.follow_point.x = Math.round(this.x);
+    this.follow_point.y = Math.round(this.y);
   }
 
   /* TODO: FIX */

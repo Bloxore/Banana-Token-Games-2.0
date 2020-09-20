@@ -70,17 +70,18 @@ export class GameState extends Phaser.Scene {
     let tilemap = this.make.tilemap({ key: levelKey });
     let tiles = tilemap.addTilesetImage("levelTilemap", "levelTiles");
     let layer = tilemap.createStaticLayer(0, tiles, 0, 0);
-    tilemap.setCollisionBetween(1, 6);
+    tilemap.setCollisionBetween(1, 8);
     layer.setDepth(1);
 
-    const HORIZONTAL_TILES = 20;
-    const VERTICAL_TILES = 74;
-    console.log(tilemap.height);
+    // World Bounds are determined dynamically
+    const HORIZONTAL_TILES = tilemap.width;
+    const VERTICAL_TILES = tilemap.height;
     const WORLD_WIDTH = TILE_WIDTH * HORIZONTAL_TILES;
     const WORLD_HEIGHT = TILE_HEIGHT * VERTICAL_TILES;
 
     /* Setup camera */
     this.cameras.main.setBounds(0, 0, WORLD_WIDTH, WORLD_HEIGHT);
+    this.cameras.main.setRoundPixels(true);
 
     /* Setup timer object */
     let timer = this.time.addEvent();
@@ -92,11 +93,7 @@ export class GameState extends Phaser.Scene {
     background.setLayer(1, BACKGROUND_TYPES.STAR, 0)
 
     /* Chips */
-    let chipGroup = this.physics.add.group({
-      delay: 30 * 1000, // default time for level
-      callback: this._timeOut,
-      callbackScope: this
-    });
+    let chipGroup = this.physics.add.group();
     chipGroup.setDepth(2);
     this.data.set("chipGroup", chipGroup);
 
@@ -107,7 +104,8 @@ export class GameState extends Phaser.Scene {
     /* Setup Player */
     let player = new Player(this, 200, 200);
     this.add.existing(player);
-    this.cameras.main.startFollow(player, true);
+    // Follow the point, not the player
+    this.cameras.main.startFollow(player.follow_point, true);
     player.setDepth(3);
     this.data.set("player", player);
 
@@ -166,7 +164,7 @@ export class GameState extends Phaser.Scene {
       } else if (object.name == "Timer") {
         timer.reset({
           delay: object.properties[0].value * 1000, // valid since 'Time' is its only property
-          callback: this._timeOut,
+          callback: this._playerDeath,
           callbackScope: this
         });
       }
@@ -254,7 +252,7 @@ export class GameState extends Phaser.Scene {
     this.data.set("chipsCollected", true);
   }
 
-  _timeOut() {
+  _playerDeath() {
     // prevent the game over after winning
     let timer = this.data.get("timer");
     timer.destroy();
@@ -308,28 +306,66 @@ export class GameState extends Phaser.Scene {
     player.disableMovement();
     //Make camera zoom naturally
     let flag = this.data.get("flag");
-    this.cameras.main.pan(flag.x, flag.y, 1000, Phaser.Math.Easing.Circular.Out)
-    // Zoom in the camera
-    this.tweens.add({
-      targets: this.cameras.main,
-      zoom: 2,
-      duration: 1000,
-      ease: Phaser.Math.Easing.Circular.Out,
-      callback: () => {
-        this.cameras.main.stopFollow();
+    this.cameras.main.stopFollow();
 
-        // After zoom play the arrows
+    // Bounce camera down to go up
+    this.add.tween({
+      targets: this.cameras.main,
+      scrollY: -1000,
+      duration: 1000,
+      delay: 100,
+      ease: Phaser.Math.Easing.Back.In
+    })
+
+    // Wait a second before starting the arrows
+    this.time.addEvent({
+      delay: 700,
+      callback: () => {
         ArrowScreenTransition.apply({
           scene: this,
           arrowThickness: 150,
-          arrowSpeed: 1500,
+          arrowSpeed: 3000,
           duration: 500,
           gapWidth: 50,
           color: 0xf0f000,
-          arrowDirection: ArrowScreenTransition.LEFT
+          arrowDirection: ArrowScreenTransition.UP
         });
+      }, callbackScope: this
+    })
+
+    let yellowFill = new ArrowHUD(this, 320, 240, {
+      arrowWidth: 1000,
+      arrowHeight: 640,
+      cutPercent: 0.19,
+      color: 0xf0f000
+    });
+    yellowFill.setAngle(270);
+    yellowFill.setDepth(7);
+    yellowFill.setScrollFactor(0);
+    yellowFill.y = 1000;
+    this.add.existing(yellowFill);
+
+    // Fill the whole screen yellow
+    this.add.tween({
+      targets: yellowFill,
+      duration: 420,
+      y: 0,
+      delay: 1215,
+    })
+
+    // Animation over, go to level select
+    this.time.addEvent({
+      delay: 2100,
+      callback: () => {
+        // Return to the previous state
+        // For now
+        if (this.data.has("previousState")) {
+          let previousState = this.data.get("previousState");
+          this.scene.stop();
+          this.scene.start(previousState);
+        }
       },
       callbackScope: this
-    });
+    })
   }
 }

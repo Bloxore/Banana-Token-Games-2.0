@@ -1,6 +1,8 @@
 import { FullScreenButton } from '../Objects/UI/FullScreenButton.js';
 import { MenuMoon } from '../Objects/MenuMoon.js';
 import { DISTRIBUTIONS, StarField } from '../Objects/StarField.js';
+import { ArrowScreenTransition } from '../FX/ArrowScreenTransition.js';
+import { ArrowHUD } from '../Objects/UI/ArrowHUD.js';
 
 export class MenuState extends Phaser.Scene {
 
@@ -101,6 +103,18 @@ export class MenuState extends Phaser.Scene {
     copyright.setDepth(6);
     copyright.setTintFill(0x000000);
 
+    let yellowFill = new ArrowHUD(this, 320, 240, {
+      arrowWidth: 1000,
+      arrowHeight: 640,
+      cutPercent: 0.19,
+      color: 0xf0f000
+    });
+    yellowFill.setAngle(270);
+    yellowFill.setDepth(7);
+    yellowFill.setScrollFactor(0);
+    yellowFill.y = 1000;
+    this.add.existing(yellowFill);
+
     // Camera pan animation
     this._cameraPanToTitle(() => {
       // Kill those offscreen stars to reduce CPU load
@@ -133,14 +147,21 @@ export class MenuState extends Phaser.Scene {
       this.input.once('pointerdown', () => {
         titleZoomTween.remove();
 
+        this.add.tween({
+          targets: [startText, copyright],
+          alpha: 0,
+          duration: 500
+        })
+
         // Mega zoom the title towards the screen
         this.titleWobbleEnable = false;
         this.add.tween({
           targets: this.title,
-          scaleX: 100,
-          scaleY: 100,
-          duration: 2000,
+          scaleX: 0,
+          scaleY: 0,
+          duration: 500,
         })
+
         this.add.tween({
           targets: this.title,
           y: 240,
@@ -149,25 +170,44 @@ export class MenuState extends Phaser.Scene {
           ease: Phaser.Math.Easing.Quintic.InOut,
         })
 
-        // Fade our the moon for the camera zoom
-        this.add.tween({
-          targets: [this.moonContainer, startText, textMask],
-          alpha: 0,
-          duration: 2000,
-          delay: 2000
-        })
-
-        // Zoom the camera into the darkness
+        // Bounce camera down to go up
         this.add.tween({
           targets: this.cameras.main,
-          zoom: 14,
-          duration: 4000,
-          ease: Phaser.Math.Easing.Quintic.In,
-          onCompleteScope: this,
-          onComplete: () => {
-            // Start the game
-            this._startGame();
-          }
+          scrollY: -1000,
+          duration: 1000,
+          delay: 500,
+          ease: Phaser.Math.Easing.Back.In
+        })
+
+        // Wait a second before starting the arrows
+        this.time.addEvent({
+          delay: 1100,
+          callback: () => {
+            ArrowScreenTransition.apply({
+              scene: this,
+              arrowThickness: 150,
+              arrowSpeed: 3000,
+              duration: 500,
+              gapWidth: 50,
+              color: 0xf0f000,
+              arrowDirection: ArrowScreenTransition.UP
+            });
+          }, callbackScope: this
+        })
+
+        // Fill the whole screen yellow
+        this.add.tween({
+          targets: yellowFill,
+          duration: 420,
+          y: 0,
+          delay: 1620,
+        })
+
+        // Animation over, go to level select
+        this.time.addEvent({
+          delay: 3300,
+          callback: this._startGame,
+          callbackScope: this
         })
       })
     });

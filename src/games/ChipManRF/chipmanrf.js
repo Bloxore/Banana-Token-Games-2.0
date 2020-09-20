@@ -4,6 +4,7 @@ import * as SpinePlugin from "../../../lib/SpinePlugin.js";
 let config = {
     type: Phaser.WEBGL,
     backgroundColor: '#000000',
+    roundPixels: true,
     scale: {
         mode: Phaser.Scale.FIT,
         parent: 'game',
