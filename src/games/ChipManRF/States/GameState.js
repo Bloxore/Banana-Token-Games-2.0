@@ -135,6 +135,8 @@ export class GameState extends Phaser.Scene {
 
     /* Input Events */
     this.input.keyboard.addKey("DELETE").once("down", () => {
+      this._despawnLevelArtifacts();
+
       // Return to the previous state
       if (this.data.has("previousState")) {
         let previousState = this.data.get("previousState");
@@ -252,16 +254,11 @@ export class GameState extends Phaser.Scene {
     this.data.set("chipsCollected", true);
   }
 
+  /*
+    TODO: Make the level actually end.
+  */
   _playerDeath() {
-    // prevent the game over after winning
-    let timer = this.data.get("timer");
-    timer.destroy();
-
-    let player = this.data.get("player");
-    /* Stop the player and prevent the camera from following him anymore */
-    player.disableMovement();
-    player.disableBody();
-    this.cameras.main.stopFollow();
+    this._despawnLevelArtifacts();
 
     // Set the player offset to make rotation look cooler
     player.setSpineRelativePosition(-.5, -0);
@@ -295,7 +292,10 @@ export class GameState extends Phaser.Scene {
     })
   }
 
-  _levelCompletedSuccessfully() {
+  /*
+    All of these things will persist across levels if not cleared here.
+  */
+  _despawnLevelArtifacts() {
     // prevent the game over after winning
     let timer = this.data.get("timer");
     timer.destroy();
@@ -307,6 +307,10 @@ export class GameState extends Phaser.Scene {
     //Make camera zoom naturally
     let flag = this.data.get("flag");
     this.cameras.main.stopFollow();
+  }
+
+  _levelCompletedSuccessfully() {
+    this._despawnLevelArtifacts();
 
     // Bounce camera down to go up
     this.add.tween({
@@ -314,7 +318,9 @@ export class GameState extends Phaser.Scene {
       scrollY: -1000,
       duration: 1000,
       delay: 100,
-      ease: Phaser.Math.Easing.Back.In
+      ease: (x) => {
+        return Phaser.Math.Easing.Back.In(x, 1.2)
+      }
     })
 
     // Wait a second before starting the arrows

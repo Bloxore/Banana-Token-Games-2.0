@@ -176,7 +176,9 @@ export class MenuState extends Phaser.Scene {
           scrollY: -1000,
           duration: 1000,
           delay: 500,
-          ease: Phaser.Math.Easing.Back.In
+          ease: (v) => {
+            return Phaser.Math.Easing.Back.In(v, 1.4);
+          }
         })
 
         // Wait a second before starting the arrows
