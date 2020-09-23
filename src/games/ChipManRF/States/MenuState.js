@@ -207,7 +207,7 @@ export class MenuState extends Phaser.Scene {
 
         // Animation over, go to level select
         this.time.addEvent({
-          delay: 3300,
+          delay: 2100,
           callback: this._startGame,
           callbackScope: this
         })

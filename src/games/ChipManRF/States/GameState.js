@@ -70,7 +70,7 @@ export class GameState extends Phaser.Scene {
     let tilemap = this.make.tilemap({ key: levelKey });
     let tiles = tilemap.addTilesetImage("levelTilemap", "levelTiles");
     let layer = tilemap.createStaticLayer(0, tiles, 0, 0);
-    tilemap.setCollisionBetween(1, 8);
+    tilemap.setCollisionBetween(1, 11);
     layer.setDepth(1);
 
     // World Bounds are determined dynamically
@@ -104,8 +104,6 @@ export class GameState extends Phaser.Scene {
     /* Setup Player */
     let player = new Player(this, 200, 200);
     this.add.existing(player);
-    // Follow the point, not the player
-    this.cameras.main.startFollow(player.follow_point, true);
     player.setDepth(3);
     this.data.set("player", player);
 
@@ -133,15 +131,20 @@ export class GameState extends Phaser.Scene {
     chipText.setScrollFactor(0);
     this.data.set("chipText", chipText);
 
+    // Flag to determine whether DELETE is active
+    this.data.set("artifactsDespawned", false);
+
     /* Input Events */
     this.input.keyboard.addKey("DELETE").once("down", () => {
-      this._despawnLevelArtifacts();
+      if (this.data.get("artifactsDespawned") == false) {
+        this._despawnLevelArtifacts();
 
-      // Return to the previous state
-      if (this.data.has("previousState")) {
-        let previousState = this.data.get("previousState");
-        this.scene.stop();
-        this.scene.start(previousState);
+        // Return to the previous state
+        if (this.data.has("previousState")) {
+          let previousState = this.data.get("previousState");
+          this.scene.stop();
+          this.scene.start(previousState);
+        }
       }
     })
 
@@ -176,6 +179,19 @@ export class GameState extends Phaser.Scene {
 
     /* Change Player to map's spawn point */
     player.setPosition(playerSpawnPos.x, playerSpawnPos.y);
+    player.follow_point.x = playerSpawnPos.x;
+    player.follow_point.y = playerSpawnPos.y;
+
+    // Initiate player death upon collision with the bottom world bound
+    this.physics.world.on('worldbounds', (body, up, down, left, right) => {
+      if (body == player.body && down == true && player.dead == false) {
+        this.physics.world.off('worldbounds'); // prevent multi-death
+        this._playerDeath();
+      }
+    })
+
+    // Follow the point, not the player
+    this.cameras.main.startFollow(player.follow_point, true);
 
     /* Collision setup */
     this.physics.add.collider(player, layer);
@@ -260,6 +276,12 @@ export class GameState extends Phaser.Scene {
   _playerDeath() {
     this._despawnLevelArtifacts();
 
+    let player = this.data.get("player");
+    player.body.setEnable(false); // allow the player to fall out of bounds
+
+    // Flag the player as dead
+    player.dead = true;
+
     // Set the player offset to make rotation look cooler
     player.setSpineRelativePosition(-.5, -0);
 
@@ -277,7 +299,17 @@ export class GameState extends Phaser.Scene {
       y: "+= 1000",
       delay: 500,
       duration: 1000,
-      ease: Phaser.Math.Easing.Sine.In
+      ease: Phaser.Math.Easing.Sine.In,
+      onComplete: () => {
+        // Return to the previous state
+        // For now
+        if (this.data.has("previousState")) {
+          let previousState = this.data.get("previousState");
+          this.scene.stop();
+          this.scene.start(previousState);
+        }
+      },
+      onCompleteScope: this
     });
 
     /* == Status box fade == */
@@ -296,6 +328,7 @@ export class GameState extends Phaser.Scene {
     All of these things will persist across levels if not cleared here.
   */
   _despawnLevelArtifacts() {
+    this.data.set("artifactsDespawned", true);
     // prevent the game over after winning
     let timer = this.data.get("timer");
     timer.destroy();
@@ -304,13 +337,17 @@ export class GameState extends Phaser.Scene {
     // Other level over stuff here.
     let player = this.data.get("player");
     player.disableMovement();
-    //Make camera zoom naturally
-    let flag = this.data.get("flag");
+
     this.cameras.main.stopFollow();
   }
 
   _levelCompletedSuccessfully() {
     this._despawnLevelArtifacts();
+
+    let player = this.data.get("player");
+
+    // Let the effect play no matter if it goes out of bounds.
+    this.cameras.main.removeBounds();
 
     // Bounce camera down to go up
     this.add.tween({

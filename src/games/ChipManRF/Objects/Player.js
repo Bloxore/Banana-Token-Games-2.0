@@ -1,7 +1,14 @@
-const PLAYER_RUN_SPEED = 230;
+const PLAYER_RUN_ACCELERATION = 1100;
+const PLAYER_RUN_SPEED = 250;
+const PLAYER_AIR_ACCELERATION = 1500; // How much ChipMan can move in the air
 
 const JUMP_GRACE_PERIOD = 2; // Amount of time you have to jump after leaving a ledge in frames
 const PRE_JUMP_GRACE = 10; // Amount of time you can jump before landing and the game will still register it.
+
+// Amount of frames you can start moving the opposite direction after letting go of the
+// original direction and keep your original speed. (Even if in the air)
+const TURN_AROUND_GRACE = 0;
+const TURN_AROUND_AIR_GRACE = 0;
 
 const GRAVITY = 600;
 const JUMP_BURST = -450;
@@ -35,6 +42,9 @@ class Player extends Phaser.GameObjects.Container {
     //Terminal velocity under regular cirumstances
     this.body.setMaxVelocity(PLAYER_RUN_SPEED, TERMINAL_VELOCITY);
 
+    // World bounds event
+    this.body.onWorldBounds = true;
+
     /* Scale */
     this.spine.setScale(.14);
 
@@ -46,10 +56,16 @@ class Player extends Phaser.GameObjects.Container {
     this.framesSinceGrounded = -1;
     this.bufferJump = -1;
 
+    this.latestActiveHorizontalVelocity = 0;
+    this.framesSinceMovingHorizontally = 0;
+
     /* Sometimes the player may jump while slaming which will prove
        very unsatifactory because the jump will be canceled. This flag prevents
        that exact case from happening */
     this.slamCancel = false;
+
+    // Flag to be set to true when the player dies.
+    this.dead = false;
 
     /* Control over whether the player can move */
     this._enableMovement = true;
@@ -107,9 +123,6 @@ class Player extends Phaser.GameObjects.Container {
   }
 
   preUpdate() {
-    /* Stop horizontal movement, it isn't realistic but its how the
-       original played */
-    this.body.setVelocityX(0);
 
     /* Set the grounded flag to 0 frames when the player is on the ground */
     if (this.body.onFloor()) {
@@ -123,7 +136,7 @@ class Player extends Phaser.GameObjects.Container {
         this.bufferJump = -1;
       }
     } else {
-      if (this.body.velocityY < 0) {
+      if (this.body.velocity.y < 0) {
         this.body.setMaxVelocity(PLAYER_RUN_SPEED, TERMINAL_VELOCITY);
       }
       this.framesSinceGrounded++;
@@ -133,38 +146,78 @@ class Player extends Phaser.GameObjects.Container {
       }
     }
 
+    // Body should not keep accelerating unless the user explicitly wants
+    //  it too.
+    this.body.setAccelerationX(0);
+
 
     // Don't even consider input related consequences during disabled movment
     if (this._enableMovement) {
       if (this.left_key.isDown && this.right_key.isDown) {
         /* Do nothing */
         if (this.body.onFloor()) {
+          /* Stop horizontal movement immediately when on the ground */
+          this.body.setVelocityX(0);
+
           this.spine.setAnimation(0, "idle", true, true);
         }
+
+        this.framesSinceMovingHorizontally++;
       }
       else if (this.left_key.isDown) {
-        this.body.setVelocityX(-PLAYER_RUN_SPEED);
+        // For quick turn arounds (makes it feel more like the original)
+        if (this.latestActiveHorizontalVelocity > 0 &&
+            this.framesSinceMovingHorizontally <= TURN_AROUND_GRACE &&
+            this.framesSinceGrounded <= TURN_AROUND_AIR_GRACE) {
+          this.body.setVelocityX(-this.latestActiveHorizontalVelocity);
+        }
+        if (this.body.onFloor()) {
+          this.body.setAccelerationX(-PLAYER_RUN_ACCELERATION);
+        } else {
+          this.body.setAccelerationX(-PLAYER_AIR_ACCELERATION);
+        }
         this.spine.scaleX = -.14;
         this.body.setOffset(2, -18);
         // Only show run animation if on the ground
         if (this.body.onFloor()) {
           this.spine.setAnimation(0, "run", true, true);
         }
+
+        this.latestActiveHorizontalVelocity = this.body.velocity.x;
+        this.framesSinceMovingHorizontally = 0;
       }
       else if (this.right_key.isDown) {
-        this.body.setVelocityX(PLAYER_RUN_SPEED);
+        // For quick turn arounds (makes it feel more like the original)
+        if (this.latestActiveHorizontalVelocity < 0 &&
+            this.framesSinceMovingHorizontally <= TURN_AROUND_GRACE &&
+            this.framesSinceGrounded <= TURN_AROUND_AIR_GRACE) {
+          this.body.setVelocityX(-this.latestActiveHorizontalVelocity);
+        }
+        if (this.body.onFloor()) {
+          this.body.setAccelerationX(PLAYER_RUN_ACCELERATION);
+        } else {
+          this.body.setAccelerationX(PLAYER_AIR_ACCELERATION);
+        }
         this.spine.scaleX = .14;
         this.body.setOffset(0, -18);
         // Only show run animation if on the ground
         if (this.body.onFloor()) {
           this.spine.setAnimation(0, "run", true, true);
         }
+
+        this.latestActiveHorizontalVelocity = this.body.velocity.x;
+        this.framesSinceMovingHorizontally = 0;
       }
       else {
         //Turn off running animation when stationary
         if (this.body.onFloor()) {
+          /* Stop horizontal movement immediately when on the ground */
+          this.body.setVelocityX(0);
+
           this.spine.setAnimation(0, "idle", true, true);
         }
+
+        this.framesSinceMovingHorizontally++;
       }
 
       /*
@@ -192,7 +245,6 @@ class Player extends Phaser.GameObjects.Container {
     this.follow_point.y = Math.round(this.y);
   }
 
-  /* TODO: FIX */
   disableMovement() {
     this.up_key.reset();
     this.down_key.reset();
@@ -200,6 +252,9 @@ class Player extends Phaser.GameObjects.Container {
     this.right_key.reset();
 
     this.spine.setAnimation(0, "idle", true, true);
+
+    this.body.setAccelerationX(0);
+    this.body.setVelocityX(0);
 
     this._enableMovement = false;
   }

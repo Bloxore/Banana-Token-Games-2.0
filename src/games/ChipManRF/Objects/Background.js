@@ -89,11 +89,13 @@ class MoonBackground extends BaseBackground {
   constructor(scene, width, height) {
     super(scene, width, height);
 
+    const MOON_RADIUS = 320; // Half of resolution width
+
     // Static moon
     this.moon = this.scene.add.graphics();
     this.moon.fillStyle(0xffffff);
     this.moon.beginPath();
-    this.moon.arc(0, 0, this.width / 2, 0, Math.PI, true);
+    this.moon.arc(0, 0, MOON_RADIUS, 0, Math.PI, true);
     this.moon.fillPath();
     this.moon.x = this.width / 2;
     this.moon.y = this.height + 200;
