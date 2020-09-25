@@ -1,6 +1,6 @@
 const PLAYER_RUN_ACCELERATION = 1100;
 const PLAYER_RUN_SPEED = 250;
-const PLAYER_AIR_ACCELERATION = 1500; // How much ChipMan can move in the air
+const PLAYER_AIR_ACCELERATION = 2000; // How much ChipMan can move in the air
 
 const JUMP_GRACE_PERIOD = 2; // Amount of time you have to jump after leaving a ledge in frames
 const PRE_JUMP_GRACE = 10; // Amount of time you can jump before landing and the game will still register it.
