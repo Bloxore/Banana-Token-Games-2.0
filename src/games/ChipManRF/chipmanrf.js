@@ -1,5 +1,5 @@
 import { PreloadState } from "./States/PreloadState.js";
-import * as SpinePlugin from "../../../lib/SpinePlugin.js";
+import * as SpinePlugin from "../../../external_libraries/SpinePlugin.js";
 
 let config = {
     type: Phaser.WEBGL,

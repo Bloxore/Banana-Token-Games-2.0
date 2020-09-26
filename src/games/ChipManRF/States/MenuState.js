@@ -42,7 +42,7 @@ export class MenuState extends Phaser.Scene {
   }
 
   create() {
-    this.cameras.main.setScroll(0, -this.game.config.height*4);
+    this.cameras.main.setScroll(0, -this.game.config.height*5);
 
     /* === Class Variables === */
     // Holds the moon and everything on it (to rotate slowly)
@@ -59,7 +59,25 @@ export class MenuState extends Phaser.Scene {
     background.fillRect(0, 0, 640, 480);
     background.depth = 0;
 
-    let stars = this._generateStarFields();
+    /* Stars on the space background */
+    let titleStars = new StarField(this);
+    this.add.existing(titleStars);
+    titleStars.setDepth(1);
+    titleStars.generateField({
+      bounds: new Phaser.Geom.Rectangle(0, -this.game.config.height, this.game.config.width, this.game.config.height*2),
+      numStars: 75,
+      sizeRange: [.5, .6],
+      randomSeed: "arcade",
+      distribution: DISTRIBUTIONS.POLY
+    });
+
+    titleStars.generateField({
+      bounds: new Phaser.Geom.Rectangle(0, 100, this.game.config.width/3, this.game.config.height/2),
+      numStars: 5,
+      sizeRange: [.5, .6],
+      randomSeed: "arcade",
+      distribution: DISTRIBUTIONS.POLY
+    });
 
     let fragsrc =
     `
@@ -117,11 +135,6 @@ export class MenuState extends Phaser.Scene {
 
     // Camera pan animation
     this._cameraPanToTitle(() => {
-      // Kill those offscreen stars to reduce CPU load
-      for (let star of stars.topStars.children.entries) {
-        // Hopefully the act of destruction isn't lagging in it of itself
-        star.destroy();
-      }
 
       this.titleWobbleEnable = true;
       // Make title zoom in
@@ -243,16 +256,15 @@ export class MenuState extends Phaser.Scene {
     timeline.add({
       targets: this.cameras.main,
       scrollX:0,
-      scrollY:-this.game.config.height*3,
+      scrollY:-this.game.config.height*4,
       duration: 1000,
       ease: Phaser.Math.Easing.Quintic.In
     });
     timeline.add({
       targets: this.cameras.main,
       scrollX: 0,
-      scrollY:-this.game.config.height*2,
-      duration: 200,
-      repeat: 2
+      scrollY:-this.game.config.height*1,
+      duration: 200*3
     });
     timeline.add({
       targets: this.cameras.main,
@@ -265,57 +277,5 @@ export class MenuState extends Phaser.Scene {
     });
 
     timeline.play();
-  }
-
-  _generateStarFields() {
-    // Stars
-    let topStars = new StarField(this);
-    this.add.existing(topStars);
-    topStars.setDepth(1);
-    topStars.generateField({
-      bounds: new Phaser.Geom.Rectangle(0, -this.game.config.height*4, this.game.config.width, this.game.config.height),
-      numStars: 50,
-      sizeRange: [.5, .6],
-      randomSeed: "banana",
-      distribution: DISTRIBUTIONS.POLY
-    })
-    topStars.generateField({
-      bounds: new Phaser.Geom.Rectangle(0, -this.game.config.height*3, this.game.config.width, this.game.config.height),
-      numStars: 50,
-      sizeRange: [.5, .6],
-      randomSeed: "token+",
-      distribution: DISTRIBUTIONS.POLY
-    });
-    topStars.generateField({
-      bounds: new Phaser.Geom.Rectangle(0, -this.game.config.height*2, this.game.config.width, this.game.config.height),
-      numStars: 50,
-      sizeRange: [.5, .6],
-      randomSeed: "token+",
-      distribution: DISTRIBUTIONS.POLY
-    });
-
-    let titleStars = new StarField(this);
-    this.add.existing(titleStars);
-    titleStars.setDepth(1);
-    titleStars.generateField({
-      bounds: new Phaser.Geom.Rectangle(0, -this.game.config.height, this.game.config.width, this.game.config.height*2),
-      numStars: 75,
-      sizeRange: [.5, .6],
-      randomSeed: "arcade",
-      distribution: DISTRIBUTIONS.POLY
-    });
-
-    titleStars.generateField({
-      bounds: new Phaser.Geom.Rectangle(0, 100, this.game.config.width/3, this.game.config.height/2),
-      numStars: 5,
-      sizeRange: [.5, .6],
-      randomSeed: "arcade",
-      distribution: DISTRIBUTIONS.POLY
-    });
-
-    return {
-      topStars: topStars,
-      titleStars: titleStars
-    };
   }
 }

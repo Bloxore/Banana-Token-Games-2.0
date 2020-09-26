@@ -2,7 +2,7 @@ import { MenuState } from "./MenuState.js";
 import { GameState } from "./GameState.js";
 import { LevelSelectDebugState } from "./LevelSelectDebugState.js";
 import { DebugState } from "./DebugState.js";
-import { Manager } from "../../../lib/[[DEBUG]]Manager.js";
+import { Manager } from "../../../../lib/[[DEBUG]]Manager.js";
 
 /*
  * The job of this state is to load all essential assets of the game.
@@ -50,7 +50,7 @@ export class PreloadState extends Phaser.Scene {
     this.load.setPath("assets/games/ChipManRF/");
 
     /* ChipMan Spine Load */
-    this.load.spine("chipman", "chipman-spine/ChipMan.json", "chipman-spine/ChipMan.atlas", true);
+    this.load.spine("chipman", "chipman-spine/Chipman.json", "chipman-spine/Chipman.atlas", true);
 
     /* Bitmap font*/
     this.load.bitmapFont("mainFont", "fonts/PressStart/PressStart2P.png", "fonts/PressStart/PressStart2P.fnt");

@@ -1,6 +1,6 @@
 import { GameState } from "./GameState.js";
 import { GameStateHUD } from "./GameStateHUD.js";
-import { Manager } from "../../../lib/[[DEBUG]]Manager.js";
+import { Manager } from "../../../../lib/[[DEBUG]]Manager.js";
 
 /*
  * The job of this state is to load all essential assets of the game.

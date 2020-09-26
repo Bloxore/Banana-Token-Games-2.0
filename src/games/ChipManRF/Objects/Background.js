@@ -98,8 +98,10 @@ class MoonBackground extends BaseBackground {
     this.moon.arc(0, 0, MOON_RADIUS, 0, Math.PI, true);
     this.moon.fillPath();
     this.moon.x = this.width / 2;
-    this.moon.y = this.height + 200;
+    this.moon.y = this.height /1.25200 + 300;
     this.moon.setScale(2, 1);
+
+    this.moon.setScrollFactor(.8);
 
     // Moon glow <learn shaders>
 
@@ -117,7 +119,7 @@ class StarBackground extends BaseBackground {
     super(scene, width, height);
 
     // Generate a perdictable amount of stars based on stage size
-    let numStars = Math.floor(width*height / 10000);
+    let numStars = Math.floor(width*height / 15000);
 
     // The star field
     this.starfield = new StarField(scene);

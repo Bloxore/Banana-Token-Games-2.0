@@ -66,9 +66,12 @@ export class StarField extends Phaser.GameObjects.Group {
 
       let offset = Phaser.Math.RND.integerInRange(0, 10000)
 
-      let speed = Phaser.Math.RND.integerInRange(150, 250)
+      let speed = Phaser.Math.RND.integerInRange(250, 500)
 
       star.setRotation(random.frac() * 2*Math.PI);
+
+      let scrollFactor = Phaser.Math.RND.frac() * .1 + .05;
+      star.setScrollFactor(scrollFactor);
 
       star.update = () => {
         // TODO: Make better star animation

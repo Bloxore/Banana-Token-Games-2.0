@@ -1,6 +1,9 @@
-const PLAYER_RUN_ACCELERATION = 1100;
-const PLAYER_RUN_SPEED = 250;
-const PLAYER_AIR_ACCELERATION = 2000; // How much ChipMan can move in the air
+const PLAYER_RUN_ACCELERATION = 1000;
+const PLAYER_RUN_SPEED = 230;
+const PLAYER_AIR_ACCELERATION = 800; // How much ChipMan can move in the air
+
+const PLAYER_DRAG_GROUND = 1100;
+const PLAYER_DRAG_AIR = 550;
 
 const JUMP_GRACE_PERIOD = 2; // Amount of time you have to jump after leaving a ledge in frames
 const PRE_JUMP_GRACE = 10; // Amount of time you can jump before landing and the game will still register it.
@@ -135,6 +138,9 @@ class Player extends Phaser.GameObjects.Container {
         this.body.setVelocityY(JUMP_BURST);
         this.bufferJump = -1;
       }
+
+      // Drag on ground
+      this.body.setDrag(PLAYER_DRAG_GROUND, 0);
     } else {
       if (this.body.velocity.y < 0) {
         this.body.setMaxVelocity(PLAYER_RUN_SPEED, TERMINAL_VELOCITY);
@@ -144,6 +150,9 @@ class Player extends Phaser.GameObjects.Container {
       if (this.bufferJump >= 0) {
           this.bufferJump++;
       }
+
+      // Drag in air
+      this.body.setDrag(PLAYER_DRAG_AIR, 0);
     }
 
     // Body should not keep accelerating unless the user explicitly wants
@@ -156,9 +165,6 @@ class Player extends Phaser.GameObjects.Container {
       if (this.left_key.isDown && this.right_key.isDown) {
         /* Do nothing */
         if (this.body.onFloor()) {
-          /* Stop horizontal movement immediately when on the ground */
-          this.body.setVelocityX(0);
-
           this.spine.setAnimation(0, "idle", true, true);
         }
 
@@ -211,9 +217,6 @@ class Player extends Phaser.GameObjects.Container {
       else {
         //Turn off running animation when stationary
         if (this.body.onFloor()) {
-          /* Stop horizontal movement immediately when on the ground */
-          this.body.setVelocityX(0);
-
           this.spine.setAnimation(0, "idle", true, true);
         }
 
