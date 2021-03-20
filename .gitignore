@@ -2,6 +2,5 @@ servers/
 package*
 node_modules/
 devblogs/
-build_tools/
 assets/
 cards/
